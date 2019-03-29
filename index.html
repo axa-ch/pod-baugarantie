@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>YOUR TITLE HERE</title>
+
+      <link rel="stylesheet" href="node_modules/@axa-ch/patterns-library/dist/index.css">
+
+      <style>
+          body {
+              margin: 0;
+              padding: 0;
+          }
+      </style>
+  </head>
+
+  <body>
+      <axa-core only-load="true" icons-path="node_modules/@axa-ch/patterns-library/dist/assets/icons/icons.svg"></axa-core>
+
+      <article
+          class="js-pod-baugarantie-mount"
+          data-dummy-attr="test">
+      </article>
+
+      <!-- plugin initialization -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elem = document.querySelector('.js-pod-baugarantie-mount');
+        var instance = new PodBaugarantie(elem, elem.dataset);
+        instance.init();
+    });
+</script>
+  </body>
+</html>

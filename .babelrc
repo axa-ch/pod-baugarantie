@@ -1,0 +1,32 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "safari >= 8",
+            "not ie <= 10"
+          ]
+        }
+      }
+    ],
+    "react"
+  ],
+  "plugins": [
+    "external-helpers",
+    "transform-class-properties",
+    "transform-es2015-destructuring",
+    "transform-object-rest-spread",
+    [
+      "babel-plugin-transform-runtime",
+      {
+        "helpers": true,
+        "polyfill": false,
+        "regenerator": true
+      }
+    ]
+  ]
+}
