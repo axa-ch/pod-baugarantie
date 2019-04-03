@@ -3,6 +3,8 @@
   "rules": {
     "max-len": ["warn", 140, 2],
     "import/prefer-default-export": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-closing-tag-location": "off",
     "indent": ["error", 2, {
       "SwitchCase": 1,
       "ignoredNodes": [
