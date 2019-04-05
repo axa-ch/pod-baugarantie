@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
-
+import { Provider } from 'react-redux';
 import 'document-register-element';
 
 import '@axa-ch/patterns-library/lib/components/u-core/index';
 import '@axa-ch/patterns-library/lib/components/a-icon/index';
-import { AXAButton } from '@axa-ch/patterns-library/lib/js/react-exports';
 
+import App from './components/app';
+import store from './store';
 import './index.scss';
 
 export default class PodBaugarantie {
@@ -20,8 +21,9 @@ export default class PodBaugarantie {
 
   init() {
     ReactDOM.render(<Fragment>
-      <axa-core only-load="true" icons-path="icons.svg" />
-      <AXAButton arrow motion>My Button medium</AXAButton>
+      <Provider store={store}>
+        <App />
+      </Provider>
     </Fragment>, this.elem);
   }
 }
