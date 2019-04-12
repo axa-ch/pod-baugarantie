@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import 'document-register-element';
 
 import '@axa-ch/patterns-library/lib/components/u-core/index';
@@ -22,7 +23,9 @@ export default class PodBaugarantie {
   init() {
     ReactDOM.render(<Fragment>
       <Provider store={store}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </Provider>
     </Fragment>, this.elem);
   }

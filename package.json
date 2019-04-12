@@ -8,6 +8,7 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-redux": "^6.0.1",
+    "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
@@ -66,7 +67,7 @@
     "release": "generic-release",
     "start": "concurrently --kill-others \"npm run dev\" \"npm run api\"",
     "dev": "webpack-dev-server",
-    "api": "node ./server.js"
+    "api": "node ./mock/server.js"
   },
   "repository": {
     "type": "git",
