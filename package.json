@@ -16,6 +16,8 @@
   },
   "devDependencies": {
     "@axa-ch/generic-release": "latest",
+    "@axa-ch/patterns-library": "beta",
+    "@axa-ch/footer-small": "^1.2.2",
     "autoprefixer": "^8.6.5",
     "@babel/core": "^7.3.3",
     "@babel/plugin-proposal-class-properties": "^7.3.3",
