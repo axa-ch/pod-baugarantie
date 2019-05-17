@@ -28,7 +28,7 @@ export default class PodBaugarantie {
           gegeg
         </BrowserRouter>
       </Provider>
-      <AXAButton icon="arrow">My Button medium</AXAButton>
+      <AXAButton icon="arrow-right">My Button medium</AXAButton>
     </Fragment>, this.elem);
   }
 }
