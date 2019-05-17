@@ -1,15 +1,16 @@
-import React, { Fragment } from 'react';
-import ReactDOM from 'react-dom';
+import '@axa-ch/patterns-library-polyfill';
+
+import React, { Fragment, createElement } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import 'document-register-element';
 
-import '@axa-ch/patterns-library/lib/components/u-core/index';
-import '@axa-ch/patterns-library/lib/components/a-icon/index';
+import ReactDOM from 'react-dom';
+import createAXAButtonReact from '@axa-ch/button/lib/index.react';
 
-import App from './components/app';
-import store from './store';
 import './index.scss';
+import store from './store';
+
+const AXAButton = createAXAButtonReact(createElement);
 
 export default class PodBaugarantie {
   // elem is the DOM node where the pod will be atatched on
@@ -24,9 +25,10 @@ export default class PodBaugarantie {
     ReactDOM.render(<Fragment>
       <Provider store={store}>
         <BrowserRouter>
-          <App />
+          gegeg
         </BrowserRouter>
       </Provider>
+      <AXAButton icon="arrow">My Button medium</AXAButton>
     </Fragment>, this.elem);
   }
 }

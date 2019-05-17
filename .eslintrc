@@ -3,11 +3,6 @@
   "rules": {
     "max-len": ["warn", 140, 2],
     "import/prefer-default-export": "off",
-    "react/jsx-filename-extension": "off",
-    "react/jsx-closing-tag-location": "off",
-    "react/jsx-max-props-per-line": "off",
-    "jsx-a11y/anchor-is-valid": "off",
-    "react/jsx-first-prop-new-line": "off",
     "indent": ["error", 2, {
       "SwitchCase": 1,
       "ignoredNodes": [
@@ -19,11 +14,13 @@
     "class-methods-use-this": "off",
     "no-return-assign": "off",
     "no-bitwise": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-closing-tag-location": "off",
     "no-param-reassign": ["error", { "props": false }],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "no-underscore-dangle": "off",
     "no-use-before-define": ["error", { "functions": false, "classes": false }],
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["./scripts/**/*.js","./mock/**/*.js","./**/*.config.js","server.js","./test/**/*.js"]}],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["./scripts/**/*.js","./test/**/*.js"]}],
     "object-curly-newline": ["warn", {
         "ObjectExpression": "always",
         "ObjectPattern": { "multiline": true }
