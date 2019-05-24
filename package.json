@@ -3,8 +3,10 @@
   "main": "lib/index.js",
   "dependencies": {
     "@axa-ch/button": "latest",
+    "@axa-ch/container": "^1.0.0",
     "@axa-ch/icon": "latest",
     "@axa-ch/patterns-library-polyfill": "latest",
+    "prop-types": "^15.7.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-redux": "^6.0.1",
