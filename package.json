@@ -5,6 +5,7 @@
     "@axa-ch/button": "latest",
     "@axa-ch/container": "^1.0.0",
     "@axa-ch/icon": "latest",
+    "@axa-ch/link": "^1.2.1",
     "@axa-ch/patterns-library-polyfill": "latest",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",

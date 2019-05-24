@@ -1,3 +1,17 @@
-body {
+.o-baug__app {
   display: block;
+
+  padding: 10px 0;
+
+  &__form {
+    text-align: center;
+  }
+
+  &__form-inputs {
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+    }
+  }
 }

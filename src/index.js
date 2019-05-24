@@ -23,9 +23,11 @@ export default class PodBaugarantie {
   init() {
     ReactDOM.render(<Fragment>
       <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <div className="o-baug__app">
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </div>
       </Provider>
     </Fragment>, this.elem);
   }

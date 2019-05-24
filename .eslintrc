@@ -16,6 +16,7 @@
     "no-bitwise": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-closing-tag-location": "off",
+    "jsx-a11y/label-has-for": "off",
     "react/forbid-prop-types": "off",
     "no-param-reassign": ["error", { "props": false }],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
@@ -30,6 +31,7 @@
   "globals": {
     "HTMLElement": true,
     "HTMLImports": true,
+    "FormData": true,
     "sessionStorage": true,
     "XMLHttpRequest": true,
     "history": true,
