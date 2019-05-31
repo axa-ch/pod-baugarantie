@@ -1,5 +1,10 @@
 import { createReducer } from 'redux-act';
-import { setUsername, setPassword, setValidLogin } from './actions';
+import {
+  setUsername,
+  setPassword,
+  setValidLogin,
+  setAccessToken,
+} from './actions';
 
 export const authentication = createReducer(
   {
@@ -15,10 +20,15 @@ export const authentication = createReducer(
       ...state,
       valid,
     }),
+    [setAccessToken]: (state, at = '') => ({
+      ...state,
+      at,
+    }),
   },
   {
     username: '',
     password: '',
     valid: true,
+    at: '',
   }
 );
