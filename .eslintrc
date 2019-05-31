@@ -35,6 +35,7 @@
     "sessionStorage": true,
     "XMLHttpRequest": true,
     "history": true,
+    "fetch": true,
     "MutationObserver": true,
     "document": true,
     "window": true,

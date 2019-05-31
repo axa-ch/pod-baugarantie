@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 import { AXAContainer, AXALink } from './patterns-library';
 
@@ -12,21 +13,35 @@ import Home from './pages/home';
 import Dashboard from './pages/dashboard';
 import Login from './pages/login';
 
-const App = () => (
+const App = ({ history }) => (
   <AXAContainer>
-    <nav>
-      <AXALink href="/">Home</AXALink>
-      <AXALink href="/dashboard">Dashboard</AXALink>
+    <nav className="o-baug__app__nav">
+      <AXALink onClick={() => history.push('/')} >
+        Home
+      </AXALink>
+      <AXALink onClick={() => history.push('/dashboard')} >
+        Dashboard
+      </AXALink>
     </nav>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/login" component={Login} />
-      <PrivateRoute exact path="/dashboard" component={Dashboard} />
-    </Switch>
+    <article className="o-baug__app__content">
+      <Switch>
+        <PrivateRoute exact path="/" component={Home} />
+        <Route exact path="/login" component={Login} />
+        <PrivateRoute exact path="/dashboard" component={Dashboard} />
+      </Switch>
+    </article>
   </AXAContainer>
 );
+
+App.propTypes = {
+  history: PropTypes.object,
+};
+
+App.defaultProps = {
+  history: null,
+};
 
 export default connect(
   state => state,
   allActions,
-)(App);
+)(withRouter(App));

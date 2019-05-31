@@ -1,11 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import { AXAButton } from '../patterns-library';
 
-// import all your needed wrapped custom elements
-
-const Login = ({ addArticle }) => (
+const Login = () => (
   <article className="o-baug__app__form">
     <form
       onSubmit={(e) => {
@@ -26,21 +24,23 @@ const Login = ({ addArticle }) => (
       </div>
       <AXAButton
         variant="secondary"
-        onClick={() => { addArticle(); }}
         type="reset"
-      >Reset
+      >Password ändern
       </AXAButton>
       <AXAButton
-        onClick={() => { addArticle(); }}
         type="submit"
       >Login
       </AXAButton>
     </form>
   </article>
 );
-
-Login.propTypes = {
-  addArticle: PropTypes.func.isRequired,
-};
+//
+// Login.propTypes = {
+//   addUsername: PropTypes.func,
+// };
+//
+// Login.defaultProps = {
+//   addUsername: () => {},
+// };
 
 export default Login;
