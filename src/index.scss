@@ -16,6 +16,11 @@
     label {
       display: block;
     }
+
+    &__valid-field {
+      // Refactor when materials style is released
+      color: #c91432;
+    }
   }
 
   &__nav {

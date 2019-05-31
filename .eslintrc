@@ -1,15 +1,19 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "prettier"],
   "rules": {
     "max-len": ["warn", 140, 2],
     "import/prefer-default-export": "off",
-    "indent": ["error", 2, {
-      "SwitchCase": 1,
-      "ignoredNodes": [
-        "TaggedTemplateExpression[tag.name=\"html\"]",
-        "TaggedTemplateExpression[tag.name=\"html\"] > TemplateLiteral ObjectExpression"
-      ]
-    }],
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1,
+        "ignoredNodes": [
+          "TaggedTemplateExpression[tag.name=\"html\"]",
+          "TaggedTemplateExpression[tag.name=\"html\"] > TemplateLiteral ObjectExpression"
+        ]
+      }
+    ],
     "no-confusing-arrow": "off",
     "class-methods-use-this": "off",
     "no-return-assign": "off",
@@ -22,11 +26,11 @@
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "no-underscore-dangle": "off",
     "no-use-before-define": ["error", { "functions": false, "classes": false }],
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["./scripts/**/*.js","./test/**/*.js"]}],
-    "object-curly-newline": ["warn", {
-        "ObjectExpression": "always",
-        "ObjectPattern": { "multiline": true }
-    }]
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["./scripts/**/*.js", "./test/**/*.js"] }
+    ],
+    "object-curly-newline": "off"
   },
   "globals": {
     "HTMLElement": true,

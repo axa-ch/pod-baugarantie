@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
 import { AXAContainer, AXALink } from './patterns-library';
 
 import PrivateRoute from './atoms/private-route';
 
-import * as allActions from '../actions';
-
 import Home from './pages/home';
 import Dashboard from './pages/dashboard';
-import Login from './pages/login';
+import Login from './pages/login/index';
 
 const App = ({ history }) => (
   <AXAContainer>
@@ -41,7 +38,4 @@ App.defaultProps = {
   history: null,
 };
 
-export default connect(
-  state => state,
-  allActions,
-)(withRouter(App));
+export default withRouter(App);
