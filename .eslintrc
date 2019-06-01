@@ -28,7 +28,13 @@
     "no-use-before-define": ["error", { "functions": false, "classes": false }],
     "import/no-extraneous-dependencies": [
       "error",
-      { "devDependencies": ["./scripts/**/*.js", "./test/**/*.js"] }
+      {
+        "devDependencies": [
+          "./scripts/**/*.js",
+          "./test/**/*.js",
+          "./mock/**/*.js"
+        ]
+      }
     ],
     "object-curly-newline": "off"
   },
