@@ -1,12 +1,22 @@
+@import '@axa-ch/materials/styles/00-colors.scss';
+@import '@axa-ch/materials/styles/20-typography-and-text.scss';
+@import '@axa-ch/materials/styles/10-helpers.scss';
 // I choose to have a single file for scss as i aim to use as much as
 // possible from the patterns-library. If this file gets too complex, ergo above 300 lines,
 // I will refactor it and include scss in the pages/components that are
 // the users of the style
 
+* {
+  box-sizing: border-box;
+}
+
 .o-baug__app {
+  @include typo();
+
   display: block;
+  padding: 20px 0;
   // Refactor when materials style is released
-  background-color: #f5f5f5;
+  background-color: $color-prim-gray-wild-sand;
 
   &__form {
     text-align: center;
@@ -31,51 +41,55 @@
 
     &__valid-field {
       // Refactor when materials style is released
-      color: #c91432;
+      color: $color-validation-error;
     }
   }
 
   &__nav {
-    // Refactor when materials style is released
-    padding: 5px 0px;
-    padding-bottom: 0;
+    @include clearfix();
 
-    font-size: 18px;
-
-    // Refactor when materials style is released
-    border-bottom: 1px solid #e5e5e5;
+    background-color: $color-prim-white;
+    margin-bottom: 20px;
+    padding: 30px;
 
     axa-link {
-      margin: 5px 1px;
-      padding: 5px 10px;
-      height: 30px;
-      line-height: 30px;
+
+    }
+
+    &-button {
+      float: left;
+      border: none;
+      margin: 0;
+      padding: 0;
+      width: auto;
+      overflow: visible;
+
+      color: $color-prim-white;
+      text-transform: uppercase;
+
+      font-weight: 600;
+      font-style: normal;
+
+      background: transparent;
+
+      line-height: 20px;
+      letter-spacing: 0.02em;
+      font-size: 14px;
+
+      /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+      line-height: normal;
+
+      margin-left: 15px;
+
       display: inline-block;
-      // Refactor when materials style is released
-      background-color: #fff;
-      // Refactor when materials style is released
-      border-top: 1px solid #e5e5e5;
-      // Refactor when materials style is released
-      border-left: 1px solid #e5e5e5;
-      // Refactor when materials style is released
-      border-right: 1px solid #e5e5e5;
 
-      margin-bottom: -1px;
+      width: 130px;
+      height: 130px;
 
-      transition: 0.2s border ease-in-out;
+      background-color: $color-prim-blue-deep-sapphire;
 
       &:first-child {
-        margin-left: 0px;
-      }
-
-      &:hover,
-      &:active,
-      &:focus {
-        border-top: 1px solid #00008f;
-        // Refactor when materials style is released
-        border-left: 1px solid #00008f;
-        // Refactor when materials style is released
-        border-right: 1px solid #00008f;
+        margin-left: 0;
       }
     }
   }
@@ -83,10 +97,35 @@
   &__content {
     padding: 20px 5px;
     // Refactor when materials style is released
-    background-color: #fff;
+    background-color: $color-prim-white;
     // Refactor when materials style is released
-    border-left: 1px solid #e5e5e5;
+    border-left: 1px solid $color-prim-gray-mercury;
     // Refactor when materials style is released
-    border-right: 1px solid #e5e5e5;
+    border-right: 1px solid $color-prim-gray-mercury;
+  }
+
+  .lds-dual-ring {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 46px;
+    height: 46px;
+    margin: 1px;
+    border-radius: 50%;
+    border: 5px solid $color-prim-blue-deep-sapphire;
+    border-color: $color-prim-blue-deep-sapphire transparent $color-prim-blue-deep-sapphire transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }

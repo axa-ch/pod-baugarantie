@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
-import { AXAContainer, AXALink } from './patterns-library';
+import { AXAContainer } from './patterns-library';
 
 import PrivateRoute from './atoms/private-route';
+import Menu from './organisms/menu';
 
 import Home from './pages/home';
 import Dashboard from './pages/dashboard';
@@ -18,18 +19,7 @@ const App = ({ history, at }) => {
   }
   return (
     <AXAContainer>
-      {at ? (
-        <nav className="o-baug__app__nav">
-          <AXALink onClick={() => history.push('/')} >
-            Home
-          </AXALink>
-          <AXALink onClick={() => history.push('/dashboard')} >
-            Dashboard
-          </AXALink>
-        </nav>
-      ) : (
-        ''
-      )}
+      <Menu />
       <article className="o-baug__app__content">
         <Switch>
           <PrivateRoute exact path="/" component={Home} />
@@ -47,10 +37,8 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  history: null,
-};
-App.defaultProps = {
   at: '',
+  history: null,
 };
 
 export default connect(

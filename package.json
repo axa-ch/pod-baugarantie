@@ -2,6 +2,7 @@
   "description": "TBD",
   "main": "lib/index.js",
   "dependencies": {
+    "@axa-ch/materials": "latest",
     "@axa-ch/button": "latest",
     "@axa-ch/container": "^1.0.0",
     "@axa-ch/icon": "latest",

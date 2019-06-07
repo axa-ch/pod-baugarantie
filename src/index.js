@@ -13,6 +13,8 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import store from './store';
 
+import { setAccessToken } from './components/pages/login/actions';
+
 import App from './components/app';
 
 export default class PodBaugarantie {
@@ -25,6 +27,13 @@ export default class PodBaugarantie {
   }
 
   init() {
+    const bgAt = sessionStorage.getItem('bg_at');
+    const { dispatch } = store;
+
+    if (bgAt) {
+      dispatch(setAccessToken(bgAt));
+    }
+
     ReactDOM.render(<Fragment>
       <Provider store={store}>
         <div className="o-baug__app">

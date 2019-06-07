@@ -9,12 +9,6 @@ export const submitLogin = () => (dispatch, getState) => {
   const {
     authentication: { username, password },
   } = getState();
-
-  if (!username || !password) {
-    dispatch(setValidLogin(false));
-  } else {
-    dispatch(setValidLogin(true));
-  }
   fetch('http://localhost:3000/api/auth/login', {
     method: 'POST',
     mode: 'cors',
@@ -32,6 +26,8 @@ export const submitLogin = () => (dispatch, getState) => {
       return response.json();
     })
     .then(myJson => {
-      dispatch(setAccessToken(myJson.access_token));
+      const { access_token : accessToken } = myJson;
+      sessionStorage.setItem('bg_at', accessToken);
+      dispatch(setAccessToken(accessToken));
     });
 };
