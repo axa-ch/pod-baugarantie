@@ -7,14 +7,29 @@ router.get('/', (req, res) => {
   res.send(
     [
       {
-        name: 'home',
+        name: 'Vertragsübersicht',
         url: '/'
       },{
-        name: 'dashboard',
-        url: '/dashboard'
+        name: 'Neuer Garantieschein',
+        url: '/new'
       },{
-        name: 'asdfg',
-        url: '/asdfg'
+        name: 'Laufende Garantiescheine',
+        url: '/ongoing'
+      },{
+        name: 'Abgelaufene, annulierte und abgelehnte Garantiescheine',
+        url: '/cancelled'
+      },{
+        name: 'Depot Erneuerung',
+        url: '/depot-renewal'
+      },{
+        name: 'Engagement per Stichtag',
+        url: '/engagement-per-deadline'
+      },{
+        name: 'Support',
+        url: '/support'
+      },{
+        name: 'Logout',
+        url: '/logout'
       }
     ]
   );

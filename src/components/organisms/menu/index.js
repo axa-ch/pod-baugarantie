@@ -19,25 +19,37 @@ class Menu extends PureComponent {
 
   render() {
     const { at, menuItems, history } = this.props;
+    const { length } = menuItems;
+    if (!at) {
+      return (<></>);
+    }
     return (
-      <nav className="o-baug__app__nav">
-        {at && menuItems.length ? (
-          <>
-            {menuItems.map(({ name, url }, index) => (
-              <button
-                key={`key-button-${index}`}
-                className="o-baug__app__nav-button"
-                onClick={() => history.push(url)}
-              >
-                {name}
-              </button>
-            ))}
-          </>
-        ) : (
-          <div className="lds-dual-ring" />
-
-        )}
-      </nav>
+      <>
+        <style>
+          .o-baug__app__nav-wrapper{`{
+            width: ${length * (15 + 180)}px;
+          }`}
+        </style>
+        <nav className="o-baug__app__nav">
+          <div className="o-baug__app__nav-wrapper">
+            {length ? (
+              <>
+                {menuItems.map(({ name, url }, index) => (
+                  <button
+                    key={`key-button-${index}`}
+                    className="o-baug__app__nav-button"
+                    onClick={() => history.push(url)}
+                  >
+                    {name}
+                  </button>
+                ))}
+              </>
+            ) : (
+              <div className="lds-dual-ring" />
+            )}
+          </div>
+        </nav>
+      </>
     );
   }
 }

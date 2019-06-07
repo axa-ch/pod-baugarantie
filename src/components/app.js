@@ -9,13 +9,14 @@ import PrivateRoute from './atoms/private-route';
 import Menu from './organisms/menu';
 
 import Home from './pages/home';
-import Dashboard from './pages/dashboard';
+import New from './pages/new';
 import Login from './pages/login/index';
+import Ongoing from './pages/ongoing/index';
 
 const App = ({ history, at }) => {
   const { location: { pathname } } = history;
   if (~pathname.indexOf('login') && at.length > 1) {
-    history.push('/dashboard');
+    history.push('/');
   }
   return (
     <AXAContainer>
@@ -24,7 +25,8 @@ const App = ({ history, at }) => {
         <Switch>
           <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/new" component={New} />
+          <PrivateRoute exact path="/ongoing" component={Ongoing} />
         </Switch>
       </article>
     </AXAContainer>

@@ -2,13 +2,14 @@
   "description": "TBD",
   "main": "lib/index.js",
   "dependencies": {
-    "@axa-ch/materials": "latest",
     "@axa-ch/button": "latest",
     "@axa-ch/container": "^1.0.0",
     "@axa-ch/icon": "latest",
     "@axa-ch/input-text": "^1.0.0",
     "@axa-ch/link": "latest",
+    "@axa-ch/materials": "latest",
     "@axa-ch/patterns-library-polyfill": "latest",
+    "@axa-ch/table-sortable": "^1.1.5",
     "core-js": "^2.5.7",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
@@ -74,7 +75,7 @@
     "clean-lib": "rimraf lib",
     "build": "npm run clean-lib && cross-env NODE_ENV=production rollup --config ./rollup.config.js",
     "release": "generic-release",
-    "api": "node ./mock/server.js port=3000",
+    "api": "node ./mock/server.js port=3000 --host 0.0.0.0",
     "start": "concurrently \"webpack-dev-server\" \"npm run api\""
   },
   "repository": {

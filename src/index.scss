@@ -52,6 +52,10 @@
     margin-bottom: 20px;
     padding: 30px;
 
+    height: 160px;
+
+    overflow-x: auto;
+
     axa-link {
 
     }
@@ -83,8 +87,10 @@
 
       display: inline-block;
 
-      width: 130px;
-      height: 130px;
+      width: 180px;
+      height: 100px;
+
+      padding: 5px;
 
       background-color: $color-prim-blue-deep-sapphire;
 
@@ -102,6 +108,12 @@
     border-left: 1px solid $color-prim-gray-mercury;
     // Refactor when materials style is released
     border-right: 1px solid $color-prim-gray-mercury;
+
+    &-table {
+      max-height: 900px;
+
+      overflow-y: auto;
+    }
   }
 
   .lds-dual-ring {
