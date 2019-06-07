@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { AXAButton } from '../../patterns-library';
+import { AXAButton, AXAInputTextReact } from '../../patterns-library';
 
 import * as allActions from './actions';
 
@@ -15,22 +15,20 @@ const Login = ({ setUsername, setPassword, submitLogin, valid }) => (
       }}
     >
       <div className="o-baug__app__form-inputs">
-        <label>
-          Username
-          <input
-            type="text"
-            onChange={({ target: { value } }) => setUsername(value)}
-            name="username"
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            onChange={({ target: { value } }) => setPassword(value)}
-            name="password"
-          />
-        </label>
+        <AXAInputTextReact
+          label="Username"
+          required
+          type="text"
+          onChange={({ target: { value } }) => setUsername(value)}
+          name="username"
+        />
+        <AXAInputTextReact
+          label="Password"
+          required
+          type="password"
+          onChange={({ target: { value } }) => setPassword(value)}
+          name="password"
+        />
       </div>
       {valid ? (
         ''
