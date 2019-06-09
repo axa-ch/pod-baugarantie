@@ -1,7 +1,7 @@
 import React from 'react';
 // import { connect } from 'react-redux';
 
-import { AXATableSortableReact } from '../../patterns-library';
+import { AXATableSortableReact, AXAInputTextReact } from '../../patterns-library';
 
 const model = {
   thead: [
@@ -48,7 +48,15 @@ const Ongoing = (
 
 ) => (
   <>
-    <h1>Laufende Garantiescheine</h1>
+    <h1 className="o-baug__app__content-table-title">Laufende Garantiescheine</h1>
+    <div className="o-baug__app__content-table-search">
+      <AXAInputTextReact
+        type="text"
+        placeholder="Suche"
+        onChange={({ target: { value } }) => console.log(value)}
+        name="search-table"
+      />
+    </div>
     <article className="o-baug__app__content-table">
       <AXATableSortableReact innerscroll="800" model={model} />
     </article>
