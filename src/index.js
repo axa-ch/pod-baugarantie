@@ -1,5 +1,6 @@
 import '@axa-ch/patterns-library-polyfill';
-import 'core-js/modules/es6.symbol'
+import 'core-js/modules/es6.symbol';
+import 'core-js/modules/es6.array.find';
 import 'core-js/modules/es6.string.starts-with';
 import 'core-js/modules/es6.string.includes'
 import 'whatwg-fetch';

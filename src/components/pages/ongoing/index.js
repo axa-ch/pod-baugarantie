@@ -23,6 +23,7 @@ class Ongoing extends PureComponent {
     if (!thead || !tbody) {
       return (<div className="lds-dual-ring" />);
     }
+
     return (
       <>
         <h1 className="o-baug__app__content-table-title">Laufende Garantiescheine</h1>

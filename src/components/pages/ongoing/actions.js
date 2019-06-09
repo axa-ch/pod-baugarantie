@@ -1,7 +1,8 @@
 import { createAction } from 'redux-act';
 
-export const setSearch = createAction('BG_ONGOING_SEARCH');
 export const setTableItems = createAction('BG_ONGOING_SEARCH_SET_ITEMS');
+export const setSearchValue = createAction('BG_ONGOING_SEARCH_SET_VALUE');
+export const setOriginalTableItems = createAction('BG_ONGOING_SEARCH_SET_ORIGINAL_ITEMS');
 
 export const loadTableItems = () => (dispatch) => {
   fetch('http://localhost:3000/api/ongoing/items', {
@@ -20,6 +21,26 @@ export const loadTableItems = () => (dispatch) => {
       return response.json();
     })
     .then(myJson => {
-      dispatch(setTableItems(myJson));
+      dispatch(setOriginalTableItems(myJson));
     });
+};
+
+const cleanedUp = (str = '') => str.trim().toLowerCase();
+
+
+let timeStamp;
+
+export const setSearch = (search) => (dispatch, getState) => {
+  const {
+    ongoing: { tableOriginalItems: { thead, tbody } },
+  } = getState();
+  clearTimeout(timeStamp);
+  dispatch(setSearchValue(search));
+  timeStamp = setTimeout(() => {
+    const tbodyFiltered = tbody.filter(row => {
+      console.log(row.find(cell => ~cleanedUp(cell.html).indexOf(cleanedUp(search))))
+      return !!row.find(cell => ~cleanedUp(cell.html).indexOf(cleanedUp(search)))
+    });
+    dispatch(setTableItems({ thead, tbody: tbodyFiltered }));
+  }, 100);
 };

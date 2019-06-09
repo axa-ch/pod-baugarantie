@@ -1,12 +1,13 @@
 import { createReducer } from 'redux-act';
 import {
-  setSearch,
+  setSearchValue,
   setTableItems,
+  setOriginalTableItems,
 } from './actions';
 
 export const ongoing = createReducer(
   {
-    [setSearch]: (state, lastSearch = '') => ({
+    [setSearchValue]: (state, lastSearch = '') => ({
       ...state,
       lastSearch,
     }),
@@ -14,9 +15,15 @@ export const ongoing = createReducer(
       ...state,
       tableItems: {...tableItems},
     }),
+    [setOriginalTableItems]: (state, { ...tableItems }) => ({
+      ...state,
+      tableItems,
+      tableOriginalItems: tableItems,
+    }),
   },
   {
     lastSearch: '',
+    tableOriginalItems: {},
     tableItems: {},
   }
 );
