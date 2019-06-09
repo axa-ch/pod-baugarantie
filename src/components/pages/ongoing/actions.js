@@ -37,10 +37,9 @@ export const setSearch = (search) => (dispatch, getState) => {
   clearTimeout(timeStamp);
   dispatch(setSearchValue(search));
   timeStamp = setTimeout(() => {
-    const tbodyFiltered = tbody.filter(row => {
-      console.log(row.find(cell => ~cleanedUp(cell.html).indexOf(cleanedUp(search))))
-      return !!row.find(cell => ~cleanedUp(cell.html).indexOf(cleanedUp(search)))
-    });
+    const tbodyFiltered = tbody.filter(row => (
+      !!row.find(cell => ~cleanedUp(cell.html).indexOf(cleanedUp(search)))
+    ));
     dispatch(setTableItems({ thead, tbody: tbodyFiltered }));
-  }, 100);
+  }, 400);
 };
