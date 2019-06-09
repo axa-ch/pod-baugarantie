@@ -1,70 +1,59 @@
-import React from 'react';
-// import { connect } from 'react-redux';
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { AXATableSortableReact, AXAInputTextReact } from '../../patterns-library';
 
-const model = {
-  thead: [
-    { html: 'Title 0', sort: 'ASC' },
-    { html: 'Title 1', sort: 'ASC' },
-    { html: 'Title 3', sort: 'DESC' },
-    { html: 'Title 2' },
-  ],
-  tbody: [
-    [
-      { html: '<span>11 Some Text</span>' },
-      { html: '<span>Some Text</span>' },
-      { html: '<span>Cell 2</span>' },
-      { html: 'A' },
-    ],
-    [
-      { html: '<span>1 Some Text</span>' },
-      { html: '<span>Z Some Text</span>' },
-      { html: '<span>Cell 2</span>' },
-      { html: 'B' },
-    ],
-    [
-      { html: '<span>2 Some Text</span>' },
-      { html: '<span>A Some Text</span>' },
-      { html: '<span>Cell 2</span>' },
-      { html: 'C' },
-    ],
-  ],
-};
+import * as allActions from './actions';
 
-for(let i = 0; i < 100; i++) {
-  model.tbody.push(
-    [
-      { html: `<span>${i} 11 Some Text ${i}</span>` },
-      { html: `<span>Some Text ${i}</span>` },
-      { html: `<span>${i}Cell 2</span>` },
-      { html: `A ${i}` },
-    ],
-  )
+class Ongoing extends PureComponent {
+
+  componentDidMount(){
+    const { tableItems, loadTableItems } = this.props;
+
+    if (!tableItems.length) {
+      loadTableItems();
+    }
+  }
+
+  render() {
+    const { setSearch, lastSearch, tableItems } = this.props;
+    const { thead, tbody } = tableItems;
+
+    if (!thead || !tbody) {
+      return (<div className="lds-dual-ring" />);
+    }
+    return (
+      <>
+        <h1 className="o-baug__app__content-table-title">Laufende Garantiescheine</h1>
+        <div className="o-baug__app__content-table-search">
+          <AXAInputTextReact
+            type="text"
+            placeholder="Suche"
+            value={lastSearch}
+            onChange={({ target: { value } }) => setSearch(value)}
+            name="search-table"
+          />
+        </div>
+        <article className="o-baug__app__content-table">
+          <AXATableSortableReact
+            innerscroll="800"
+            model={tableItems}
+          />
+        </article>
+      </>
+    );
+  }
 }
 
-
-const Ongoing = (
-
-) => (
-  <>
-    <h1 className="o-baug__app__content-table-title">Laufende Garantiescheine</h1>
-    <div className="o-baug__app__content-table-search">
-      <AXAInputTextReact
-        type="text"
-        placeholder="Suche"
-        onChange={({ target: { value } }) => console.log(value)}
-        name="search-table"
-      />
-    </div>
-    <article className="o-baug__app__content-table">
-      <AXATableSortableReact innerscroll="800" model={model} />
-    </article>
-  </>
-);
-
 Ongoing.propTypes = {
-
+  setSearch: PropTypes.func.isRequired,
+  lastSearch: PropTypes.string.isRequired,
+  tableItems: PropTypes.object.isRequired,
+  loadTableItems: PropTypes.func.isRequired,
 };
 
-export default Ongoing;
+export default connect(
+  state => state.ongoing,
+  allActions
+)(Ongoing);

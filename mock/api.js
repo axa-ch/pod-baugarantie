@@ -4,9 +4,11 @@ const router = express.Router();
 
 const auth = require('./auth');
 const menu = require('./menu');
+const ongoing = require('./ongoing');
 
 router.use('/auth', auth);
 router.use('/menu', menu);
+router.use('/ongoing', ongoing);
 
 router.use('/', (req, res) => {
   res.set('content-type', 'application/json');
