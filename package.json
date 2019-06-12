@@ -9,7 +9,7 @@
     "@axa-ch/link": "latest",
     "@axa-ch/materials": "latest",
     "@axa-ch/patterns-library-polyfill": "latest",
-    "@axa-ch/table-sortable": "^1.1.5",
+    "@axa-ch/table-sortable": "^1.1.7",
     "core-js": "^2.5.7",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",

@@ -40,6 +40,9 @@ export const setSearch = (search) => (dispatch, getState) => {
     const tbodyFiltered = tbody.filter(row => (
       !!row.find(cell => ~cleanedUp(cell.html).indexOf(cleanedUp(search)))
     ));
+    if (!tbodyFiltered[0]) {
+      tbodyFiltered.push([]);
+    }
     dispatch(setTableItems({ thead, tbody: tbodyFiltered }));
   }, 400);
 };
