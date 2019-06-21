@@ -79,14 +79,14 @@ export const setSearch = (search) => (dispatch, getState) => {
     const tbodyLength = tbodyFiltered.length;
     const needsPagination = tbodyLength >= PAGINATION_THRESHOLD;
     // show only rows within the current page
-    const finalBody = !needsPagination ? tbodyFiltered : tbodyFiltered.slice(pageNumber, PAGINATION_THRESHOLD)
+    const finalBody = !needsPagination ? tbodyFiltered : tbodyFiltered.slice(0, PAGINATION_THRESHOLD)
 
     dispatch(setTableItems({
       thead: originalThead,
       tbody: finalBody,
       rowLength: Math.floor(tbodyLength / PAGINATION_THRESHOLD),
       needsPagination,
-      pageNumber,
+      pageNumber: 0,
       isSearching: false
     }));
   }, 300);
