@@ -1,17 +1,11 @@
 import { createReducer } from 'redux-act';
 import {
-  setSearchValue,
   setTableItems,
   setOriginalTableItems,
 } from './actions';
 
 export const ongoing = createReducer(
   {
-    [setSearchValue]: (state, { lastSearch, isSearching = true }) => ({
-      ...state,
-      lastSearch,
-      isSearching,
-    }),
     [setTableItems]: (state, { needsPagination, isSearching = false, ...rest }) => ({
       ...state,
       tableItems: { ...rest },
@@ -26,10 +20,8 @@ export const ongoing = createReducer(
     }),
   },
   {
-    lastSearch: '',
     pageNumber: 0,
     needsPagination: false,
-    isSearching: false,
     tableOriginalItems: {},
     tableItems: {},
   }

@@ -143,6 +143,15 @@ $mediaquery-xlg-up: $breakpoint-xlarge; // (min-width: 1200px)
         padding-left: 20px;
       }
 
+      &-pagination {
+        text-align: center;
+        margin-bottom: 20px;
+
+        &-text {
+          padding: 0 20px;
+        }
+      }
+
       &-search {
 
         padding: 0 20px 20px 20px;

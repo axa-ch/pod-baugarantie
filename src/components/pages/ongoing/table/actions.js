@@ -3,7 +3,6 @@ import { createAction } from 'redux-act';
 const PAGINATION_THRESHOLD = 100;
 
 export const setTableItems = createAction('BG_ONGOING_SEARCH_SET_ITEMS');
-export const setSearchValue = createAction('BG_ONGOING_SEARCH_SET_VALUE');
 export const setOriginalTableItems = createAction('BG_ONGOING_SEARCH_SET_ORIGINAL_ITEMS');
 
 export const loadTableItems = () => (dispatch) => {
@@ -34,33 +33,4 @@ export const loadTableItems = () => (dispatch) => {
         tableOriginalItems: tableJson
       }));
     });
-};
-
-const cleanedUp = (str = '') => str.trim().toLowerCase();
-
-
-let timeStamp;
-
-export const setSearch = (search) => (dispatch, getState) => {
-  const {
-    ongoing: { tableOriginalItems: { thead, tbody } },
-  } = getState();
-  clearTimeout(timeStamp);
-  dispatch(setSearchValue({ lastSearch: search, isSearching: true }));
-  timeStamp = setTimeout(() => {
-    const tbodyFiltered = tbody.filter(row => (
-      !!row.find(cell => ~cleanedUp(cell.html).indexOf(cleanedUp(search)))
-    ));
-    if (!tbodyFiltered[0]) {
-      tbodyFiltered.push([]);
-    }
-
-    const tbodyLength = tbodyFiltered.length;
-
-    const needsPagination = tbodyLength >= PAGINATION_THRESHOLD;
-
-    const finalBody = !needsPagination ? tbodyFiltered : tbodyFiltered.slice(0, PAGINATION_THRESHOLD)
-
-    dispatch(setTableItems({ thead, tbody: finalBody, needsPagination, isSearching: false }));
-  }, 200);
 };

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { AXATableSortableReact, AXAInputTextReact } from '../../patterns-library';
+import { AXATableSortableReact, AXAInputTextReact, AXAButton } from '../../patterns-library';
 
 import * as allActions from './actions';
 
@@ -17,7 +17,7 @@ class Ongoing extends PureComponent {
   }
 
   render() {
-    const { setSearch, lastSearch, tableItems } = this.props;
+    const { setSearch, lastSearch, tableItems, needsPagination, isSearching } = this.props;
     const { thead, tbody } = tableItems;
 
     if (!thead || !tbody) {
@@ -32,16 +32,39 @@ class Ongoing extends PureComponent {
             type="text"
             placeholder="Suche"
             value={lastSearch}
-            onChange={({ target: { value } }) => setSearch(value)}
+            onChange={({ target: { value } }) => (lastSearch === value) ? () => {} : setSearch(value)}
             name="search-table"
           />
         </div>
-        <article className="o-baug__app__content-table">
-          <AXATableSortableReact
-            innerscroll="800"
-            model={tableItems}
-          />
-        </article>
+        {needsPagination ? (
+          <div className="o-baug__app__content-table-pagination">
+            <AXAButton
+              type="button"
+              variant="secondary"
+            >
+              {'<<'}
+            </AXAButton>
+            <span className="o-baug__app__content-table-pagination-text">
+              Seite 1 von 222
+            </span>
+            <AXAButton
+              type="button"
+              variant="secondary"
+            >
+              {'>>'}
+            </AXAButton>
+          </div>
+        ) : ''}
+        { isSearching ? (
+          <div className="lds-dual-ring" />
+        ) : (
+          <article className="o-baug__app__content-table">
+            <AXATableSortableReact
+              innerscroll="800"
+              model={tableItems}
+            />
+          </article>
+        )}
       </>
     );
   }
@@ -51,6 +74,8 @@ Ongoing.propTypes = {
   setSearch: PropTypes.func.isRequired,
   lastSearch: PropTypes.string.isRequired,
   tableItems: PropTypes.object.isRequired,
+  needsPagination: PropTypes.bool.isRequired,
+  isSearching: PropTypes.bool.isRequired,
   loadTableItems: PropTypes.func.isRequired,
 };
 
