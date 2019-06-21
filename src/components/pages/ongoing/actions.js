@@ -38,38 +38,46 @@ export const loadTableItems = () => (dispatch) => {
 
 const cleanedUp = (str = '') => str.trim().toLowerCase();
 
-
 let timeStamp;
 
 let originalThead = [];
 let originalTbody = [];
 
+// Main search action.
 export const setSearch = (search) => (dispatch, getState) => {
   const {
     ongoing: { tableOriginalItems },
   } = getState();
 
+  // Here we need to be out of Redux due to performance.
+  // we cache original head and original body cause it will get deleted in "setSearchValue"
+  // due to performance implications
   if (tableOriginalItems && tableOriginalItems.thead.length && tableOriginalItems.tbody.length) {
     const { thead, tbody } = tableOriginalItems;
+    // cache and shallow clone thead and tbody outside redux store
     originalThead = [...thead];
     originalTbody = [...tbody];
   }
 
-  clearTimeout(timeStamp);
+  // search and sync entered key with UI. This action will delete table model
+  // due to performance
   dispatch(setSearchValue({ lastSearch: search, isSearching: true }));
+  
+  // debounce so that search only starts once we are sure user has finished with key input
+  clearTimeout(timeStamp);
   timeStamp = setTimeout(() => {
-
+    // filter with the enetered key for each cell in each row
     const tbodyFiltered = originalTbody.filter(row => (
       !!row.find(cell => ~cleanedUp(cell.html).indexOf(cleanedUp(search)))
     ));
+    // if no body found, table sortables needs following structure:
+    // tbody: [[]]. Here we create a empty table accordingly to the model needs
     if (!tbodyFiltered[0]) {
       tbodyFiltered.push([]);
     }
-
     const tbodyLength = tbodyFiltered.length;
-
     const needsPagination = tbodyLength >= PAGINATION_THRESHOLD;
-
+    // show only rows within the current page
     const finalBody = !needsPagination ? tbodyFiltered : tbodyFiltered.slice(0, PAGINATION_THRESHOLD)
 
     dispatch(setTableItems({ thead: originalThead, tbody: finalBody, needsPagination, isSearching: false }));
