@@ -1,6 +1,6 @@
 import { createAction } from 'redux-act';
 
-const PAGINATION_THRESHOLD = 150;
+import { PAGINATION_THRESHOLD, NEXT } from './_config';
 
 export const setTableItems = createAction('BG_ONGOING_SEARCH_SET_ITEMS');
 export const setSearchValue = createAction('BG_ONGOING_SEARCH_SET_VALUE');
@@ -31,6 +31,7 @@ export const loadTableItems = () => (dispatch) => {
         thead: tableJson.thead,
         tbody: finalBody,
         needsPagination,
+        rowLength: Math.floor(tbodyLength / PAGINATION_THRESHOLD),
         tableOriginalItems: tableJson
       }));
     });
@@ -46,7 +47,7 @@ let originalTbody = [];
 // Main search action.
 export const setSearch = (search) => (dispatch, getState) => {
   const {
-    ongoing: { tableOriginalItems },
+    ongoing: { tableOriginalItems, pageNumber },
   } = getState();
 
   // Here we need to be out of Redux due to performance.
@@ -62,7 +63,7 @@ export const setSearch = (search) => (dispatch, getState) => {
   // search and sync entered key with UI. This action will delete table model
   // due to performance
   dispatch(setSearchValue({ lastSearch: search, isSearching: true }));
-  
+
   // debounce so that search only starts once we are sure user has finished with key input
   clearTimeout(timeStamp);
   timeStamp = setTimeout(() => {
@@ -78,8 +79,52 @@ export const setSearch = (search) => (dispatch, getState) => {
     const tbodyLength = tbodyFiltered.length;
     const needsPagination = tbodyLength >= PAGINATION_THRESHOLD;
     // show only rows within the current page
-    const finalBody = !needsPagination ? tbodyFiltered : tbodyFiltered.slice(0, PAGINATION_THRESHOLD)
+    const finalBody = !needsPagination ? tbodyFiltered : tbodyFiltered.slice(pageNumber, PAGINATION_THRESHOLD)
 
-    dispatch(setTableItems({ thead: originalThead, tbody: finalBody, needsPagination, isSearching: false }));
+    dispatch(setTableItems({
+      thead: originalThead,
+      tbody: finalBody,
+      rowLength: Math.floor(tbodyLength / PAGINATION_THRESHOLD),
+      needsPagination,
+      pageNumber,
+      isSearching: false
+    }));
   }, 300);
 };
+
+export const handlePagination = (direction = NEXT) => (dispatch, getState) => {
+  const {
+    ongoing: {
+      tableItems: { thead },
+      tableOriginalItems: { tbody: tbodyOriginal },
+      pageNumber,
+      isSearching,
+      rowLength
+    },
+  } = getState();
+  const tbodyLength = tbodyOriginal.length;
+  const needsPagination = tbodyLength >= PAGINATION_THRESHOLD;
+
+  let newPage = pageNumber;
+  if (direction === NEXT) {
+    newPage = pageNumber < rowLength ? pageNumber + 1 : rowLength;
+  } else {
+    newPage = pageNumber > 1 ? pageNumber - 1 : 0;
+  }
+  // show only rows within the current page
+  console.log(newPage * PAGINATION_THRESHOLD, PAGINATION_THRESHOLD + newPage * PAGINATION_THRESHOLD);
+  const finalBody = !needsPagination ? tbodyOriginal : tbodyOriginal.slice(
+    newPage * PAGINATION_THRESHOLD, PAGINATION_THRESHOLD + newPage * PAGINATION_THRESHOLD
+  );
+
+  // console.log(tbody);
+
+  dispatch(setTableItems({
+    thead,
+    tbody: finalBody,
+    rowLength: Math.floor(tbodyOriginal.length / PAGINATION_THRESHOLD),
+    needsPagination,
+    pageNumber: newPage,
+    isSearching
+  }));
+}

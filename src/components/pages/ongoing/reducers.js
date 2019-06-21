@@ -17,6 +17,7 @@ export const ongoing = createReducer(
             tbody: [[]],
           },
           pageNumber: state.pageNumber,
+          rowLength: state.rowLength,
           needsPagination: state.needsPagination,
           isSearching: state.isSearching,
         };
@@ -27,22 +28,26 @@ export const ongoing = createReducer(
         isSearching,
       };
     },
-    [setTableItems]: (state, { needsPagination, isSearching = false, ...rest }) => ({
+    [setTableItems]: (state, { needsPagination, pageNumber, rowLength, isSearching = false, ...rest }) => ({
       ...state,
       tableItems: { ...rest },
       needsPagination,
+      pageNumber,
+      rowLength,
       isSearching,
     }),
-    [setOriginalTableItems]: (state, { needsPagination, tableOriginalItems, ...rest }) => ({
+    [setOriginalTableItems]: (state, { needsPagination, tableOriginalItems, rowLength, ...rest }) => ({
       ...state,
       tableItems: rest,
       needsPagination,
+      rowLength,
       tableOriginalItems,
     }),
   },
   {
     lastSearch: '',
     pageNumber: 0,
+    rowLength: 0,
     needsPagination: false,
     isSearching: false,
     tableOriginalItems: {},

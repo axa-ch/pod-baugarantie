@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
 import { AXATableSortableReact, AXAInputTextReact, AXAButton } from '../../patterns-library';
-
 import * as allActions from './actions';
+import { PREV, NEXT } from './_config';
 
 class Ongoing extends PureComponent {
 
@@ -17,7 +16,15 @@ class Ongoing extends PureComponent {
   }
 
   render() {
-    const { setSearch, lastSearch, tableItems, needsPagination } = this.props;
+    const {
+      setSearch,
+      lastSearch,
+      tableItems,
+      needsPagination,
+      pageNumber,
+      rowLength,
+      handlePagination,
+    } = this.props;
     const { thead, tbody } = tableItems;
 
     if (!thead || !tbody) {
@@ -40,15 +47,19 @@ class Ongoing extends PureComponent {
           <div className="o-baug__app__content-table-pagination">
             <AXAButton
               type="button"
+              disabled={pageNumber === 0}
+              onClick={() => { handlePagination(PREV) }}
               variant="secondary"
             >
               {'<<'}
             </AXAButton>
             <span className="o-baug__app__content-table-pagination-text">
-              Seite 1 von 222
+              Seite {pageNumber + 1} von {Math.floor(rowLength)}
             </span>
             <AXAButton
               type="button"
+              onClick={() => { handlePagination(NEXT) }}
+              disabled={pageNumber >= rowLength}
               variant="secondary"
             >
               {'>>'}
@@ -68,8 +79,11 @@ class Ongoing extends PureComponent {
 
 Ongoing.propTypes = {
   setSearch: PropTypes.func.isRequired,
+  handlePagination: PropTypes.func.isRequired,
   lastSearch: PropTypes.string.isRequired,
   tableItems: PropTypes.object.isRequired,
+  pageNumber: PropTypes.number.isRequired,
+  rowLength: PropTypes.number.isRequired,
   needsPagination: PropTypes.bool.isRequired,
   loadTableItems: PropTypes.func.isRequired,
 };

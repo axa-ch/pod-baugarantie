@@ -91,7 +91,7 @@ router.get('/items', (req, res) => {
 
   for (let i = 0; i < 20000; i++) {
     model.tbody.push([
-      { html: `<span>dfs s dfadfadf adf ${Math.ceil(Math.random(1, 40) * i, 1)}</span>` },
+      { html: `<span>${i} dfs s dfadfadf adf </span>` },
       { html: `<span>jjf  hlsdj ${Math.ceil(Math.random(1, 40) * i, 1)} k dsas dasd</span>` },
       { html: `<span>${Math.ceil(Math.random(1, 40) * i, 1)} Cell 445</span>` },
       { html: `${Math.ceil(parseInt(Math.random(1, 40) * i, 32), 1)}` },
