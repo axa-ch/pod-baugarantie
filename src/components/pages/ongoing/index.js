@@ -54,7 +54,7 @@ class Ongoing extends PureComponent {
               {'<<'}
             </AXAButton>
             <span className="o-baug__app__content-table-pagination-text">
-              Seite {pageNumber + 1} von {Math.floor(rowLength)}
+              Seite {pageNumber + 1} von {Math.floor(rowLength) + 1}
             </span>
             <AXAButton
               type="button"
