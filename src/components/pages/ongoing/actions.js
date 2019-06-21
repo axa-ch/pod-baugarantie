@@ -1,6 +1,6 @@
 import { createAction } from 'redux-act';
 
-const PAGINATION_THRESHOLD = 100;
+const PAGINATION_THRESHOLD = 150;
 
 export const setTableItems = createAction('BG_ONGOING_SEARCH_SET_ITEMS');
 export const setSearchValue = createAction('BG_ONGOING_SEARCH_SET_VALUE');
@@ -41,14 +41,25 @@ const cleanedUp = (str = '') => str.trim().toLowerCase();
 
 let timeStamp;
 
+let originalThead = [];
+let originalTbody = [];
+
 export const setSearch = (search) => (dispatch, getState) => {
   const {
-    ongoing: { tableOriginalItems: { thead, tbody } },
+    ongoing: { tableOriginalItems },
   } = getState();
+
+  if (tableOriginalItems && tableOriginalItems.thead.length && tableOriginalItems.tbody.length) {
+    const { thead, tbody } = tableOriginalItems;
+    originalThead = [...thead];
+    originalTbody = [...tbody];
+  }
+
   clearTimeout(timeStamp);
   dispatch(setSearchValue({ lastSearch: search, isSearching: true }));
   timeStamp = setTimeout(() => {
-    const tbodyFiltered = tbody.filter(row => (
+
+    const tbodyFiltered = originalTbody.filter(row => (
       !!row.find(cell => ~cleanedUp(cell.html).indexOf(cleanedUp(search)))
     ));
     if (!tbodyFiltered[0]) {
@@ -61,6 +72,6 @@ export const setSearch = (search) => (dispatch, getState) => {
 
     const finalBody = !needsPagination ? tbodyFiltered : tbodyFiltered.slice(0, PAGINATION_THRESHOLD)
 
-    dispatch(setTableItems({ thead, tbody: finalBody, needsPagination, isSearching: false }));
-  }, 200);
+    dispatch(setTableItems({ thead: originalThead, tbody: finalBody, needsPagination, isSearching: false }));
+  }, 300);
 };

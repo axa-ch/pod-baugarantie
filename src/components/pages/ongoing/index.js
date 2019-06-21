@@ -17,7 +17,7 @@ class Ongoing extends PureComponent {
   }
 
   render() {
-    const { setSearch, lastSearch, tableItems, needsPagination, isSearching } = this.props;
+    const { setSearch, lastSearch, tableItems, needsPagination } = this.props;
     const { thead, tbody } = tableItems;
 
     if (!thead || !tbody) {
@@ -55,16 +55,12 @@ class Ongoing extends PureComponent {
             </AXAButton>
           </div>
         ) : ''}
-        { isSearching ? (
-          <div className="lds-dual-ring" />
-        ) : (
-          <article className="o-baug__app__content-table">
-            <AXATableSortableReact
-              innerscroll="800"
-              model={tableItems}
-            />
-          </article>
-        )}
+        <article className="o-baug__app__content-table">
+          <AXATableSortableReact
+            innerscroll="800"
+            model={tableItems}
+          />
+        </article>
       </>
     );
   }
@@ -75,7 +71,6 @@ Ongoing.propTypes = {
   lastSearch: PropTypes.string.isRequired,
   tableItems: PropTypes.object.isRequired,
   needsPagination: PropTypes.bool.isRequired,
-  isSearching: PropTypes.bool.isRequired,
   loadTableItems: PropTypes.func.isRequired,
 };
 

@@ -7,11 +7,26 @@ import {
 
 export const ongoing = createReducer(
   {
-    [setSearchValue]: (state, { lastSearch, isSearching = true }) => ({
-      ...state,
-      lastSearch,
-      isSearching,
-    }),
+    [setSearchValue]: (state, { lastSearch, isSearching = true }) => {
+      // for performance reason, leave table data out till search debounce is over
+      if (isSearching) {
+        return {
+          lastSearch,
+          tableItems: {
+            thead: [],
+            tbody: [[]],
+          },
+          pageNumber: state.pageNumber,
+          needsPagination: state.needsPagination,
+          isSearching: state.isSearching,
+        };
+      }
+      return {
+        ...state,
+        lastSearch,
+        isSearching,
+      };
+    },
     [setTableItems]: (state, { needsPagination, isSearching = false, ...rest }) => ({
       ...state,
       tableItems: { ...rest },
