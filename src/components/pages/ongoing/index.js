@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import '@axa-ch/link/lib/index';
 import { AXATableSortableReact, AXAInputTextReact, AXAButton } from '../../patterns-library';
 import * as allActions from './actions';
 import { PREV, NEXT } from './_config';
 
 class Ongoing extends PureComponent {
-
   componentDidMount(){
     const { tableItems, loadTableItems } = this.props;
 
@@ -32,7 +32,7 @@ class Ongoing extends PureComponent {
     }
 
     return (
-      <>
+      < >
         <h1 className="o-baug__app__content-table-title">Laufende Garantiescheine</h1>
         <div className="o-baug__app__content-table-search">
           <AXAInputTextReact

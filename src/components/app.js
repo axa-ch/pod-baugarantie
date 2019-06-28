@@ -12,6 +12,7 @@ import Home from './pages/home';
 import New from './pages/new';
 import Login from './pages/login/index';
 import Ongoing from './pages/ongoing/index';
+import OngoingDetail from './pages/ongoing-detail/index';
 
 const App = ({ history, at }) => {
   const { location: { pathname } } = history;
@@ -27,6 +28,7 @@ const App = ({ history, at }) => {
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/new" component={New} />
           <PrivateRoute exact path="/ongoing" component={Ongoing} />
+          <PrivateRoute exact path="/ongoing/:id" component={OngoingDetail} />
         </Switch>
       </article>
     </AXAContainer>

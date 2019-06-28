@@ -23,6 +23,21 @@ export const loadTableItems = () => (dispatch) => {
       return response.json();
     })
     .then(tableJson => {
+      tableJson.tbody = tableJson.tbody.map((row) => {
+        const specialCell = row.find(cell => !!cell.interaction);
+        if (specialCell) {
+          const index = row.indexOf(specialCell);
+          specialCell.html = `
+            <axa-link href="/#/ongoing/${specialCell.interaction.type}">
+              ${specialCell.html}
+            </axa-link>
+          `
+          row[index] = specialCell;
+          return row;
+        }
+
+        return row;
+      });
       const tbodyFiltered = tableJson.tbody;
       const tbodyLength = tbodyFiltered.length;
       const needsPagination = tbodyLength >= PAGINATION_THRESHOLD;
@@ -47,7 +62,7 @@ let originalTbody = [];
 // Main search action.
 export const setSearch = (search) => (dispatch, getState) => {
   const {
-    ongoing: { tableOriginalItems, pageNumber },
+    ongoing: { tableOriginalItems },
   } = getState();
 
   // Here we need to be out of Redux due to performance.
