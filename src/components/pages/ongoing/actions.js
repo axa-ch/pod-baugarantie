@@ -31,7 +31,7 @@ export const loadTableItems = () => (dispatch) => {
           const { type } = interaction;
           const url = type === 'pdf' ? interaction.url : `/#/ongoing/${type}/${rowIndex}/${index}`;
           specialCell.html = `
-            <axa-link href="${url}">
+            <axa-link ${type === 'pdf' ? 'external' : ''} href="${url}">
               ${specialCell.html}
             </axa-link>
           `
