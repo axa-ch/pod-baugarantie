@@ -23,12 +23,12 @@ export const loadTableItems = () => (dispatch) => {
       return response.json();
     })
     .then(tableJson => {
-      tableJson.tbody = tableJson.tbody.map((row) => {
+      tableJson.tbody = tableJson.tbody.map((row, rowIndex) => {
         const specialCell = row.find(cell => !!cell.interaction);
         if (specialCell) {
           const index = row.indexOf(specialCell);
           specialCell.html = `
-            <axa-link href="/#/ongoing/${specialCell.interaction.type}">
+            <axa-link href="/#/ongoing/${specialCell.interaction.type}/${rowIndex}/${index}">
               ${specialCell.html}
             </axa-link>
           `
