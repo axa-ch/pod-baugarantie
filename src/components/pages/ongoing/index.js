@@ -69,6 +69,7 @@ class Ongoing extends PureComponent {
         <article className="o-baug__app__content-table">
           <AXATableSortableReact
             innerscroll="800"
+            maxheight="600"
             model={tableItems}
           />
         </article>

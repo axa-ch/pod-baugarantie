@@ -1,35 +1,7 @@
 @import '@axa-ch/materials/styles/00-colors.scss';
+@import '@axa-ch/materials/styles/30-layout.scss';
 @import '@axa-ch/materials/styles/20-typography-and-text.scss';
 @import '@axa-ch/materials/styles/10-helpers.scss';
-@import 'breakpoint-sass';
-
-// Breakpoints
-$breakpoint-small: 576px;
-$breakpoint-medium: 768px;
-$breakpoint-large: 992px;
-$breakpoint-xlarge: 1200px;
-$breakpoint-xxlarge: 1440px;
-
-// https://github.com/at-import/breakpoint/wiki/Basic-Media-Queries
-// Breakpoints in pixel - auto converted to em!
-@import 'breakpoint-sass';
-@include bkpt-set('to ems', true); // TODO -> SERIOUS EVALUATION HERE NEEDED
-
-$mediaquery-xsm: 0 ($breakpoint-small - 1); // (min-width: 0 and max-width: 575px)
-$mediaquery-sm-up: $breakpoint-small; // (min-width: 576px)
-$mediaquery-sm: $breakpoint-small ($breakpoint-medium - 1px); // (min-width: 576px and max-width: 767px)
-$mediaquery-md-up: $breakpoint-medium; // (min-width: 768px)
-$mediaquery-md: $breakpoint-medium ($breakpoint-large - 1px); // (min-width: 768px and max-width: 991px)
-$mediaquery-lg-up: $breakpoint-large; // (min-width: 992px)
-$mediaquery-lg: $breakpoint-large ($breakpoint-xlarge - 1px); // (min-width: 992px and max-width: 1199px)
-$mediaquery-xlg-up: $breakpoint-xlarge; // (min-width: 1200px)
-
-
-
-// I choose to have a single file for scss as i aim to use as much as
-// possible from the patterns-library. If this file gets too complex, ergo above 300 lines,
-// I will refactor it and include scss in the pages/components that are
-// the users of the style
 
 * {
   box-sizing: border-box;
@@ -82,7 +54,6 @@ $mediaquery-xlg-up: $breakpoint-xlarge; // (min-width: 1200px)
     overflow-x: auto;
 
     axa-link {
-
     }
 
     &-button {
@@ -153,7 +124,6 @@ $mediaquery-xlg-up: $breakpoint-xlarge; // (min-width: 1200px)
       }
 
       &-search {
-
         padding: 0 20px 20px 20px;
 
         @include breakpoint($mediaquery-md-up) {
@@ -171,14 +141,15 @@ $mediaquery-xlg-up: $breakpoint-xlarge; // (min-width: 1200px)
     height: 64px;
   }
   .lds-dual-ring:after {
-    content: " ";
+    content: ' ';
     display: block;
     width: 46px;
     height: 46px;
     margin: 1px;
     border-radius: 50%;
     border: 5px solid $color-prim-blue-deep-sapphire;
-    border-color: $color-prim-blue-deep-sapphire transparent $color-prim-blue-deep-sapphire transparent;
+    border-color: $color-prim-blue-deep-sapphire transparent
+      $color-prim-blue-deep-sapphire transparent;
     animation: lds-dual-ring 1.2s linear infinite;
   }
   @keyframes lds-dual-ring {
