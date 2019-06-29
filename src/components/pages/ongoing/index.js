@@ -7,6 +7,7 @@ import '@axa-ch/link/lib/index';
 import { AXATableSortableReact, AXAInputTextReact, AXAButton } from '../../patterns-library';
 import * as allActions from './actions';
 import { PREV, NEXT } from './_config';
+import PoliceDetail from '../../molecules/police-detail';
 
 const customStyles = {
   content : {
@@ -62,6 +63,7 @@ class Ongoing extends PureComponent {
         >
           Gutescheine {type} auf zeile {rowIndex} und spalte {cellIndex}
         </Modal>
+        <PoliceDetail />
         <div className="o-baug__app__content-table-search">
           <AXAInputTextReact
             type="text"

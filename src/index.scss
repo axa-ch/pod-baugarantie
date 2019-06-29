@@ -42,6 +42,29 @@
     }
   }
 
+  &__police-detail {
+    @include clearfix();
+    padding: 20px;
+
+    .a-input-text__wrapper {
+      max-width: 100%;
+      float: left;
+      margin-bottom: 20px;
+
+      @include breakpoint($mediaquery-md-up) {
+        max-width: 50%;
+      }
+
+      @include breakpoint($mediaquery-lg-up) {
+        max-width: 33%;
+      }
+
+      .a-input-text__input {
+        color: $color-prim-gray-mine-shaft;
+      }
+    }
+  }
+
   &__nav {
     @include clearfix();
 

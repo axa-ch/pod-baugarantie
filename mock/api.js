@@ -5,10 +5,12 @@ const router = express.Router();
 const auth = require('./auth');
 const menu = require('./menu');
 const ongoing = require('./ongoing');
+const policeDetail = require('./police-detail');
 
 router.use('/auth', auth);
 router.use('/menu', menu);
 router.use('/ongoing', ongoing);
+router.use('/police-detail', policeDetail);
 
 router.use('/', (req, res) => {
   res.set('content-type', 'application/json');
