@@ -2,13 +2,14 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Contracts from './contracts';
 
 const PrivateRoute = ({ component: Component, at, ...rest }) => (
   <Route
     {...rest}
     render={props =>
       at ? (
-        <Component {...props} />
+        <Contracts component={Component} {...props} />
       ) : (
         <Redirect
           to={{ pathname: '/login', state: { from: props.location } }}
