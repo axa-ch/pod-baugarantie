@@ -64,45 +64,50 @@ class Ongoing extends PureComponent {
           Gutescheine {type} auf zeile {rowIndex} und spalte {cellIndex}
         </Modal>
         <PoliceDetail />
-        <div className="o-baug__app__content-table-search">
-          <AXAInputTextReact
-            type="text"
-            placeholder="Suche"
-            value={lastSearch}
-            onChange={({ target: { value } }) => (lastSearch === value) ? () => {} : setSearch(value)}
-            name="search-table"
-          />
-        </div>
-        {needsPagination ? (
-          <div className="o-baug__app__content-table-pagination">
-            <AXAButton
-              type="button"
-              disabled={pageNumber === 0}
-              onClick={() => { handlePagination(PREV) }}
-              variant="secondary"
-            >
-              {'<<'}
-            </AXAButton>
-            <span className="o-baug__app__content-table-pagination-text">
-              Seite {pageNumber + 1} von {Math.floor(rowLength) + 1}
-            </span>
-            <AXAButton
-              type="button"
-              onClick={() => { handlePagination(NEXT) }}
-              disabled={pageNumber >= rowLength}
-              variant="secondary"
-            >
-              {'>>'}
-            </AXAButton>
+        <section className="o-baug__app__content-table-section">
+          <div className="o-baug__app__content-table-search">
+            <AXAInputTextReact
+              type="text"
+              placeholder="Suche"
+              checkMark={!!lastSearch}
+              value={lastSearch}
+              onChange={({ target: { value } }) => (lastSearch === value) ? () => {} : setSearch(value)}
+              name="search-table"
+            />
           </div>
-        ) : ''}
-        <article className="o-baug__app__content-table">
-          <AXATableSortableReact
-            innerscroll="800"
-            maxheight="600"
-            model={tableItems}
-          />
-        </article>
+          <div className="o-baug__app__content-table-pagination">
+            {needsPagination ? (
+              <>
+                <AXAButton
+                  type="button"
+                  disabled={pageNumber === 0}
+                  onClick={() => { handlePagination(PREV) }}
+                  variant="secondary"
+                >
+                  {'<<'}
+                </AXAButton>
+                <span className="o-baug__app__content-table-pagination-text">
+                  Seite {pageNumber + 1} von {Math.floor(rowLength) + 1}
+                </span>
+                <AXAButton
+                  type="button"
+                  onClick={() => { handlePagination(NEXT) }}
+                  disabled={pageNumber >= rowLength}
+                  variant="secondary"
+                >
+                  {'>>'}
+                </AXAButton>
+              </>
+            ) : ''}
+          </div>
+          <article className="o-baug__app__content-table">
+            <AXATableSortableReact
+              innerscroll="800"
+              maxheight="600"
+              model={tableItems}
+            />
+          </article>
+        </section>
       </>
     );
   }

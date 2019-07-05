@@ -4,7 +4,7 @@
   "dependencies": {
     "@axa-ch/button": "latest",
     "@axa-ch/container": "latest",
-    "@axa-ch/dropdown": "^2.0.1",
+    "@axa-ch/dropdown": "^2.0.2",
     "@axa-ch/icon": "latest",
     "@axa-ch/input-text": "latest",
     "@axa-ch/link": "latest",
@@ -26,7 +26,7 @@
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@axa-ch/footer-small": "^1.2.2",
+    "@axa-ch/footer-small": "latest",
     "@axa-ch/generic-release": "latest",
     "@axa-ch/patterns-library": "beta",
     "@babel/core": "^7.3.3",

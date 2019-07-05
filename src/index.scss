@@ -120,7 +120,16 @@
   }
 
   &__contracts {
-    padding: 0 20px 20px 20px;
+    padding: 0 20px 5px 20px;
+
+    axa-dropdown {
+      margin-top: 5px;
+    }
+
+    .m-dropdown__error,
+    .a-input-text__check-wrapper {
+      display: none;
+    }
   }
 
   &__content {
@@ -144,6 +153,7 @@
       &-pagination {
         text-align: center;
         margin-bottom: 20px;
+        min-height: 40px;
 
         &-text {
           padding: 0 20px;
@@ -153,11 +163,16 @@
       &-search {
         padding: 0 20px 20px 20px;
 
-        @include breakpoint($mediaquery-md-up) {
+        @include breakpoint($mediaquery-lg-up) {
           position: absolute;
-          right: 0px;
-          top: 23px;
+          left: 0px;
         }
+      }
+
+      &-section {
+        @include clearfix();
+        position: relative;
+        min-height: 700px;
       }
     }
   }
