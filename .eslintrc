@@ -34,6 +34,7 @@
         "devDependencies": [
           "./scripts/**/*.js",
           "./test/**/*.js",
+          "./**/unit.test.js",
           "./mock/**/*.js"
         ]
       }
@@ -45,7 +46,9 @@
     "HTMLImports": true,
     "FormData": true,
     "describe": true,
+    "afterEach": true,
     "it": true,
+    "jest": true,
     "expect": true,
     "sessionStorage": true,
     "XMLHttpRequest": true,
