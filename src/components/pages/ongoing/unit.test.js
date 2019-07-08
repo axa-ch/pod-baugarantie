@@ -15,20 +15,22 @@ function setup() {
   const enzymeWrapper = render(
     <Provider
       store={mockStore({
-        lastSearch: '',
-        pageNumber: 0,
-        rowLength: 0,
-        needsPagination: false,
-        isSearching: false,
-        tableOriginalItems: {},
-        tableItems: {},
+        ongoing: {
+          lastSearch: '',
+          pageNumber: 0,
+          rowLength: 0,
+          needsPagination: false,
+          isSearching: false,
+          tableOriginalItems: {},
+          tableItems: {},
+        },
       })}
     >
       <Router>
         <Ongoing />
       </Router>
     </Provider>
-  ).dive();
+  );
 
   return {
     enzymeWrapper,
@@ -39,10 +41,8 @@ describe('Ongoing page', () => {
   afterEach(() => {
     // fetchMock.restore()
   });
-  it('should render', () => {
+  it('should render loading animation', () => {
     const { enzymeWrapper } = setup();
-    console.log(enzymeWrapper);
-    console.log(enzymeWrapper.find('div').debug());
-    expect(enzymeWrapper.find('div').hasClass('lds-dual-ring')).toBe(true);
+    expect(enzymeWrapper.hasClass('lds-dual-ring')).toBe(true);
   });
 });

@@ -6,7 +6,7 @@ import * as allActions from './actions';
 import { AXADropdownReact } from '../../patterns-library';
 
 class Contracts extends PureComponent {
-  componentDidMount(){
+  componentDidMount() {
     const { contracts, loadContracts } = this.props;
 
     if (!contracts.length) {
@@ -22,7 +22,7 @@ class Contracts extends PureComponent {
         <section className="o-baug__app__contracts">
           <div className="lds-dual-ring" />
         </section>
-      )
+      );
     }
 
     const preparedContracts = contracts.map(({ nummer }, index) => ({
@@ -31,19 +31,15 @@ class Contracts extends PureComponent {
       value: nummer,
     }));
 
-    console.log(preparedContracts)
-
     return (
       <>
         <section className="o-baug__app__contracts">
-          <h1>
-            Vertrag Nummer
-          </h1>
+          <h1>Vertrag Nummer</h1>
           <AXADropdownReact title="Please Select" items={preparedContracts} />
         </section>
         <Component />
       </>
-    )
+    );
   }
 }
 
