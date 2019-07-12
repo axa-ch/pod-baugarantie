@@ -1,48 +1,103 @@
 import React from 'react';
-import configureMockStore from 'redux-mock-store';
-import Enzyme, { render } from 'enzyme';
+import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { Provider } from 'react-redux';
-import { HashRouter as Router } from 'react-router-dom';
-import Ongoing from './index';
+import { AXATableSortableReact } from '../../patterns-library';
+// import { HashRouter as Router } from 'react-router-dom';
+import { Ongoing } from './index';
 
 Enzyme.configure({ adapter: new Adapter() });
 
 // create the store with the needed middlewears
-const mockStore = configureMockStore();
+class Setup {
+  constructor(params) {
+    if (params) {
+      const {
+        setSearch = jest.fn(),
+        handlePagination = jest.fn(),
+        loadTableItems = jest.fn()
+      } = params;
+      this.setSearch = setSearch;
+      this.handlePagination = handlePagination;
+      this.loadTableItems = loadTableItems;
+    }
 
-function setup() {
-  const enzymeWrapper = render(
-    <Provider
-      store={mockStore({
-        ongoing: {
-          lastSearch: '',
-          pageNumber: 0,
-          rowLength: 0,
-          needsPagination: false,
-          isSearching: false,
-          tableOriginalItems: {},
-          tableItems: {},
+
+  }
+  get store()  {
+    if (!this._store) {
+      const history = {
+        goBack: jest.fn()
+      };
+      this._store = {
+        lastSearch: '',
+        pageNumber: 0,
+        rowLength: 0,
+        history,
+        match: {
+          params: {}
         },
-      })}
-    >
-      <Router>
-        <Ongoing />
-      </Router>
-    </Provider>
-  );
+        needsPagination: false,
+        isSearching: false,
+        tableOriginalItems: {},
+        tableItems: {},
+      };
+    }
+    return this._store;
+  }
 
-  return {
-    enzymeWrapper,
-  };
+  setSearch = () => {
+
+  }
+
+  handlePagination = () => {
+
+  }
+
+  loadTableItems = () =>  {
+
+  }
+
+  render() {
+    const { setSearch, handlePagination, loadTableItems } = this;
+    return shallow(
+      <Ongoing
+        setSearch={setSearch}
+        handlePagination={handlePagination}
+        loadTableItems={loadTableItems}
+        {...this.store}
+      />
+    );
+  }
 }
 
 describe('Ongoing page', () => {
+  let setup = new Setup();
   afterEach(() => {
-    // fetchMock.restore()
+    setup = new Setup();
   });
   it('should render loading animation', () => {
-    const { enzymeWrapper } = setup();
+    const enzymeWrapper = setup.render();
     expect(enzymeWrapper.hasClass('lds-dual-ring')).toBe(true);
+  });
+  it('should render table', async () => {
+    setup = new Setup({
+      loadTableItems: () => {
+        setup.store.tableItems = {
+          thead: [{ html: 'Title 0', sort: 'ASC' }],
+          tbody: [[
+            { html: '<span>11 Some Text</span>' },
+          ],
+          [
+            { html: '<span>1 Some Text</span>' },
+          ],]
+        }
+      }
+    });
+    // this will call loadTableItems
+    setup.render();
+    // this will add the updated store
+    const enzymeWrapper = setup.render();
+    expect(enzymeWrapper.hasClass('lds-dual-ring')).toBe(false);
+    expect(enzymeWrapper.find(AXATableSortableReact).exists()).toBe(true);
   });
 });

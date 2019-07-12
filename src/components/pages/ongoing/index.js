@@ -21,7 +21,7 @@ const customStyles = {
   }
 };
 
-class Ongoing extends PureComponent {
+export class Ongoing extends PureComponent {
   componentDidMount(){
     const { tableItems, loadTableItems } = this.props;
 

@@ -13,3 +13,10 @@ export const AXALink = createAXALinkReact(createElement);
 export const AXAInputTextReact = createAXAInputTextReact(createElement);
 export const AXATableSortableReact = createAXATableSortable(createElement);
 export const AXADropdownReact = createAXADropdownReact(createElement);
+
+AXATableSortableReact.displayName = "AXATableSortableReact";
+AXAButton.displayName = "AXAButton";
+AXAContainer.displayName = "AXAContainer";
+AXALink.displayName = "AXALink";
+AXAInputTextReact.displayName = "AXAInputTextReact";
+AXADropdownReact.displayName = "AXADropdownReact";
