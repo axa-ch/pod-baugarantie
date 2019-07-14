@@ -5,7 +5,12 @@ import { AXATableSortableReact, AXAButton, AXAInputTextReact } from '../../patte
 // import { HashRouter as Router } from 'react-router-dom';
 import { Ongoing } from './index';
 
-import { setSearch as originalSetSearch } from './actions';
+import { PAGINATION_THRESHOLD, NEXT, PREV } from './_config'
+
+import {
+  setSearch as originalSetSearch,
+  handlePagination as originalHandlePagination,
+} from './actions';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -217,5 +222,73 @@ describe('Ongoing page', () => {
         .find(AXATableSortableReact)
         .props().model.tbody[0].length
     ).toBe(0);
+  });
+
+  it('pagination works correctly when pressing NEXT and PREV', async () => {
+    let countClicks = 0;
+    const MAX_PAGES = 3;
+    setup = new Setup({
+      handlePagination: (command) => {
+        originalHandlePagination(command)((action) => {
+          const { payload: { tbody, pageNumber }} = action;
+          expect(pageNumber).toBe(countClicks + 1);
+          // this is if we reached last page
+          if (countClicks === MAX_PAGES - 1) {
+            expect(tbody.length).toBe(1);
+            expect(tbody[0][0].html).toContain(
+              `TEST_${
+                MAX_PAGES * PAGINATION_THRESHOLD
+              }_`
+            );
+          } else {
+            expect(tbody.length).toBe(PAGINATION_THRESHOLD);
+            expect(tbody[PAGINATION_THRESHOLD / 2][0].html).toContain(
+              `TEST_${
+                PAGINATION_THRESHOLD / 2 + ( PAGINATION_THRESHOLD * ( countClicks + 1 ))
+              }_`
+            );
+          }
+          setup.store.pageNumber = pageNumber;
+        }, () => ({
+          ongoing: setup.store
+        }));
+      }
+    });
+    const { store } = setup;
+
+    const model = Array(PAGINATION_THRESHOLD * MAX_PAGES + 1).fill().map((_, i) => (
+      [{ html: `<span>Here some content TEST_${i}_</span>` }]
+    ));
+
+    store.tableOriginalItems = {
+      thead: [{ html: 'Title', sort: 'ASC' }],
+      tbody: model
+    };
+    store.tableItems = store.tableOriginalItems;
+    store.needsPagination = true;
+    store.rowLength = PAGINATION_THRESHOLD * MAX_PAGES + 1;
+    const enzymeWrapper = setup.shallow();
+    const prevBtn =   enzymeWrapper.find('.o-baug__app__content-table-pagination')
+      .find(AXAButton).at(0);
+    const nextBtn =   enzymeWrapper.find('.o-baug__app__content-table-pagination')
+      .find(AXAButton).at(1);
+
+    // go to page 2
+    nextBtn.simulate('click', { target: { } });
+    countClicks += 1;
+    // go to page 3
+    nextBtn.simulate('click', { target: { } });
+    countClicks += 1;
+    // go to page 4
+    nextBtn.simulate('click', { target: { } });
+    // second page 3
+    countClicks -= 1;
+    prevBtn.simulate('click', { target: { } });
+    // first page 2
+    countClicks -= 1;
+    prevBtn.simulate('click', { target: { } });
+    // first page 1
+    countClicks -= 1;
+    prevBtn.simulate('click', { target: { } });
   });
 });

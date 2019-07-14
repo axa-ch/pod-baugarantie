@@ -130,7 +130,6 @@ export const handlePagination = (direction = NEXT) => (dispatch, getState) => {
     newPage = pageNumber > 1 ? pageNumber - 1 : 0;
   }
   // show only rows within the current page
-  console.log(newPage * PAGINATION_THRESHOLD, PAGINATION_THRESHOLD + newPage * PAGINATION_THRESHOLD);
   const finalBody = !needsPagination ? tbodyOriginal : tbodyOriginal.slice(
     newPage * PAGINATION_THRESHOLD, PAGINATION_THRESHOLD + newPage * PAGINATION_THRESHOLD
   );
