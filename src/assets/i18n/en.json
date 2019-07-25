@@ -1,0 +1,10 @@
+{
+  "bg": {
+    "search": {
+      "placeholder": "Search"
+    },
+    "contracts": {
+      "number": "Contract number"
+    }
+  }
+}

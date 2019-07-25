@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { withTranslation } from 'react-i18next';
 import * as allActions from './actions';
 import { AXADropdownReact } from '../../patterns-library';
 
@@ -15,7 +16,7 @@ class Contracts extends PureComponent {
   }
 
   render() {
-    const { component: Component, contracts } = this.props;
+    const { component: Component, contracts, t } = this.props;
 
     if (!contracts.length) {
       return (
@@ -34,7 +35,7 @@ class Contracts extends PureComponent {
     return (
       <>
         <section className="o-baug__app__contracts">
-          <h1>Vertrag Nummer</h1>
+          <h1>{t('bg.contracts.number')}</h1>
           <AXADropdownReact title="Please Select" items={preparedContracts} />
         </section>
         <Component />
@@ -46,6 +47,7 @@ class Contracts extends PureComponent {
 Contracts.propTypes = {
   contracts: PropTypes.array,
   component: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
   loadContracts: PropTypes.func.isRequired,
 };
 
@@ -56,4 +58,4 @@ Contracts.defaultProps = {
 export default connect(
   state => state.contracts,
   allActions
-)(withRouter(Contracts));
+)(withRouter(withTranslation()(Contracts)));

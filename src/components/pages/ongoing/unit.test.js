@@ -5,7 +5,7 @@ import { AXATableSortableReact, AXAButton, AXAInputTextReact } from '../../patte
 // import { HashRouter as Router } from 'react-router-dom';
 import { Ongoing } from './index';
 
-import { PAGINATION_THRESHOLD, NEXT, PREV } from './_config'
+import { PAGINATION_THRESHOLD } from './_config'
 
 import {
   setSearch as originalSetSearch,
@@ -35,11 +35,13 @@ class Setup {
       const history = {
         goBack: jest.fn()
       };
+      const t = jest.fn();
       this._store = {
         lastSearch: '',
         pageNumber: 0,
         rowLength: 0,
         history,
+        t,
         match: {
           params: {}
         },

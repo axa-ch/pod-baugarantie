@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
 import Modal from 'react-modal';
 import '@axa-ch/link/lib/index';
@@ -39,6 +40,7 @@ export class Ongoing extends PureComponent {
       pageNumber,
       match,
       history,
+      t,
       rowLength,
       handlePagination,
     } = this.props;
@@ -68,7 +70,7 @@ export class Ongoing extends PureComponent {
           <div className="o-baug__app__content-table-search">
             <AXAInputTextReact
               type="text"
-              placeholder="Suche"
+              placeholder={t('bg.search.placeholder')}
               checkMark={!!lastSearch}
               value={lastSearch}
               onChange={({ target: { value } }) => (lastSearch === value) ? () => {} : setSearch(value)}
@@ -120,6 +122,7 @@ Ongoing.propTypes = {
   tableItems: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
+  t: PropTypes.func.isRequired,
   pageNumber: PropTypes.number.isRequired,
   rowLength: PropTypes.number.isRequired,
   needsPagination: PropTypes.bool.isRequired,
@@ -129,4 +132,4 @@ Ongoing.propTypes = {
 export default connect(
   state => state.ongoing,
   allActions
-)(withRouter(Ongoing));
+)(withRouter(withTranslation()(Ongoing)));

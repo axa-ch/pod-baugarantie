@@ -87,6 +87,7 @@ export const setSearch = (search) => (dispatch, getState) => {
   timeStamp = setTimeout(() => {
     // filter with the enetered key for each cell in each row
     const tbodyFiltered = originalTbody.filter(row => (
+      // TODO: Add comment here what tilde does
       !!row.find(cell => ~cleanedUp(cell.html).indexOf(cleanedUp(search)))
     ));
     // if no body found, table sortables needs following structure:

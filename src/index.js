@@ -11,6 +11,8 @@ import { HashRouter } from 'react-router-dom';
 
 import ReactDOM from 'react-dom';
 
+import { initTranslations } from './i18n';
+
 import './index.scss';
 import store from './store';
 
@@ -34,6 +36,8 @@ export default class PodBaugarantie {
     if (bgAt) {
       dispatch(setAccessToken(bgAt));
     }
+
+    initTranslations(this.options.language)
 
     ReactDOM.render(<Fragment>
       <Provider store={store}>
