@@ -5,6 +5,10 @@
     },
     "contracts": {
       "number": "Contract number"
+    },
+    "ongoing": {
+      "modal_desc": "Guarantees {{type}} on row {{rowIndex}} and column {{cellIndex}}",
+      "page_count": "Page {{realPageNumber}} of {{realTotPages}}"
     }
   }
 }

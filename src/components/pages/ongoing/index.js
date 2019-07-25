@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
+import { withTranslation, Trans } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
 import Modal from 'react-modal';
 import '@axa-ch/link/lib/index';
@@ -52,18 +52,23 @@ export class Ongoing extends PureComponent {
 
     const { type, rowIndex, cellIndex } = match.params;
 
+    const realPageNumber = pageNumber + 1;
+    const realTotPages = Math.floor(rowLength) + 1;
+
     return (
       < >
-        <h1 className="o-baug__app__content-table-title">Laufende Garantiescheine</h1>
+        <h1 className="o-baug__app__content-table-title">{t('bg.ongoing.current_guarantees')}</h1>
         <Modal
           isOpen={!!type}
           onAfterOpen={() => {console.log('onAfterOpen')}}
           onRequestClose={() => { history.goBack(); }}
           style={customStyles}
           ariaHideApp={false}
-          contentLabel="Example Modal"
+          contentLabel={t('bg.ongoing.modal_label')}
         >
-          Gutescheine {type} auf zeile {rowIndex} und spalte {cellIndex}
+          <Trans i18nKey="bg.ongoing.modal_desc">
+            Gutescheine {{type}} auf zeile {{rowIndex}} und spalte {{cellIndex}}
+          </Trans>
         </Modal>
         <PoliceDetail />
         <section className="o-baug__app__content-table-section">
@@ -88,8 +93,11 @@ export class Ongoing extends PureComponent {
                 >
                   {'<<'}
                 </AXAButton>
+
                 <span className="o-baug__app__content-table-pagination-text">
-                  Seite {pageNumber + 1} von {Math.floor(rowLength) + 1}
+                  <Trans i18nKey="bg.ongoing.page_count">
+                    Seite {{realPageNumber}} von {{realTotPages}}
+                  </Trans>
                 </span>
                 <AXAButton
                   type="button"

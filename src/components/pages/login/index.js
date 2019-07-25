@@ -1,12 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 
 import { AXAButton, AXAInputTextReact } from '../../patterns-library';
 
 import * as allActions from './actions';
 
-const Login = ({ setUsername, setPassword, submitLogin, valid, username, password }) => (
+const Login = ({
+  setUsername,
+  setPassword,
+  submitLogin,
+  valid,
+  username,
+  t,
+  password
+}) => (
   <article className="o-baug__app__form">
     <form
       onSubmit={e => {
@@ -16,7 +25,7 @@ const Login = ({ setUsername, setPassword, submitLogin, valid, username, passwor
     >
       <div className="o-baug__app__form-inputs">
         <AXAInputTextReact
-          label="Username"
+          label={t('bg.login.username')}
           required
           checkMark={username && valid}
           type="text"
@@ -24,7 +33,7 @@ const Login = ({ setUsername, setPassword, submitLogin, valid, username, passwor
           name="username"
         />
         <AXAInputTextReact
-          label="Password"
+          label={t('bg.login.password')}
           required
           checkMark={password && valid}
           error={valid ? '' : 'Input parameter sind invalid'}
@@ -34,9 +43,9 @@ const Login = ({ setUsername, setPassword, submitLogin, valid, username, passwor
         />
       </div>
       <AXAButton variant="secondary" type="reset">
-        Password ändern
+        {t('bg.login.change_password')}
       </AXAButton>
-      <AXAButton type="submit">Login</AXAButton>
+      <AXAButton type="submit">{t('bg.login.login')}</AXAButton>
     </form>
   </article>
 );
@@ -46,6 +55,7 @@ Login.propTypes = {
   setPassword: PropTypes.func.isRequired,
   submitLogin: PropTypes.func.isRequired,
   valid: PropTypes.bool.isRequired,
+  t: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
 };
@@ -53,4 +63,4 @@ Login.propTypes = {
 export default connect(
   state => state.authentication,
   allActions
-)(Login);
+)(withTranslation()(Login));
