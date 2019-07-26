@@ -14,6 +14,12 @@
         "edit": "Editieren",
         "pdf": "PDF"
       }
+    },
+    "login": {
+      "username": "Benutzername",
+      "password": "Passwort",
+      "change_password": "Passwort ändern",
+      "login": "Einloggen"
     }
   }
 }

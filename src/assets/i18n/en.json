@@ -17,6 +17,12 @@
     },
     "police_detail": {
       "police_nummer": "Police Nummer"
+    },
+    "login": {
+      "username": "Username",
+      "password": "Password",
+      "change_password": "Change password",
+      "login": "login"
     }
   }
 }
