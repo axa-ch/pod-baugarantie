@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withTranslation, Trans, useTranslation } from 'react-i18next';
+import { withTranslation, Trans } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
 import Modal from 'react-modal';
 import '@axa-ch/link/lib/index';
