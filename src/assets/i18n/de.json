@@ -5,6 +5,15 @@
     },
     "contracts": {
       "number": "Vertrag Nummer"
+    },
+    "ongoing": {
+      "modal_desc": "Garantie {{type}} zeile {{rowIndex}} und kolonne {{cellIndex}}",
+      "page_count": "Seite {{realPageNumber}} von {{realTotPages}}",
+      "table_actions": {
+        "view": "Anzeigen",
+        "edit": "Editieren",
+        "pdf": "PDF"
+      }
     }
   }
 }
