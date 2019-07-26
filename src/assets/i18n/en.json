@@ -8,7 +8,15 @@
     },
     "ongoing": {
       "modal_desc": "Guarantees {{type}} on row {{rowIndex}} and column {{cellIndex}}",
-      "page_count": "Page {{realPageNumber}} of {{realTotPages}}"
+      "page_count": "Page {{realPageNumber}} of {{realTotPages}}",
+      "table_actions": {
+        "view": "View",
+        "edit": "Edit",
+        "pdf": "PDF"
+      }
+    },
+    "police_detail": {
+      "police_nummer": "Police Nummer"
     }
   }
 }

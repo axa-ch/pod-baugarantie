@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { withTranslation } from 'react-i18next';
 import * as allActions from './actions';
 import { AXAInputTextReact } from '../../patterns-library';
 
@@ -15,7 +16,7 @@ class PoliceDetail extends PureComponent {
   }
 
   render() {
-    const { details } = this.props;
+    const { details, t } = this.props;
 
     if (!details) {
       return (
@@ -27,32 +28,32 @@ class PoliceDetail extends PureComponent {
     return (
       <section className="o-baug__app__police-detail">
         <AXAInputTextReact
-          label="Policenummer"
+          label={t('bg.police_detail.police_nummer')}
           value={details.police_nummer}
           disabled
         />
         <AXAInputTextReact
-          label="Deposaldo"
+          label={t('bg.police_detail.deposit_amount')}
           value={details.deposit_amount}
           disabled
         />
         <AXAInputTextReact
-          label="Freie Kapazität"
+          label={t('bg.police_detail.left_capacity')}
           value={details.left_capacity}
           disabled
         />
         <AXAInputTextReact
-          label="Davon max. für Auszahlungs Garantien"
+          label={t('bg.police_detail.amount_prepaid')}
           value={details.amount_prepaid}
           disabled
         />
         <AXAInputTextReact
-          label="Gesamtengagement"
+          label={t('bg.police_detail.total_engagement')}
           value={details.total_engagement}
           disabled
         />
         <AXAInputTextReact
-          label="Engagement für Auszahlungen"
+          label={t('bg.police_detail.amount_engagement')}
           value={details.amount_engagement}
           disabled
         />
@@ -64,6 +65,7 @@ class PoliceDetail extends PureComponent {
 PoliceDetail.propTypes = {
   details: PropTypes.object,
   loadPoliceDetail: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
 };
 
 PoliceDetail.defaultProps = {
@@ -73,4 +75,4 @@ PoliceDetail.defaultProps = {
 export default connect(
   state => state.policeDetail,
   allActions
-)(withRouter(PoliceDetail));
+)(withRouter(withTranslation()(PoliceDetail)));

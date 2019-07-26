@@ -3,9 +3,9 @@ const express = require('express');
 const router = express.Router();
 
 const translations = {
-  view: 'Anzeigen',
-  edit: 'Bearbeiten',
-  pdf: 'Drucken',
+  view: 'view',
+  edit: 'edit',
+  pdf: 'pdf',
 };
 
 router.get('/items', (req, res) => {

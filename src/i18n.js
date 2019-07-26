@@ -36,4 +36,6 @@ export const initTranslations = (lang) => {
       wait: true,
     },
   });
+
+  return i18n;
 };

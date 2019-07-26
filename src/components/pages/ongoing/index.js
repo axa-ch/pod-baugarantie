@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withTranslation, Trans } from 'react-i18next';
+import { withTranslation, Trans, useTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
 import Modal from 'react-modal';
 import '@axa-ch/link/lib/index';
@@ -31,11 +31,40 @@ export class Ongoing extends PureComponent {
     }
   }
 
+  addLink(table) {
+    const { t } = this.props;
+
+    const tbody = table.tbody.map((row, rowIndex) => {
+      const specialCell = row.find(cell => !!cell.interaction);
+      if (specialCell) {
+        const index = row.indexOf(specialCell);
+        const { interaction } = specialCell;
+        const { type } = interaction;
+        const url = type === 'pdf' ? interaction.url : `/#/ongoing/${type}/${rowIndex}/${index}`;
+        specialCell.html = `
+          <axa-link ${type === 'pdf' ? 'external' : ''} href="${url}">
+            ${t(`bg.ongoing.table_actions.${specialCell.html}`)}
+          </axa-link>
+        `;
+        // once interaction has been rendered, dont flag it as interaction anymore
+        delete specialCell.interaction;
+        row[index] = specialCell;
+        return row;
+      }
+
+      return row;
+    });
+
+    table.tbody = tbody;
+
+    return table;
+  }
+
   render() {
     const {
       setSearch,
       lastSearch,
-      tableItems,
+      tableItems: preRenderTable,
       needsPagination,
       pageNumber,
       match,
@@ -44,11 +73,14 @@ export class Ongoing extends PureComponent {
       rowLength,
       handlePagination,
     } = this.props;
-    const { thead, tbody } = tableItems;
+
+    const { thead, tbody } = preRenderTable;
 
     if (!thead || !tbody) {
       return (<div className="lds-dual-ring" />);
     }
+
+    const tableItems = this.addLink(preRenderTable);
 
     const { type, rowIndex, cellIndex } = match.params;
 
@@ -66,9 +98,17 @@ export class Ongoing extends PureComponent {
           ariaHideApp={false}
           contentLabel={t('bg.ongoing.modal_label')}
         >
-          <Trans i18nKey="bg.ongoing.modal_desc">
-            Gutescheine {{type}} auf zeile {{rowIndex}} und spalte {{cellIndex}}
-          </Trans>
+          {/**
+            For some reasons, <Trans> react-i18next with enzyme shallow rendering
+            here wont work with type, rowIndex, cellIndex but would with
+            realPageNumber.. Also mocking the whole npm module brings to nowhere.
+            The only way it works is when writing it as below.
+          */}
+          <Trans
+            values={{ type, rowIndex, cellIndex }}
+            i18nKey="bg.ongoing.modal_desc"
+            defaults="Gutescheine {{type}} auf zeile {{rowIndex}} und spalte {{cellIndex}}"
+          />
         </Modal>
         <PoliceDetail />
         <section className="o-baug__app__content-table-section">

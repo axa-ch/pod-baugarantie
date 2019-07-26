@@ -7,6 +7,8 @@ import { Ongoing } from './index';
 
 import { PAGINATION_THRESHOLD } from './_config'
 
+import { initTranslations } from '../../../i18n';
+
 import {
   setSearch as originalSetSearch,
   handlePagination as originalHandlePagination,
@@ -15,6 +17,11 @@ import {
 Enzyme.configure({ adapter: new Adapter() });
 
 // create the store with the needed middlewears
+// We dont use a mocked store cause we want to UNIT test, therefore use the
+// shallow method as much as we can.
+// If we wrap a useless Provider around, it wont work with shallow anymore
+// and then we need to mount the whole component, including sub components which
+// will go against the principle of unit testing.
 class Setup {
   constructor(params) {
     if (params) {
@@ -27,23 +34,27 @@ class Setup {
       this.handlePagination = handlePagination;
       this.loadTableItems = loadTableItems;
     }
-
-
+    this.i18n = initTranslations('en');
   }
   get store()  {
     if (!this._store) {
       const history = {
         goBack: jest.fn()
       };
-      const t = jest.fn();
+      const t = key => key;
       this._store = {
         lastSearch: '',
         pageNumber: 0,
         rowLength: 0,
         history,
         t,
+        i18n: this.i18n,
         match: {
-          params: {}
+          params: {
+            type: 'view',
+            rowIndex: 1,
+            cellIndex: 12
+          }
         },
         needsPagination: false,
         isSearching: false,

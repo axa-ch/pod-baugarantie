@@ -23,24 +23,6 @@ export const loadTableItems = () => (dispatch) => {
       return response.json();
     })
     .then(tableJson => {
-      tableJson.tbody = tableJson.tbody.map((row, rowIndex) => {
-        const specialCell = row.find(cell => !!cell.interaction);
-        if (specialCell) {
-          const index = row.indexOf(specialCell);
-          const { interaction } = specialCell;
-          const { type } = interaction;
-          const url = type === 'pdf' ? interaction.url : `/#/ongoing/${type}/${rowIndex}/${index}`;
-          specialCell.html = `
-            <axa-link ${type === 'pdf' ? 'external' : ''} href="${url}">
-              ${specialCell.html}
-            </axa-link>
-          `
-          row[index] = specialCell;
-          return row;
-        }
-
-        return row;
-      });
       const tbodyFiltered = tableJson.tbody;
       const tbodyLength = tbodyFiltered.length;
       const needsPagination = tbodyLength >= PAGINATION_THRESHOLD;
