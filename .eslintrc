@@ -3,6 +3,7 @@
   "rules": {
     "max-len": ["warn", 140, 2],
     "import/prefer-default-export": "off",
+    "import/no-named-as-default": "off",
     "indent": [
       "error",
       2,

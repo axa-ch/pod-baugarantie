@@ -11,6 +11,8 @@ export const LANG_FR = 'fr';
 export const LANG_IT = 'it';
 export const LANG_EN = 'en';
 
+export const LANGUAGES = [LANG_DE, LANG_FR, LANG_IT, LANG_EN]
+
 export const initTranslations = (lang) => {
   const lng = lang;
 
@@ -39,3 +41,5 @@ export const initTranslations = (lang) => {
 
   return i18n;
 };
+
+export default i18n;

@@ -37,7 +37,7 @@ export default class PodBaugarantie {
       dispatch(setAccessToken(bgAt));
     }
 
-    initTranslations(this.options.language)
+    initTranslations(this.options.language);
 
     ReactDOM.render(<Fragment>
       <Provider store={store}>
