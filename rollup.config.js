@@ -5,17 +5,21 @@ const resolve = require('rollup-plugin-node-resolve');
 const babel = require('rollup-plugin-babel');
 const replace = require('rollup-plugin-replace'); // use to setup project enviroment variables
 const sass = require('rollup-plugin-sass');
+const json = require('rollup-plugin-json');
 const autoprefixer = require('autoprefixer');
 const stripFontFace = require('postcss-strip-font-face'); // strip all font faces in the bundled css
 const postcss = require('postcss');
+const config = require('config');
 
 const path = require('path');
 const fs = require('fs');
 
 const babelOptions = JSON.parse(fs.readFileSync('.babelrc')); // get the babelrc file
 
+const entryFile = config.get('withFooter') ? 'pod.js' : 'index.js'
+
 export default {
-  input: 'src/index.js',
+  input: `src/${entryFile}`,
   output: {
     file: 'lib/index.js',
     format: 'es',
@@ -36,6 +40,7 @@ export default {
         .process(css)
         .then(result => result.css),
     }),
+    json(),
     babel({
       ...babelOptions,
       babelrc: false,

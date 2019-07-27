@@ -21,6 +21,7 @@
     "no-script-url": "off",
     "no-bitwise": "off",
     "react/jsx-filename-extension": "off",
+    "react/no-find-dom-node": "off",
     "react/jsx-closing-tag-location": "off",
     "react/no-array-index-key": "off",
     "jsx-a11y/label-has-for": "off",

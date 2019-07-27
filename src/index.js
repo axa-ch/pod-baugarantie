@@ -29,7 +29,8 @@ export default class PodBaugarantie {
     this.init();
   }
 
-  init() {
+  // FooterHook is passed if extended during development.
+  init(FooterHook = Fragment) {
     const bgAt = sessionStorage.getItem('bg_at');
     const { dispatch } = store;
 
@@ -47,6 +48,7 @@ export default class PodBaugarantie {
           </HashRouter>
         </div>
       </Provider>
+      <FooterHook />
     </Fragment>, this.elem);
   }
 }

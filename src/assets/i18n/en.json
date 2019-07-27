@@ -15,6 +15,11 @@
         "pdf": "PDF"
       }
     },
+    "footer": {
+      "copyright": "© 2019 AXA Insurance Ltd.",
+      "term_of_use": "Terms of use",
+      "data_protection": "Data Protection"
+    },
     "police_detail": {
       "police_nummer": "Police Nummer"
     },
