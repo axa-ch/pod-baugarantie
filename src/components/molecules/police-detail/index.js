@@ -8,10 +8,17 @@ import { AXAInputTextReact } from '../../patterns-library';
 
 class PoliceDetail extends PureComponent {
   componentDidMount(){
-    const { details, loadPoliceDetail } = this.props;
+    const { details, loadPoliceDetail, contractNummer } = this.props;
 
     if (!details) {
-      loadPoliceDetail();
+      loadPoliceDetail(contractNummer);
+    }
+  }
+
+  componentWillReceiveProps({ contractNummer: newContractNumber }){
+    const { contractNummer, loadPoliceDetail } = this.props;
+    if (contractNummer !== newContractNumber) {
+      loadPoliceDetail(newContractNumber);
     }
   }
 
@@ -64,6 +71,7 @@ class PoliceDetail extends PureComponent {
 
 PoliceDetail.propTypes = {
   details: PropTypes.object,
+  contractNummer: PropTypes.string.isRequired,
   loadPoliceDetail: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
 };

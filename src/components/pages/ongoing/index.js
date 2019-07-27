@@ -76,6 +76,7 @@ export class Ongoing extends PureComponent {
       pageNumber,
       match,
       isLoading,
+      contractNummer,
       history,
       t,
       rowLength,
@@ -118,7 +119,7 @@ export class Ongoing extends PureComponent {
             defaults="Gutescheine {{type}} auf zeile {{rowIndex}} und spalte {{cellIndex}}"
           />
         </Modal>
-        <PoliceDetail />
+        <PoliceDetail contractNummer={contractNummer} />
         <section className="o-baug__app__content-table-section">
           <div className="o-baug__app__content-table-search">
             <AXAInputTextReact
