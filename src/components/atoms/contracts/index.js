@@ -16,7 +16,7 @@ class Contracts extends PureComponent {
   }
 
   render() {
-    const { component: Component, contracts, t } = this.props;
+    const { component: Component, contracts, detail, t, loadContract } = this.props;
 
     if (!contracts.length) {
       return (
@@ -26,9 +26,11 @@ class Contracts extends PureComponent {
       );
     }
 
+    const { active_contract: activeContract, description } = detail;
+
     const preparedContracts = contracts.map(({ nummer }, index) => ({
       name: nummer,
-      selected: index === 0,
+      selected: index === activeContract,
       value: nummer,
     }));
 
@@ -36,7 +38,17 @@ class Contracts extends PureComponent {
       <>
         <section className="o-baug__app__contracts">
           <h1>{t('bg.contracts.number')}</h1>
-          <AXADropdownReact title="Please Select" items={preparedContracts} />
+          <AXADropdownReact
+            onChange={({ target: { value }}) => {
+              const index = preparedContracts.findIndex(
+                ({ value : contractValue }) => contractValue === value
+              );
+              loadContract(value, index);
+            }}
+            title="Please Select"
+            items={preparedContracts}
+          />
+          { description ? (<p>{description}</p>) : ''}
         </section>
         <Component />
       </>
@@ -46,13 +58,18 @@ class Contracts extends PureComponent {
 
 Contracts.propTypes = {
   contracts: PropTypes.array,
+  detail: PropTypes.object,
   component: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   loadContracts: PropTypes.func.isRequired,
+  loadContract: PropTypes.func.isRequired,
 };
 
 Contracts.defaultProps = {
   contracts: [],
+  detail: {
+    active_contract: 0
+  },
 };
 
 export default connect(
