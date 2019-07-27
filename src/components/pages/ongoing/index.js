@@ -24,10 +24,17 @@ const customStyles = {
 
 export class Ongoing extends PureComponent {
   componentDidMount(){
-    const { tableItems, loadTableItems } = this.props;
+    const { tableItems, loadTableItems, contractNummer } = this.props;
 
-    if (!tableItems.length) {
-      loadTableItems();
+    if (!tableItems.length && contractNummer) {
+      loadTableItems(contractNummer);
+    }
+  }
+
+  componentWillReceiveProps({ contractNummer: newContractNumber }){
+    const { contractNummer, loadTableItems } = this.props;
+    if (contractNummer !== newContractNumber) {
+      loadTableItems(newContractNumber);
     }
   }
 
@@ -68,16 +75,16 @@ export class Ongoing extends PureComponent {
       needsPagination,
       pageNumber,
       match,
+      isLoading,
       history,
       t,
-      contractNummer,
       rowLength,
       handlePagination,
     } = this.props;
 
     const { thead, tbody } = preRenderTable;
 
-    if (!thead || !tbody) {
+    if (!thead || !tbody || isLoading) {
       return (<div className="lds-dual-ring" />);
     }
 
@@ -87,8 +94,6 @@ export class Ongoing extends PureComponent {
 
     const realPageNumber = pageNumber + 1;
     const realTotPages = Math.floor(rowLength) + 1;
-
-    console.log(contractNummer);
 
     return (
       < >
@@ -178,6 +183,7 @@ Ongoing.propTypes = {
   contractNummer: PropTypes.string.isRequired,
   rowLength: PropTypes.number.isRequired,
   needsPagination: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   loadTableItems: PropTypes.func.isRequired,
 };
 

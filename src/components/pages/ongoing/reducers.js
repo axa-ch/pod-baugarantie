@@ -2,6 +2,7 @@ import { createReducer } from 'redux-act';
 import {
   setSearchValue,
   setTableItems,
+  setTableIsLoading,
   setOriginalTableItems,
 } from './actions';
 
@@ -36,6 +37,10 @@ export const ongoing = createReducer(
       rowLength,
       isSearching,
     }),
+    [setTableIsLoading]: (state, isLoading = false) => ({
+      ...state,
+      isLoading,
+    }),
     [setOriginalTableItems]: (state, { needsPagination, tableOriginalItems, rowLength, ...rest }) => ({
       ...state,
       tableItems: rest,
@@ -50,6 +55,7 @@ export const ongoing = createReducer(
     rowLength: 0,
     needsPagination: false,
     isSearching: false,
+    isLoading: false,
     tableOriginalItems: {},
     tableItems: {},
   }

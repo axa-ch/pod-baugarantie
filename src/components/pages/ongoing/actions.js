@@ -3,11 +3,13 @@ import { createAction } from 'redux-act';
 import { PAGINATION_THRESHOLD, NEXT } from './_config';
 
 export const setTableItems = createAction('BG_ONGOING_SEARCH_SET_ITEMS');
+export const setTableIsLoading = createAction('BG_ONGOING_TABLE_IS_LOADING');
 export const setSearchValue = createAction('BG_ONGOING_SEARCH_SET_VALUE');
 export const setOriginalTableItems = createAction('BG_ONGOING_SEARCH_SET_ORIGINAL_ITEMS');
 
-export const loadTableItems = () => (dispatch) => {
-  fetch('http://localhost:3000/api/ongoing/items', {
+export const loadTableItems = (contractNummer) => (dispatch) => {
+  dispatch(setTableIsLoading(true));
+  fetch(`http://localhost:3000/api/ongoing/items/${contractNummer}`, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -26,7 +28,7 @@ export const loadTableItems = () => (dispatch) => {
       const tbodyFiltered = tableJson.tbody;
       const tbodyLength = tbodyFiltered.length;
       const needsPagination = tbodyLength >= PAGINATION_THRESHOLD;
-      const finalBody = !needsPagination ? tbodyFiltered : tbodyFiltered.slice(0, PAGINATION_THRESHOLD)
+      const finalBody = !needsPagination ? tbodyFiltered : tbodyFiltered.slice(0, PAGINATION_THRESHOLD);
       dispatch(setOriginalTableItems({
         thead: tableJson.thead,
         tbody: finalBody,
@@ -34,6 +36,7 @@ export const loadTableItems = () => (dispatch) => {
         rowLength: Math.floor(tbodyLength / PAGINATION_THRESHOLD),
         tableOriginalItems: tableJson
       }));
+      dispatch(setTableIsLoading(false));
     });
 };
 

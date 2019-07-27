@@ -52,7 +52,7 @@ class Contracts extends PureComponent {
           />
           { description ? (<p>{description}</p>) : ''}
         </section>
-        <Component contractNummer={activeContract} />
+        { activeContract ? (<Component contractNummer={activeContract} />) : ''}
       </>
     );
   }

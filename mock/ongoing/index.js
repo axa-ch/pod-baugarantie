@@ -8,8 +8,10 @@ const translations = {
   pdf: 'pdf',
 };
 
-router.get('/items', (req, res) => {
+router.get('/items/:id', (req, res) => {
   res.set('content-type', 'application/json');
+  const { params: { id } } = req;
+
   const model = {
     thead: [
       { html: 'Title 0', sort: 'ASC' },
@@ -131,25 +133,28 @@ router.get('/items', (req, res) => {
 
   const randomTypes = ['view', 'edit', 'pdf'];
 
-  for (let i = 0; i < 20000; i++) {
-    const type = randomTypes[Math.floor(Math.random() * 3)];
-    model.tbody.push([
-      { html: `<span>${i} dfs s dfadfadf adf </span>` },
-      { html: `<span>jjf  hlsdj ${Math.ceil(Math.random(1, 40) * i, 1)} k dsas dasd</span>` },
-      { html: `<span>${Math.ceil(Math.random(1, 40) * i, 1)} Cell 445</span>` },
-      { html: `${Math.ceil(parseInt(Math.random(1, 40) * i, 32), 1)}` },
-      { html: `<span>dfs s dfadfadf adf ${Math.ceil(Math.random(1, 40) * i, 1)}</span>` },
-      { html: `<span>jjf  hlsdj ${Math.ceil(Math.random(1, 40) * i, 1)} k dsas dasd</span>` },
-      { html: `<span>${Math.ceil(Math.random(1, 40) * i, 1)} Cell 445</span>` },
-      {
-        html: translations[type] ,
-        interaction: {
-          type,
-          url: type === 'pdf' ? 'http://localhost:3000/api/ongoing/pdf' : undefined,
-        }
-      },
-    ]);
+  if (id === '8.551.922') {
+    for (let i = 0; i < 20000; i++) {
+      const type = randomTypes[Math.floor(Math.random() * 3)];
+      model.tbody.push([
+        { html: `<span>${i} dfs s dfadfadf adf </span>` },
+        { html: `<span>jjf  hlsdj ${Math.ceil(Math.random(1, 40) * i, 1)} k dsas dasd</span>` },
+        { html: `<span>${Math.ceil(Math.random(1, 40) * i, 1)} Cell 445</span>` },
+        { html: `${Math.ceil(parseInt(Math.random(1, 40) * i, 32), 1)}` },
+        { html: `<span>dfs s dfadfadf adf ${Math.ceil(Math.random(1, 40) * i, 1)}</span>` },
+        { html: `<span>jjf  hlsdj ${Math.ceil(Math.random(1, 40) * i, 1)} k dsas dasd</span>` },
+        { html: `<span>${Math.ceil(Math.random(1, 40) * i, 1)} Cell 445</span>` },
+        {
+          html: translations[type] ,
+          interaction: {
+            type,
+            url: type === 'pdf' ? 'http://localhost:3000/api/ongoing/pdf' : undefined,
+          }
+        },
+      ]);
+    }
   }
+
   res.send(model);
   res.end();
 });
