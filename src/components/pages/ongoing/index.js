@@ -70,6 +70,7 @@ export class Ongoing extends PureComponent {
       match,
       history,
       t,
+      contractNummer,
       rowLength,
       handlePagination,
     } = this.props;
@@ -86,6 +87,8 @@ export class Ongoing extends PureComponent {
 
     const realPageNumber = pageNumber + 1;
     const realTotPages = Math.floor(rowLength) + 1;
+
+    console.log(contractNummer);
 
     return (
       < >
@@ -172,6 +175,7 @@ Ongoing.propTypes = {
   history: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
   pageNumber: PropTypes.number.isRequired,
+  contractNummer: PropTypes.string.isRequired,
   rowLength: PropTypes.number.isRequired,
   needsPagination: PropTypes.bool.isRequired,
   loadTableItems: PropTypes.func.isRequired,

@@ -18,7 +18,8 @@ export const contracts = createReducer(
   {
     contracts: [],
     detail: {
-      active_contract: 0
+      active_contract: '',
+      active_index: 0,
     }
   }
 );

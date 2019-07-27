@@ -26,13 +26,15 @@ class Contracts extends PureComponent {
       );
     }
 
-    const { active_contract: activeContract, description } = detail;
+    const { active_contract: activeContract, description, active_index : activeIndex } = detail;
 
     const preparedContracts = contracts.map(({ nummer }, index) => ({
       name: nummer,
-      selected: index === activeContract,
+      selected: index === activeIndex,
       value: nummer,
     }));
+
+    console.log(activeContract);
 
     return (
       <>
@@ -50,7 +52,7 @@ class Contracts extends PureComponent {
           />
           { description ? (<p>{description}</p>) : ''}
         </section>
-        <Component />
+        <Component contractNummer={activeContract} />
       </>
     );
   }

@@ -3,7 +3,7 @@ import { createAction } from 'redux-act';
 export const setContracts = createAction('BG_ONGOING_CONTRACTS_SET');
 export const setContractDetail = createAction('BG_ONGOING_CONTRACT_SET_DETAIL');
 
-export const loadContract = (id, index = 0, contracts = null) => (dispatch) => {
+export const loadContract = (id, index = 0, contracts = null) => (dispatch, getState) => {
   fetch(`http://localhost:3000/api/contract/${id}`, {
     method: 'GET',
     mode: 'cors',
@@ -20,13 +20,17 @@ export const loadContract = (id, index = 0, contracts = null) => (dispatch) => {
       return response.json();
     })
     .then((json) => {
-      if (contracts) {
-        dispatch(setContracts(contracts));
+      let usedContracts = contracts;
+      if (usedContracts) {
+        dispatch(setContracts(usedContracts));
+      } else {
+        usedContracts = getState().contracts.contracts;
       }
 
       dispatch(setContractDetail({
         ...json,
-        active_contract: index
+        active_contract: usedContracts[index].nummer,
+        active_index: index
       }));
     });
 };
