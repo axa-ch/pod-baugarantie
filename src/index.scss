@@ -65,6 +65,26 @@
     }
   }
 
+  &__home-section {
+    padding: 5px 20px;
+
+    &-label {
+      @include typo(large);
+
+      display: inline-block;
+
+      padding: 5px 5px 10px 10px;
+
+      font-weight: bold;
+    }
+  }
+
+  &__home-section-title {
+    @include typo-title(large-1);
+
+    margin-bottom: 10px;
+  }
+
   &__nav {
     @include clearfix();
 

@@ -14,9 +14,9 @@ const Login = ({
   valid,
   username,
   t,
-  password
+  password,
 }) => (
-  <article className="o-baug__app__form">
+  <section className="o-baug__app__form">
     <form
       onSubmit={e => {
         e.preventDefault();
@@ -47,7 +47,7 @@ const Login = ({
       </AXAButton>
       <AXAButton type="submit">{t('bg.login.login')}</AXAButton>
     </form>
-  </article>
+  </section>
 );
 
 Login.propTypes = {

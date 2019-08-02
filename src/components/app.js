@@ -9,13 +9,15 @@ import PrivateRoute from './atoms/private-route';
 import LocaleRoute from './atoms/locale-route';
 import Menu from './organisms/menu';
 
-import Home from './pages/home';
+import Home from './pages/home/index';
 import New from './pages/new';
 import Login from './pages/login/index';
 import Ongoing from './pages/ongoing/index';
 
 const App = ({ history, at }) => {
-  const { location: { pathname } } = history;
+  const {
+    location: { pathname },
+  } = history;
   if (~pathname.indexOf('login') && at.length > 1) {
     history.push('/home');
   }
@@ -24,34 +26,19 @@ const App = ({ history, at }) => {
       <Menu />
       <article className="o-baug__app__content">
         <Switch>
-          <LocaleRoute
-            exact
-            path="/:lang?/login"
-            component={Login}
-          />
-          <PrivateRoute
-            path="/:lang?/new"
-            component={New}
-          />
-          <PrivateRoute
-            exact
-            path="/:lang?/ongoing"
-            component={Ongoing}
-          />
+          <LocaleRoute exact path="/:lang?/login" component={Login} />
+          <PrivateRoute path="/:lang?/new" component={New} />
+          <PrivateRoute exact path="/:lang?/ongoing" component={Ongoing} />
           <PrivateRoute
             exact
             path="/:lang?/ongoing/:type/:rowIndex/:cellIndex"
             component={Ongoing}
           />
-          <PrivateRoute
-            exact
-            path="/:lang?/"
-            component={Home}
-          />
+          <PrivateRoute exact path="/:lang?/" component={Home} />
         </Switch>
       </article>
     </AXAContainer>
-  )
+  );
 };
 
 App.propTypes = {
@@ -64,6 +51,4 @@ App.defaultProps = {
   history: null,
 };
 
-export default connect(
-  state => state.authentication
-)(withRouter(App));
+export default connect(state => state.authentication)(withRouter(App));
