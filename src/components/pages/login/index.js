@@ -7,7 +7,7 @@ import { AXAButton, AXAInputTextReact } from '../../patterns-library';
 
 import * as allActions from './actions';
 
-const Login = ({
+export const Login = ({
   setUsername,
   setPassword,
   submitLogin,

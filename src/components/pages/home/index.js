@@ -31,7 +31,7 @@ class Home extends PureComponent {
         </section>
       );
     }
-    const { contractor, detail_overview } = details;
+    const { contractor, detail_overview: detailOverview } = details;
     return (
       <>
         <section className="o-baug__app__home-section">
@@ -68,22 +68,22 @@ class Home extends PureComponent {
             <strong className="o-baug__app__home-section-label">
               {t('bg.home.detail_overview.police_nummer')}:
             </strong>
-            <span>{detail_overview.police_nummer}</span>
+            <span>{detailOverview.police_nummer}</span>
             <br />
             <strong className="o-baug__app__home-section-label">
               {t('bg.home.detail_overview.deposit_amount')}:
             </strong>
-            <span>{detail_overview.deposit_amount}</span>
+            <span>{detailOverview.deposit_amount}</span>
             <br />
             <strong className="o-baug__app__home-section-label">
               {t('bg.home.detail_overview.left_amount')}:
             </strong>
-            <span>{detail_overview.left_amount}</span>
+            <span>{detailOverview.left_amount}</span>
             <br />
             <strong className="o-baug__app__home-section-label">
               {t('bg.home.detail_overview.max_paying_out')}:
             </strong>
-            <span>{detail_overview.max_paying_out}</span>
+            <span>{detailOverview.max_paying_out}</span>
           </div>
         </section>
       </>
