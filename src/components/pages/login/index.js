@@ -29,6 +29,7 @@ export const Login = ({
           required
           checkMark={username && valid}
           type="text"
+          invalid={!valid}
           onChange={({ target: { value } }) => setUsername(value)}
           name="username"
         />
@@ -36,7 +37,7 @@ export const Login = ({
           label={t('bg.login.password')}
           required
           checkMark={password && valid}
-          error={valid ? '' : 'Input parameter sind invalid'}
+          invalid={!valid}
           type="password"
           onChange={({ target: { value } }) => setPassword(value)}
           name="password"
