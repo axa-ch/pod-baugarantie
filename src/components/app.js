@@ -10,7 +10,7 @@ import LocaleRoute from './atoms/locale-route';
 import Menu from './organisms/menu';
 
 import Home from './pages/home/index';
-import New from './pages/new';
+import New from './pages/new/index';
 import Login from './pages/login/index';
 import Ongoing from './pages/ongoing/index';
 
