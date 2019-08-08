@@ -8,7 +8,7 @@ const babelrc = JSON.parse(fs.readFileSync(`${__dirname}/.babelrc`));
 const { sep } = path;
 
 /*-------------------------------------------------*/
-const outputPath = 'lib';
+const outputPath = 'dist';
 
 const entryFile = config.get('withFooter') ? 'pod.js' : 'index.js'
 

@@ -86,7 +86,9 @@
   "scripts": {
     "test": "npm run test-jest",
     "clean-lib": "rimraf lib",
-    "build": "npm run clean-lib && cross-env NODE_ENV=production rollup --config ./rollup.config.js",
+    "build": "npm run build-pod && npm run build-standalone",
+    "build-pod": "npm run clean-lib && cross-env NODE_ENV=production rollup --config ./rollup.config.js",
+    "build-standalone": "NODE_ENV=production webpack",
     "release": "generic-release",
     "api": "node ./mock/server.js port=3000 --host 0.0.0.0",
     "start": "concurrently \"webpack-dev-server\" \"npm run api\"",
