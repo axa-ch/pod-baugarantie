@@ -1,7 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const HtmlStringReplace = require('webpack-html-string-replace-plugin');
 const config = require('config');
+require('dotenv').config();
 const fs = require('fs');
 
 const babelrc = JSON.parse(fs.readFileSync(`${__dirname}/.babelrc`));
@@ -57,6 +59,17 @@ module.exports = {
   plugins: [
     new HTMLWebpackPlugin({
       template: path.resolve(__dirname, 'index.html')
+    }),
+    new HtmlStringReplace({
+      enable: true,
+      patterns: [
+        {
+          match: /data-api-url="([^"]*)"/g,
+          replacement: () => {
+            return `data-api-url="${process.env.API_URL || 'http://localhost:3000'}"`;
+          }
+        },
+      ]
     })
   ],
 

@@ -56,8 +56,6 @@ typings/
 
 package-lock.json
 
-# dotenv environment variables file
-.env
 
 # next.js build output
 .next
