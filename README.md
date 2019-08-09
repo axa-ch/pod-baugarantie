@@ -12,7 +12,8 @@ This application represents the frontend of the new Baugarantie Portal
 
 ## Tasks
 
-- `npm start` to start development mode
+- `npm start` to start development mode with the mock api
+- `npm run api` starts ONLY the mock api
 - `npm run build` to build the application as a POD and as a standalone application. Build artifact can be found in `/dist` and in `/lib`
 - `npm run build-standalone` to build only the standalone application. Build artifact can be found in `/dist`
 - `npm run build-pod` to build only as a POD. Build artifact can be found in `/lib`
