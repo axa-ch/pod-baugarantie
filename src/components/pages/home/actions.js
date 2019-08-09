@@ -5,6 +5,7 @@ export const setHomeDetails = createAction('BG_HOME_DEATILS_SET');
 export const loadHomeDetail = contractNummer => (dispatch, getState) => {
   const {
     config: { config: { apiUrl } },
+    authentication: { at }
   } = getState();
 
   fetch(`${apiUrl}/api/home/overview/${contractNummer}`, {
@@ -14,6 +15,7 @@ export const loadHomeDetail = contractNummer => (dispatch, getState) => {
     credentials: 'same-origin', // include, *same-origin, omit
     headers: {
       'Content-Type': 'application/json',
+      'authorization': at,
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     redirect: 'follow', // manual, *follow, error

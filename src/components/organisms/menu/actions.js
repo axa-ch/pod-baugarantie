@@ -5,6 +5,7 @@ export const setMenuItems = createAction('BG_SET_MENU_ITEMS');
 export const loadItemMenus = () => (dispatch, getState) => {
   const {
     config: { config: { apiUrl } },
+    authentication: { at },
   } = getState();
 
   fetch(`${apiUrl}/api/menu`, {
@@ -14,6 +15,7 @@ export const loadItemMenus = () => (dispatch, getState) => {
     credentials: 'same-origin', // include, *same-origin, omit
     headers: {
       'Content-Type': 'application/json',
+      'authorization': at,
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     redirect: 'follow', // manual, *follow, error

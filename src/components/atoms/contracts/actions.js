@@ -6,6 +6,7 @@ export const setContractDetail = createAction('BG_ONGOING_CONTRACT_SET_DETAIL');
 export const loadContract = (id, index = 0, contracts = null) => (dispatch, getState) => {
   const {
     config: { config: { apiUrl } },
+    authentication: { at },
     contracts: { contracts: _contracts }
   } = getState();
 
@@ -16,6 +17,7 @@ export const loadContract = (id, index = 0, contracts = null) => (dispatch, getS
     credentials: 'same-origin', // include, *same-origin, omit
     headers: {
       'Content-Type': 'application/json',
+      'authorization': at
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     redirect: 'follow', // manual, *follow, error
@@ -43,6 +45,7 @@ export const loadContract = (id, index = 0, contracts = null) => (dispatch, getS
 export const loadContracts = () => (dispatch, getState) => {
   const {
     config: { config: { apiUrl } },
+    authentication: { at },
   } = getState();
   fetch(`${apiUrl}/api/contracts/values`, {
     method: 'GET',
@@ -51,6 +54,7 @@ export const loadContracts = () => (dispatch, getState) => {
     credentials: 'same-origin', // include, *same-origin, omit
     headers: {
       'Content-Type': 'application/json',
+      'authorization': at
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     redirect: 'follow', // manual, *follow, error

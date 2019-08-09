@@ -11,6 +11,7 @@ export const loadTableItems = (contractNummer) => (dispatch, getState) => {
   dispatch(setTableIsLoading(true));
   const {
     config: { config: { apiUrl } },
+    authentication: { at },
   } = getState();
   fetch(`${apiUrl}/api/ongoing/items/${contractNummer}`, {
     method: 'GET',
@@ -19,6 +20,7 @@ export const loadTableItems = (contractNummer) => (dispatch, getState) => {
     credentials: 'same-origin', // include, *same-origin, omit
     headers: {
       'Content-Type': 'application/json',
+      'authorization': at
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     redirect: 'follow', // manual, *follow, error
