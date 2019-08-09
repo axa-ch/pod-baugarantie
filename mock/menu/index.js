@@ -7,13 +7,13 @@ router.get('/', (req, res) => {
   res.send(
     [
       {
-        name: 'Vertragsübersicht',
+        name: 'bg.menu.overview',
         url: '/'
       },{
-        name: 'Neuer Garantieschein',
+        name: 'bg.menu.new',
         url: '/new'
       },{
-        name: 'Laufende Garantiescheine',
+        name: 'bg.menu.ongoing',
         url: '/ongoing'
       },{
         name: 'Abgelaufene, annulierte und abgelehnte Garantiescheine',

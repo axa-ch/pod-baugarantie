@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 
 import { withRouter } from 'react-router-dom';
 
@@ -18,7 +19,7 @@ class Menu extends PureComponent {
   }
 
   render() {
-    const { at, menuItems, history } = this.props;
+    const { at, menuItems, history, t } = this.props;
     const { length } = menuItems;
     if (!at) {
       return (<></>);
@@ -40,7 +41,7 @@ class Menu extends PureComponent {
                     className="o-baug__app__nav-button"
                     onClick={() => history.push(url)}
                   >
-                    {name}
+                    {t(name)}
                   </button>
                 ))}
               </>
@@ -56,6 +57,7 @@ class Menu extends PureComponent {
 
 Menu.propTypes = {
   at: PropTypes.string,
+  t: PropTypes.func.isRequired,
   menuItems: PropTypes.array,
   history: PropTypes.object.isRequired,
   loadItemMenus: PropTypes.func.isRequired,
@@ -72,4 +74,4 @@ export default connect(
     ...state.menu,
   }),
   allActions
-)(withRouter(Menu));
+)(withRouter(withTranslation()(Menu)));

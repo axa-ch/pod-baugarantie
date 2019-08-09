@@ -6,6 +6,11 @@
     "contracts": {
       "number": "Contract number"
     },
+    "menu": {
+      "overview": "Contract Overview",
+      "new": "New Warranty",
+      "ongoing": "Ongoing warranties"
+    },
     "ongoing": {
       "modal_desc": "Guarantees {{type}} on row {{rowIndex}} and column {{cellIndex}}",
       "page_count": "Page {{realPageNumber}} of {{realTotPages}}",
