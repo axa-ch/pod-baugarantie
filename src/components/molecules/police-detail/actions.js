@@ -2,8 +2,12 @@ import { createAction } from 'redux-act';
 
 export const setPoliceDetails = createAction('BG_ONGOING_POLICE_DEATILS_SET');
 
-export const loadPoliceDetail = (contractNummer) => (dispatch) => {
-  fetch(`http://localhost:3000/api/police-detail/values/${contractNummer}`, {
+export const loadPoliceDetail = (contractNummer) => (dispatch, getState) => {
+  const {
+    config: { config: { apiUrl } },
+  } = getState();
+
+  fetch(`${apiUrl}/api/police-detail/values/${contractNummer}`, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

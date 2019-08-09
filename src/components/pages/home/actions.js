@@ -2,8 +2,12 @@ import { createAction } from 'redux-act';
 
 export const setHomeDetails = createAction('BG_HOME_DEATILS_SET');
 
-export const loadHomeDetail = contractNummer => dispatch => {
-  fetch(`http://localhost:3000/api/home/overview/${contractNummer}`, {
+export const loadHomeDetail = contractNummer => (dispatch, getState) => {
+  const {
+    config: { config: { apiUrl } },
+  } = getState();
+
+  fetch(`${apiUrl}/api/home/overview/${contractNummer}`, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

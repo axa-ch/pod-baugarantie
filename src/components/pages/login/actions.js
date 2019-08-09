@@ -8,9 +8,10 @@ export const setAccessToken = createAction('BG_LOGIN_SET_ACCESS_TOKEN');
 export const submitLogin = () => (dispatch, getState) => {
   const {
     authentication: { username, password },
+    config: { config: { apiUrl } },
   } = getState();
   if (username && password) {
-    fetch('http://localhost:3000/api/auth/login', {
+    fetch(`${apiUrl}/api/auth/login`, {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

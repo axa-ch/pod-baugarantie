@@ -2,6 +2,5 @@
     "uglify": false,
     "sourcemap": false,
     "open": true,
-    "withFooter": true,
     "publicPath": "/"
 }

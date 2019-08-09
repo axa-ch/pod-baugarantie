@@ -10,7 +10,7 @@ const { sep } = path;
 /*-------------------------------------------------*/
 const outputPath = 'dist';
 
-const entryFile = config.get('withFooter') ? 'pod.js' : 'index.js'
+const entryFile = 'standalone.js';
 
 module.exports = {
   // webpack optimization mode

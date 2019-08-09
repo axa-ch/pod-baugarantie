@@ -19,6 +19,7 @@ import './index.scss';
 import store from './store';
 
 import { setAccessToken } from './components/pages/login/actions';
+import { setConfig } from './actions';
 
 import App from './components/app';
 
@@ -35,6 +36,8 @@ export default class PodBaugarantie {
   init(FooterHook = Fragment) {
     const bgAt = sessionStorage.getItem('bg_at');
     const { dispatch } = store;
+
+    dispatch(setConfig(this.options));
 
     if (bgAt) {
       dispatch(setAccessToken(bgAt));

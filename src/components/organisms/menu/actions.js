@@ -2,8 +2,12 @@ import { createAction } from 'redux-act';
 
 export const setMenuItems = createAction('BG_SET_MENU_ITEMS');
 
-export const loadItemMenus = () => (dispatch) => {
-  fetch('http://localhost:3000/api/menu', {
+export const loadItemMenus = () => (dispatch, getState) => {
+  const {
+    config: { config: { apiUrl } },
+  } = getState();
+
+  fetch(`${apiUrl}/api/menu`, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

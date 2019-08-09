@@ -16,7 +16,7 @@ const fs = require('fs');
 
 const babelOptions = JSON.parse(fs.readFileSync('.babelrc')); // get the babelrc file
 
-const entryFile = config.get('withFooter') ? 'pod.js' : 'index.js'
+const entryFile = 'index.js';
 
 export default {
   input: `src/${entryFile}`,

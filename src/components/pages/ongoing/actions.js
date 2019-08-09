@@ -7,9 +7,12 @@ export const setTableIsLoading = createAction('BG_ONGOING_TABLE_IS_LOADING');
 export const setSearchValue = createAction('BG_ONGOING_SEARCH_SET_VALUE');
 export const setOriginalTableItems = createAction('BG_ONGOING_SEARCH_SET_ORIGINAL_ITEMS');
 
-export const loadTableItems = (contractNummer) => (dispatch) => {
+export const loadTableItems = (contractNummer) => (dispatch, getState) => {
   dispatch(setTableIsLoading(true));
-  fetch(`http://localhost:3000/api/ongoing/items/${contractNummer}`, {
+  const {
+    config: { config: { apiUrl } },
+  } = getState();
+  fetch(`${apiUrl}/api/ongoing/items/${contractNummer}`, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

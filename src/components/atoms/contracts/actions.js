@@ -4,7 +4,12 @@ export const setContracts = createAction('BG_ONGOING_CONTRACTS_SET');
 export const setContractDetail = createAction('BG_ONGOING_CONTRACT_SET_DETAIL');
 
 export const loadContract = (id, index = 0, contracts = null) => (dispatch, getState) => {
-  fetch(`http://localhost:3000/api/contract/${id}`, {
+  const {
+    config: { config: { apiUrl } },
+    contracts: { contracts: _contracts }
+  } = getState();
+
+  fetch(`${apiUrl}/api/contract/${id}`, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -24,7 +29,7 @@ export const loadContract = (id, index = 0, contracts = null) => (dispatch, getS
       if (usedContracts) {
         dispatch(setContracts(usedContracts));
       } else {
-        usedContracts = getState().contracts.contracts;
+        usedContracts = _contracts;
       }
 
       dispatch(setContractDetail({
@@ -35,8 +40,11 @@ export const loadContract = (id, index = 0, contracts = null) => (dispatch, getS
     });
 };
 
-export const loadContracts = () => (dispatch) => {
-  fetch('http://localhost:3000/api/contracts/values', {
+export const loadContracts = () => (dispatch, getState) => {
+  const {
+    config: { config: { apiUrl } },
+  } = getState();
+  fetch(`${apiUrl}/api/contracts/values`, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
