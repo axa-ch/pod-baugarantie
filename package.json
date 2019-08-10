@@ -4,6 +4,7 @@
   "dependencies": {
     "@axa-ch/button": "latest",
     "@axa-ch/container": "latest",
+    "@axa-ch/datepicker": "^2.4.1",
     "@axa-ch/dropdown": "^2.5.0",
     "@axa-ch/footer-small": "latest",
     "@axa-ch/icon": "latest",

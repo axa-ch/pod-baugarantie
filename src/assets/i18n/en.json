@@ -19,7 +19,8 @@
       "countries_name": {
         "ch": "Switzerland",
         "li": "Lichtenstein"
-      }
+      },
+      "contract_date": "Contract date"
     },
     "ongoing": {
       "modal_desc": "Guarantees {{type}} on row {{rowIndex}} and column {{cellIndex}}",

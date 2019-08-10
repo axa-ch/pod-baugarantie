@@ -35,6 +35,12 @@ router.get('/', (req, res) => {
           { name: 'bg.contract_form.countries_name.li', value: 'li' },
         ]
       },
+      {
+        label: 'bg.contract_form.contract_date',
+        name: 'contract_date',
+        required: true,
+        type: 'axa-datepicker'
+      },
     ]
   );
   res.end();

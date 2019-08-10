@@ -47,6 +47,18 @@ class Form extends PureComponent {
             disabled={mode === VIEW}
           />
         );
+      case 'axa-datepicker':
+        return (
+          <Comp
+            inputfield
+            key={`form_index${index}`}
+            label={t(config.label)}
+            className=''
+            required={config.required}
+            name={config.name}
+            disabled={mode === VIEW}
+          />
+        );
       default:
         const lines = config.lines || 1;
         const inputs = [];
