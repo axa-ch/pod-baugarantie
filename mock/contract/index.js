@@ -2,6 +2,10 @@ const express = require('express');
 
 const router = express.Router();
 
+const form = require('./form');
+
+router.use('/form', form);
+
 router.get('/:id', (req, res) => {
   const { params: { id } } = req;
 

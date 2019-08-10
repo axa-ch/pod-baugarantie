@@ -11,6 +11,16 @@
       "new": "Neuer Garantieschein",
       "ongoing": "Laufende Garantiescheine"
     },
+    "contract_form": {
+      "company_name": "Name/Firma",
+      "post_code": "PLZ",
+      "place": "Ort",
+      "countries": "Land",
+      "countries_name": {
+        "ch": "Schweiz",
+        "li": "Lichtenstein"
+      }
+    },
     "ongoing": {
       "modal_desc": "Garantie {{type}} zeile {{rowIndex}} und kolonne {{cellIndex}}",
       "page_count": "Seite {{realPageNumber}} von {{realTotPages}}",

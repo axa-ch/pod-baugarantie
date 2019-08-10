@@ -16,14 +16,14 @@ export const Login = ({
   t,
   password,
 }) => (
-  <section className="o-baug__app__form">
+  <section className="o-baug__app__login-form">
     <form
       onSubmit={e => {
         e.preventDefault();
         submitLogin();
       }}
     >
-      <div className="o-baug__app__form-inputs">
+      <div className="o-baug__app__login-form-inputs">
         <AXAInputTextReact
           label={t('bg.login.username')}
           required

@@ -1,3 +1,17 @@
 import { createReducer } from 'redux-act';
 
-export const menu = createReducer({}, {});
+import {
+  setFormItems,
+} from './actions';
+
+export const form = createReducer(
+  {
+    [setFormItems]: (state, formItems = []) => ({
+      ...state,
+      formItems: [...formItems],
+    }),
+  },
+  {
+    formItems: [],
+  }
+);

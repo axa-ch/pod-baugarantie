@@ -15,17 +15,32 @@
   // Refactor when materials style is released
   background-color: $color-prim-gray-wild-sand;
 
-  &__form {
+  &__login-form {
     text-align: center;
 
     padding: 30 0 100px 0;
+  }
+
+  &__contract-form {
+
+    &-inputs {
+      margin-bottom: 20px;
+
+      .a-input-text__wrapper {
+        margin-top: 2px;
+      }
+    }
+
+    @include breakpoint($mediaquery-md-up) {
+      margin: 10px 10%;
+    }
   }
 
   &__new {
     padding: 10px 20px;
   }
 
-  &__form-inputs {
+  &__login-form-inputs {
     max-width: 400px;
     margin: auto;
     margin-bottom: 20px;

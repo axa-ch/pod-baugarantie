@@ -11,6 +11,16 @@
       "new": "New Warranty",
       "ongoing": "Ongoing warranties"
     },
+    "contract_form": {
+      "company_name": "Name/Company",
+      "post_code": "Post Code",
+      "place": "Place",
+      "countries": "Country",
+      "countries_name": {
+        "ch": "Switzerland",
+        "li": "Lichtenstein"
+      }
+    },
     "ongoing": {
       "modal_desc": "Guarantees {{type}} on row {{rowIndex}} and column {{cellIndex}}",
       "page_count": "Page {{realPageNumber}} of {{realTotPages}}",
