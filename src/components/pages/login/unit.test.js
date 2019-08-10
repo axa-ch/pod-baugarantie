@@ -78,6 +78,6 @@ describe('Login page', () => {
 
   it('should render login form', () => {
     const enzymeWrapper = setup.shallow();
-    expect(enzymeWrapper.hasClass('o-baug__app__form')).toBe(true);
+    expect(enzymeWrapper.hasClass('o-baug__app__login-form')).toBe(true);
   });
 });
