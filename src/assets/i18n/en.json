@@ -20,7 +20,11 @@
         "ch": "Switzerland",
         "li": "Lichtenstein"
       },
-      "contract_date": "Contract date"
+      "contract_date": "Contract date",
+      "submit_btn": "Submit",
+      "errors": {
+        "required": "This field is mandatory"
+      }
     },
     "ongoing": {
       "modal_desc": "Guarantees {{type}} on row {{rowIndex}} and column {{cellIndex}}",

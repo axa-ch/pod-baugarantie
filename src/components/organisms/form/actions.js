@@ -1,6 +1,7 @@
 import { createAction } from 'redux-act';
 
 export const setFormItems = createAction('BG_SET_FORM_ITEMS');
+export const updateFormState = createAction('BG_UPDATE_STATE_FORM_ITEMS');
 
 export const loadFormData = () => (dispatch, getState) => {
   const {
@@ -25,6 +26,8 @@ export const loadFormData = () => (dispatch, getState) => {
       return response.json();
     })
     .then(myJson => {
-      dispatch(setFormItems(myJson));
+      dispatch(setFormItems(myJson.map(entry => ({
+        ...entry, invalid: false
+      }))));
     });
 };

@@ -20,6 +20,7 @@
     "no-return-assign": "off",
     "no-script-url": "off",
     "no-case-declarations": "off",
+    "no-loop-func": "off",
     "no-bitwise": "off",
     "react/jsx-filename-extension": "off",
     "react/no-find-dom-node": "off",

@@ -5,16 +5,27 @@ import { withTranslation } from 'react-i18next';
 
 import * as allActions from './actions';
 
+import {
+  AXAButton
+} from '../../patterns-library';
+
 import { NEW, EDIT, VIEW, GET_FORM_COMPONENT } from './config';
 
 class Form extends PureComponent {
-
   componentDidMount(){
     const { formItems, loadFormData } = this.props;
 
     if (!formItems.length) {
       loadFormData();
     }
+  }
+
+  onChange = (event, { name }, index) => {
+    const { updateFormState } = this.props;
+    const target = {
+      value: event.target.value, name, inFormIndex: index
+    }
+    updateFormState(target, index);
   }
 
   _getInputElement = (config, index) => {
@@ -41,8 +52,11 @@ class Form extends PureComponent {
             key={`form_index${index}`}
             label={t(config.label)}
             className=''
+            checkMark={config.checkmark}
+            onChange={(e) => { this.onChange(e, config, index) }}
             required={config.required}
             name={config.name}
+            invalid={config.invalid}
             items={translatedOptions}
             disabled={mode === VIEW}
           />
@@ -54,6 +68,10 @@ class Form extends PureComponent {
             key={`form_index${index}`}
             label={t(config.label)}
             className=''
+            invalid={config.invalid}
+            checkMark={config.checkmark}
+            error={t(config.error)}
+            onChange={(e) => { this.onChange(e, config, index) }}
             required={config.required}
             name={config.name}
             disabled={mode === VIEW}
@@ -66,9 +84,16 @@ class Form extends PureComponent {
         for (let i = 0; i < lines; i++) {
           inputs.push((
             <Comp
-              key={`form_index${index}`}
+              key={`form_index${index}_${i}`}
               className=''
+              onChange={(e) => this.onChange(e, {
+                ...config,
+                name: i === 0 ? config.name : `${config.name}_${i}`
+              }, index)}
               label={i === 0 ? t(config.label) : ''}
+              invalid={config.invalid}
+              checkMark={config.checkmark}
+              error={i === lines - 1 ? t(config.error) : ''}
               required={config.required}
               name={i === 0 ? config.name : `${config.name}_${i}`}
               disabled={mode === VIEW}
@@ -80,21 +105,31 @@ class Form extends PureComponent {
     }
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { formState } = this.props;
+    console.log('send ', formState);
+    // const data = new FormData(event.target);
+  }
+
   render() {
-    const { mode, contractNummer, formItems } = this.props;
+    const { mode, contractNummer, formItems, t } = this.props;
     if (mode !== NEW && mode !== EDIT && mode !== VIEW) {
       throw new Error(`
         Mode not recognised.
         Recieved: ${mode}. Allowed modes: ${VIEW}, ${EDIT}, ${NEW}`);
     }
     return (
-      <form className="o-baug__app__contract-form">
+      <form onSubmit={this.handleSubmit} className="o-baug__app__contract-form">
         Mode: {mode} for contract nr {contractNummer}
-        {formItems && formItems.map((...args) => (
-          <div className="o-baug__app__contract-form-inputs">
-            {this._getInputElement(...args)}
+        {formItems && formItems.map((item, index) => (
+          <div key={`wrapper-form${index}`} className="o-baug__app__contract-form-inputs">
+            {this._getInputElement(item, index)}
           </div>
         )) }
+        <AXAButton type="submit">
+          {t('bg.contract_form.submit_btn')}
+        </AXAButton>
       </form>
     );
   }
@@ -103,7 +138,9 @@ class Form extends PureComponent {
 Form.propTypes = {
   mode: PropTypes.string,
   formItems: PropTypes.array.isRequired,
+  formState: PropTypes.object.isRequired,
   loadFormData: PropTypes.func.isRequired,
+  updateFormState: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   contractNummer: PropTypes.string.isRequired,
 };

@@ -20,7 +20,11 @@
         "ch": "Schweiz",
         "li": "Lichtenstein"
       },
-      "contract_date": "Vertragsdatum"
+      "contract_date": "Vertragsdatum",
+      "submit_btn": "Abschicken",
+      "errors": {
+        "required": "Dieses Feld ist ein Pflichtfeld"
+      }
     },
     "ongoing": {
       "modal_desc": "Garantie {{type}} zeile {{rowIndex}} und kolonne {{cellIndex}}",
