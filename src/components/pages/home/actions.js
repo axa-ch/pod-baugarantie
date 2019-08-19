@@ -8,7 +8,7 @@ export const loadHomeDetail = contractNummer => (dispatch, getState) => {
     authentication: { at }
   } = getState();
 
-  fetch(`${apiUrl}/api/home/overview/${contractNummer}`, {
+  fetch(`${apiUrl}/api/contracts/${contractNummer}/overview`, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

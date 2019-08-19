@@ -48,6 +48,7 @@ class Form extends PureComponent {
             name: t(option.name)
           }
         });
+        console.log(translatedOptions)
         return (
           <Comp
             key={`form_index${index}`}
@@ -106,6 +107,7 @@ class Form extends PureComponent {
     }
   }
 
+  // TODO
   handleSubmit = (event) => {
     event.preventDefault();
     const { formState, updateFormState, formItems, sendFormState } = this.props;
@@ -115,11 +117,11 @@ class Form extends PureComponent {
     formItems.forEach((item, index) => {
       const { name } = item;
 
-      let selectedValue = '';
+      // let selectedValue = '';
 
       const { options } = item;
       if(options && options.length) {
-        // 
+        //
       }
       if (!formState[name] && !item.value) {
         updateFormState({ value: '', name, inFormIndex: index });

@@ -27,7 +27,10 @@ export const loadFormData = () => (dispatch, getState) => {
     })
     .then(myJson => {
       dispatch(setFormItems(myJson.map(entry => ({
-        ...entry, invalid: false
+        ...entry,
+        invalid:
+        false,
+        checkmark: (entry.options && entry.options.some(item => item.selected))
       }))));
     });
 };
@@ -57,7 +60,7 @@ export const sendFormState = () => (dispatch, getState) => {
       return response.json();
     })
     .then(myJson => {
-      console.log('deded', myJson)
+      console.log('TODO', myJson)
     });
 };
 
