@@ -10,7 +10,7 @@ export const loadContract = (id, index = 0, contracts = null) => (dispatch, getS
     contracts: { contracts: _contracts }
   } = getState();
 
-  fetch(`${apiUrl}/api/contract/${id}`, {
+  fetch(`${apiUrl}/api/contracts/${id}`, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
