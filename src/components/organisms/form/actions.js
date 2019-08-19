@@ -31,3 +31,59 @@ export const loadFormData = () => (dispatch, getState) => {
       }))));
     });
 };
+
+export const sendFormState = () => (dispatch, getState) => {
+  const {
+    config: { config: { apiUrl } },
+    authentication: { at },
+    form: { formState },
+  } = getState();
+
+  fetch(`${apiUrl}/api/contract/form`, {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': at,
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrer: 'no-referrer', // no-referrer, *client
+    body: JSON.stringify(formState),
+  })
+    .then(response => {
+      return response.json();
+    })
+    .then(myJson => {
+      console.log('deded', myJson)
+    });
+};
+
+export const postNewform = () => (dispatch, getState) => {
+  const {
+    config: { config: { apiUrl } },
+    authentication: { at },
+  } = getState();
+
+  fetch(`${apiUrl}/api/contract/form`, {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': at,
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrer: 'no-referrer', // no-referrer, *client
+  })
+    .then(response => {
+      return response.json();
+    })
+    .then(() => {
+      console.log('form posted')
+    });
+};

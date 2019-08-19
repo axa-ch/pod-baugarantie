@@ -48,6 +48,7 @@
   "globals": {
     "HTMLElement": true,
     "HTMLImports": true,
+    "fetch": true,
     "FormData": true,
     "describe": true,
     "afterEach": true,
@@ -57,7 +58,6 @@
     "sessionStorage": true,
     "XMLHttpRequest": true,
     "history": true,
-    "fetch": true,
     "MutationObserver": true,
     "document": true,
     "window": true,

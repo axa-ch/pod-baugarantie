@@ -25,7 +25,7 @@ class Form extends PureComponent {
     const target = {
       value: event.target.value, name, inFormIndex: index
     }
-    updateFormState(target, index);
+    updateFormState(target);
   }
 
   _getInputElement = (config, index) => {
@@ -38,6 +38,7 @@ class Form extends PureComponent {
       throw new Error(`Component Type: ${type} is not recognised! Please add it to the frontend`)
     }
 
+    // TODO: dryfiy props on components
     switch (type) {
       case 'axa-dropdown':
         const { options } = config;
@@ -107,9 +108,28 @@ class Form extends PureComponent {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { formState } = this.props;
-    console.log('send ', formState);
-    // const data = new FormData(event.target);
+    const { formState, updateFormState, formItems, sendFormState } = this.props;
+
+    let anyInvalid = false;
+
+    formItems.forEach((item, index) => {
+      const { name } = item;
+
+      let selectedValue = '';
+
+      const { options } = item;
+      if(options && options.length) {
+        // 
+      }
+      if (!formState[name] && !item.value) {
+        updateFormState({ value: '', name, inFormIndex: index });
+        anyInvalid = true;
+      }
+    });
+
+    if (!anyInvalid) {
+      sendFormState();
+    }
   }
 
   render() {
@@ -140,6 +160,7 @@ Form.propTypes = {
   formItems: PropTypes.array.isRequired,
   formState: PropTypes.object.isRequired,
   loadFormData: PropTypes.func.isRequired,
+  sendFormState: PropTypes.func.isRequired,
   updateFormState: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   contractNummer: PropTypes.string.isRequired,
