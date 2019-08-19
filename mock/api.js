@@ -4,15 +4,11 @@ const router = express.Router();
 
 const auth = require('./auth');
 const menu = require('./menu');
-const ongoing = require('./ongoing');
-const policeDetail = require('./police-detail');
 const contracts = require('./contracts');
 const contract = require('./contract');
 
 router.use('/auth', auth);
 router.use('/menu', menu);
-router.use('/ongoing', ongoing);
-router.use('/police-detail', policeDetail);
 router.use('/contracts', contracts);
 router.use('/contract', contract);
 

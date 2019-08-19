@@ -13,7 +13,7 @@ export const loadTableItems = (contractNummer) => (dispatch, getState) => {
     config: { config: { apiUrl } },
     authentication: { at },
   } = getState();
-  fetch(`${apiUrl}/api/ongoing/items/${contractNummer}`, {
+  fetch(`${apiUrl}/api/contracts/${contractNummer}/ongoingbonds`, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

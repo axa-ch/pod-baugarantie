@@ -8,7 +8,7 @@ export const loadPoliceDetail = (contractNummer) => (dispatch, getState) => {
     authentication: { at },
   } = getState();
 
-  fetch(`${apiUrl}/api/police-detail/values/${contractNummer}`, {
+  fetch(`${apiUrl}/api/contracts/${contractNummer}/police-detail`, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
