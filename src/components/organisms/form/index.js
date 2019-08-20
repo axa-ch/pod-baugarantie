@@ -165,7 +165,6 @@ Form.propTypes = {
   sendFormState: PropTypes.func.isRequired,
   updateFormState: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
-  contractNummer: PropTypes.string.isRequired,
 };
 
 Form.defaultProps = {
