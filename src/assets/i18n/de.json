@@ -35,6 +35,26 @@
         "pdf": "PDF"
       }
     },
+    "home": {
+      "contractor": {
+        "name": "Name",
+        "adress_line1": "Adresse Zeile 1",
+        "adress_line2": "Adresse Zeile 2",
+        "adress_line3": "Adresse Zeile 3"
+      },
+      "detail_overview_title": "Übersicht Policedaten",
+      "detail_overview": {
+        "police_nummer": "Policenummer",
+        "deposit_amount": "Depotsaldo",
+        "left_amount": "Freie Kapazität",
+        "max_paying_out": "Davon max. für Anzahlungs- / Ausführungsgarantien"
+      }
+    },
+    "footer": {
+      "copyright": "© 2019 AXA Versicherungen AG",
+      "term_of_use": "Nutzungshinweise",
+      "data_protection": "Datenschutz"
+    },
     "login": {
       "username": "Benutzername",
       "password": "Passwort",

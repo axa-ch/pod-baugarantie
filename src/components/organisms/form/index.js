@@ -48,7 +48,6 @@ class Form extends PureComponent {
             name: t(option.name)
           }
         });
-        console.log(translatedOptions)
         return (
           <Comp
             key={`form_index${index}`}
@@ -135,7 +134,7 @@ class Form extends PureComponent {
   }
 
   render() {
-    const { mode, contractNummer, formItems, t } = this.props;
+    const { mode, formItems, t } = this.props;
     if (mode !== NEW && mode !== EDIT && mode !== VIEW) {
       throw new Error(`
         Mode not recognised.
@@ -143,12 +142,13 @@ class Form extends PureComponent {
     }
     return (
       <form onSubmit={this.handleSubmit} className="o-baug__app__contract-form">
-        Mode: {mode} for contract nr {contractNummer}
-        {formItems && formItems.map((item, index) => (
-          <div key={`wrapper-form${index}`} className="o-baug__app__contract-form-inputs">
-            {this._getInputElement(item, index)}
-          </div>
-        )) }
+        <div className="o-baug__app__contract-form-wrapper">
+          {formItems && formItems.map((item, index) => (
+            <div key={`wrapper-form${index}`} className="o-baug__app__contract-form-inputs">
+              {this._getInputElement(item, index)}
+            </div>
+          )) }
+        </div>
         <AXAButton type="submit">
           {t('bg.contract_form.submit_btn')}
         </AXAButton>

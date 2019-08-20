@@ -50,8 +50,9 @@ class Contracts extends PureComponent {
             title="Please Select"
             items={preparedContracts}
           />
-          { description ? (<p>{description}</p>) : ''}
+          { description ? (<p className="o-baug__app__contracts-description">{description}</p>) : ''}
         </section>
+        <div className="o-baug__app__contracts-separator" />
         { activeContract ? (<Component contractNummer={activeContract} />) : ''}
       </>
     );

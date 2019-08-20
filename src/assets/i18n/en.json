@@ -26,6 +26,21 @@
         "required": "This field is mandatory"
       }
     },
+    "home": {
+      "contractor": {
+        "name": "Name",
+        "adress_line1": "Adress Line 1",
+        "adress_line2": "Adress Line 2",
+        "adress_line3": "Adress Line 3"
+      },
+      "detail_overview_title": "Overview policedata",
+      "detail_overview": {
+        "police_nummer": "Police nummer",
+        "deposit_amount": "Deposit amount",
+        "left_amount": "Left amount",
+        "max_paying_out": "Max payout"
+      }
+    },
     "ongoing": {
       "modal_desc": "Guarantees {{type}} on row {{rowIndex}} and column {{cellIndex}}",
       "page_count": "Page {{realPageNumber}} of {{realTotPages}}",

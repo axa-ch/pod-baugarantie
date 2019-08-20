@@ -22,17 +22,29 @@
   }
 
   &__contract-form {
+    &-wrapper {
+      display: flex;
+      flex-flow: wrap;
+      box-sizing: border-box;
+    }
 
     &-inputs {
       margin-bottom: 20px;
+      flex: 0 0 100%;
 
-      .a-input-text__wrapper {
-        margin-top: 2px;
+      @include breakpoint($mediaquery-md-up) {
+        flex: 0 0 45%;
+        margin-left: 2%;
+        margin-right: 2%;
       }
     }
 
-    @include breakpoint($mediaquery-md-up) {
-      margin: 10px 10%;
+    axa-button {
+      margin-left: 0px;
+
+      @include breakpoint($mediaquery-md-up) {
+        margin-left: 20px;
+      }
     }
   }
 
@@ -41,7 +53,6 @@
   }
 
   &__login-form-inputs {
-    max-width: 400px;
     margin: auto;
     margin-bottom: 20px;
 
@@ -160,8 +171,37 @@
   &__contracts {
     padding: 0 20px 5px 20px;
 
+    h1 {
+      @include typo-title();
+      margin-bottom: 5px;
+    }
+
     axa-dropdown {
       margin-top: 5px;
+    }
+
+    &-separator {
+      height: 1px;
+      width: 70%;
+      margin: auto;
+      position: relative;
+      margin-top: 30px;
+      margin-bottom: 5px;
+
+      &:before {
+        content: "";
+      	position: absolute;
+      	top: 0;
+      	left: 5%;
+      	right: 5%;
+      	width: 90%;
+      	height: 1px;
+      	background-image: linear-gradient(to right, transparent, $color-prim-blue-deep-sapphire, transparent);
+      }
+    }
+
+    &-description {
+      margin-top: 15px;
     }
 
     .m-dropdown__error,
