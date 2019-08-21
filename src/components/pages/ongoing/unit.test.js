@@ -233,9 +233,8 @@ describe('Ongoing page', () => {
     // re render with new data
     const enzymeWrapperAfterSearch = setup.shallow();
     expect(
-      enzymeWrapperAfterSearch.find(AXATableSortableReact).props().model
-        .tbody[0].length
-    ).toBe(0);
+      enzymeWrapperAfterSearch.find('p').html()
+    ).toContain('<p>bg.ongoing.no_results</p>');
   });
 
   it('pagination works correctly when pressing NEXT and PREV', async () => {
