@@ -20,7 +20,7 @@ export const ongoing = createReducer(
           pageNumber: state.pageNumber,
           rowLength: state.rowLength,
           needsPagination: state.needsPagination,
-          isSearching: state.isSearching,
+          isSearching: true,
         };
       }
       return {

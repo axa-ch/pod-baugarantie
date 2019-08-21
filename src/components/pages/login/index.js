@@ -17,6 +17,9 @@ export const Login = ({
   password,
 }) => (
   <section className="o-baug__app__login-form">
+    <h1 className="o-baug__app__login-form-title">
+      {t('bg.login.title')}
+    </h1>
     <form
       onSubmit={e => {
         e.preventDefault();

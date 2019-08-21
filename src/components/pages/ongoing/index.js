@@ -87,6 +87,7 @@ export class Ongoing extends PureComponent {
       pageNumber,
       match,
       isLoading,
+      isSearching,
       contractNummer,
       history,
       t,
@@ -106,6 +107,10 @@ export class Ongoing extends PureComponent {
 
     const realPageNumber = pageNumber + 1;
     const realTotPages = Math.floor(rowLength) + 1;
+
+    const searchingHtml = (isSearching ? (<div className="lds-dual-ring" />) : (
+      <p>{t('bg.ongoing.no_results')}</p>
+    ))
 
     return (
       <>
@@ -185,13 +190,18 @@ export class Ongoing extends PureComponent {
               ''
             )}
           </div>
-          <article className="o-baug__app__content-table">
-            <AXATableSortableReact
-              innerscroll="800"
-              maxheight="600"
-              model={tableItems}
-            />
-          </article>
+          {
+            (tableItems && tableItems.tbody && tableItems.tbody[0].length) ? (
+              <article className="o-baug__app__content-table">
+                <AXATableSortableReact
+                  innerscroll="800"
+                  maxheight="600"
+                  model={tableItems}
+                />
+              </article>
+            ) : searchingHtml
+          }
+
         </section>
       </>
     );
@@ -210,9 +220,15 @@ Ongoing.propTypes = {
   contractNummer: PropTypes.string.isRequired,
   rowLength: PropTypes.number.isRequired,
   needsPagination: PropTypes.bool.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool,
+  isSearching: PropTypes.bool,
   loadTableItems: PropTypes.func.isRequired,
 };
+
+Ongoing.defaultProps = {
+  isLoading: false,
+  isSearching: false,
+}
 
 export default connect(
   state => state.ongoing,

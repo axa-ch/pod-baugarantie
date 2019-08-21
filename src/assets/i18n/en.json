@@ -44,6 +44,7 @@
     "ongoing": {
       "modal_desc": "Guarantees {{type}} on row {{rowIndex}} and column {{cellIndex}}",
       "page_count": "Page {{realPageNumber}} of {{realTotPages}}",
+      "no_results": "No result found",
       "table_actions": {
         "view": "View",
         "edit": "Edit",
@@ -62,7 +63,8 @@
       "username": "Username",
       "password": "Password",
       "change_password": "Change password",
-      "login": "login"
+      "login": "login",
+      "title": "Login form"
     }
   }
 }

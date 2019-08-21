@@ -29,6 +29,7 @@
     "ongoing": {
       "modal_desc": "Garantie {{type}} zeile {{rowIndex}} und kolonne {{cellIndex}}",
       "page_count": "Seite {{realPageNumber}} von {{realTotPages}}",
+      "no_results": "Es wurden keine resultate gefunden",
       "table_actions": {
         "view": "Anzeigen",
         "edit": "Editieren",
@@ -59,7 +60,8 @@
       "username": "Benutzername",
       "password": "Passwort",
       "change_password": "Passwort ändern",
-      "login": "Einloggen"
+      "login": "Einloggen",
+      "title": "Anmeldungsformular"
     }
   }
 }
