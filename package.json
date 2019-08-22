@@ -89,7 +89,7 @@
     "webpack-html-string-replace-plugin": "^1.1.1"
   },
   "scripts": {
-    "test": "npm run test-jest",
+    "test": "npm run test-jest && npm run test-chrome-headless",
     "clean-lib": "rimraf lib",
     "build": "npm run build-pod && npm run build-standalone",
     "build-pod": "npm run clean-lib && cross-env NODE_ENV=production rollup --config ./rollup.config.js",
@@ -97,9 +97,10 @@
     "release": "generic-release",
     "api": "node ./mock/server.js port=3000 --host 0.0.0.0",
     "start": "concurrently \"webpack-dev-server\" \"npm run api\"",
-    "start-ui-test": "concurrently \"cross-env NODE_ENV=production webpack-dev-server --progress --port=9999 --host=0.0.0.0\" \"npm run api\"",
     "test-jest": "node scripts/test.unit.js --env=jsdom",
+    "start-ui-test": "concurrently \"cross-env NODE_ENV=production webpack-dev-server --progress --port=9999 --host=0.0.0.0\" \"npm run api\"",
     "test-chrome": "sh ./scripts/testcafe-chrome.sh",
+    "test-ui": "npm run test-chrome",
     "test-chrome-headless": "sh scripts/testcafe-chrome-headless.sh"
   },
   "repository": {
