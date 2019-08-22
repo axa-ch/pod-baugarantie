@@ -81,6 +81,8 @@
     "rollup-plugin-sass": "^1.1.0",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
+    "testcafe": "^1.4.1",
+    "wait-on": "^3.3.0",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
@@ -95,7 +97,10 @@
     "release": "generic-release",
     "api": "node ./mock/server.js port=3000 --host 0.0.0.0",
     "start": "concurrently \"webpack-dev-server\" \"npm run api\"",
-    "test-jest": "node scripts/test.unit.js --env=jsdom"
+    "start-ui-test": "concurrently \"cross-env NODE_ENV=production webpack-dev-server --progress --port=9999 --host=0.0.0.0\" \"npm run api\"",
+    "test-jest": "node scripts/test.unit.js --env=jsdom",
+    "test-chrome": "sh ./scripts/testcafe-chrome.sh",
+    "test-chrome-headless": "sh scripts/testcafe-chrome-headless.sh"
   },
   "repository": {
     "type": "git",

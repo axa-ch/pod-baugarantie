@@ -80,7 +80,7 @@ module.exports = {
     historyApiFallback: true,
 
     // open browser on server start
-    open: config.get('open')
+    open: ( process.env.NODE_ENV === 'production' ? false : config.get('open') )
   },
 
   // generate source map

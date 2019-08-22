@@ -39,7 +39,8 @@
           "./scripts/**/*.js",
           "./test/**/*.js",
           "./**/unit.test.js",
-          "./mock/**/*.js"
+          "./mock/**/*.js",
+          "**/ui.test.js"
         ]
       }
     ],
@@ -63,6 +64,8 @@
     "window": true,
     "ENV": true,
     "PROD": true,
+    "fixture": true,
+    "test": true,
     "DEV": true
   },
   "parser": "babel-eslint",
