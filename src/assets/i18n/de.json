@@ -37,6 +37,7 @@
       }
     },
     "home": {
+      "contractor_title": "Versicherungsnehmer",
       "contractor": {
         "name": "Name",
         "adress_line1": "Adresse Zeile 1",

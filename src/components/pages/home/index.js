@@ -36,7 +36,7 @@ class Home extends PureComponent {
       <div className="o-baug__app__home-section-wrapper">
         <section className="o-baug__app__home-section">
           <h2 className="o-baug__app__home-section-title">
-            {t('bg.home.contractor')}
+            {t('bg.home.contractor_title')}
           </h2>
           <div>
             <strong className="o-baug__app__home-section-label">

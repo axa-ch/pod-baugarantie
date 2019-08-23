@@ -27,6 +27,7 @@
       }
     },
     "home": {
+      "contractor_title": "Policyholder",
       "contractor": {
         "name": "Name",
         "adress_line1": "Adress Line 1",
