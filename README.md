@@ -12,7 +12,7 @@ At the end of the Master work, this application will already create 2 artefacts:
 
 ### Standalone application
 
-For a "standalone application" we intend that the export is a self-contained JavaScript bundle which is optimised for IE11, EDGE, Chrome, Firefox and Safari on mobile and desktop. This bundle is also "minified", which means that JavaScript code that is not needed has been removed and variables and function names has shrunk to a single letter. The process of "minification" also removes spaces, newlines and brackets where it can. This conversion from development code, which is written according to the ECMA Specification 2019, is called "transpilation". To be precise, it is not the same as compilation because it's source code is theoretically still readble and is still code that is interpreted from the Browser's engine. 
+For a "standalone application" we intend that the export is a self-contained JavaScript bundle which is optimised for IE11, EDGE, Chrome, Firefox and Safari on mobile and desktop. This bundle is also "minified", which means that JavaScript code that is not needed has been removed and variables and function names have shrunk to a single letter. The process of "minification" also removes spaces, newlines and brackets where it can. The conversion from development code, which is written according to the ECMA Specification 2019, is called "transpilation". It is not the same as compilation because it's source code is, theoretically, still readble and is still code that is interpreted from the Browser's engine. 
 
 ### POD / Webhub Architecture
 
