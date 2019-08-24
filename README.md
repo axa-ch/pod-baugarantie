@@ -44,7 +44,7 @@ We used Redux to implement the Flux architecture.
 
 **Redux** is a small library with a simple, limited API designed to be a predictable container for application state. It operates in a similar fashion to a [reducing function](https://en.wikipedia.org/wiki/Fold_(higher-order_function)), a functional programming concept.
 
-The application is split into different, self contained components (can also be called systems or shortly [SCS](https://en.wikipedia.org/wiki/Self-contained_system_(software))). These components contain everything they need: CSS, HTML, JavaScript, [Redux actions](https://redux.js.org/basics/actions) and [Redux reducers](https://redux.js.org/basics/reducers). *Per 25.08.2019 the CSS has not been put yet into each component. Reason: relatively small size. Now complexity demands refacatoring and will be fixed soon*
+The application is split into different, self contained components (can also be called systems or shortly [SCS](https://en.wikipedia.org/wiki/Self-contained_system_(software))). These components contain everything they need: CSS, HTML, JavaScript, [Redux actions](https://redux.js.org/basics/actions) and [Redux reducers](https://redux.js.org/basics/reducers). *Per 25.08.2019 the CSS has not been put yet into each component. Reason: relatively small size in its early. Now complexity demands refacatoring and will be fixed soon.*
 
 Every component [connects](https://react-redux.js.org/api/connect) to its dedicated store, but can access, and therefore subscribe, to other parts of the store, populated from other components.
 
