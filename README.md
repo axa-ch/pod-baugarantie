@@ -44,6 +44,10 @@ We used Redux to implement the Flux architecture.
 
 **Redux** is a small library with a simple, limited API designed to be a predictable container for application state. It operates in a similar fashion to a [reducing function](https://en.wikipedia.org/wiki/Fold_(higher-order_function)), a functional programming concept.
 
+The application is split into different, self contained components (can also be called systems or shortly [SCS](https://en.wikipedia.org/wiki/Self-contained_system_(software))). These components contain everything they need: CSS, HTML, JavaScript, [Redux actions](https://redux.js.org/basics/actions) and [Redux reducers](https://redux.js.org/basics/reducers).
+
+
+
 ## Glossary
 
 - AEM: [Adobe experience manager](https://www.adobe.com/ch_de/marketing/experience-manager.html)
