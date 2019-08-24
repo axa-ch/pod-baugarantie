@@ -63,10 +63,12 @@ Organisms are assemblies of molecules functioning together as a unit. These rela
 Pages are completed sections of the application containg multiple organisms, molecules and atoms. Every route in the application has its own page component.
 
 ![Folder Structure](https://raw.githubusercontent.com/axa-ch/pod-baugarantie/develop/src/assets/images/Bildschirmfoto%202019-08-24%20um%2015.36.58.png)
-*Here an example of the folder structure*
+
+*Image 1: an example of the folder structure*
 
 ![SCS component](https://raw.githubusercontent.com/axa-ch/pod-baugarantie/develop/src/assets/images/Bildschirmfoto%202019-08-24%20um%2015.39.24.png)
-*Here an example of a self contained component inside organisms*
+
+*Image 2: an example of a self contained component inside organisms*
 
 ## Glossary
 
