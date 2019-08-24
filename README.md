@@ -14,6 +14,11 @@ A POD is nothing else than a simple Frontend Application that can be integrated 
 
 This application represents the frontend of the new Baugarantie Portal
 
+## Glossary
+
+- AEM: [Adobe experience manager](https://www.adobe.com/ch_de/marketing/experience-manager.html)
+- CMS: [Content management system](https://en.wikipedia.org/wiki/Content_management_system)
+
 ## Tasks
 
 - `npm start` to start development mode with the mock api. Used for manual tests as well.
