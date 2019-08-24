@@ -26,7 +26,7 @@ This application represents the frontend of the new Baugarantie Portal.
 
 The core of the architecture is based on Flux (see below) and implemented with the help of **React and Redux**.
 
-**React** is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies. React does not attempt to provide a complete "application framework". It is designed specifically for building user interfaces and therefore does not include many of the tools some developers might consider necessary to build an application. This allows the choice of whichever libraries the developer prefers to accomplish tasks such as performing network access or local data storage. Common patterns of usage have emerged as the library matures.
+**React** is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies. React does not attempt to provide a complete "application framework". It is designed specifically for building user interfaces and therefore does not include many of the tools some developers might consider necessary to build an application. This allows the choice of whichever libraries the developer prefers to accomplish tasks such as performing network access or local data storage.
 
 To support React's concept of unidirectional data flow, the **Flux architecture** represents an alternative to the popular model-view-controller architecture. Flux features actions which are sent through a central dispatcher to a store, and changes to the store are propagated back to the view. When used with React, this propagation is accomplished through component properties.
 
