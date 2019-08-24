@@ -20,9 +20,21 @@ Transpilation is not the same as "compilation" because it's source code, theoret
 A POD is nothing else than a simple Frontend Application that can be integrated into AEM (AXA's CMS). Content authors can build webpages on www.axa.ch by dragging & dropping AEM components. Because a POD contains business logic and people developing it are in different teams, the architecture allows PODs to be developed on a different Git Repository than the one where the whole website is saved. A POD exports his artefacts to [npm](https://www.npmjs.com/) as an ES Module and is versioned according to [semver](https://semver.org/). During AEM's build, a special built step calls a NodeJs job which transforms the POD into a AEM compatible JavaScript. During runtime, there is a JavaScript framework that connects via interfaces to a POD's service and provide to the POD AEM enviroment data (such as language or on which stage the pod is running). 
 CSS, JSON and Images have to be bundled within one entry point in the ES Module (most of the time: `lib/index.js`) and external libraries have to be referenced, which is essential for [Webpack's Split Chunk Plugin](https://webpack.js.org/plugins/split-chunks-plugin/). There are [Jenkins](https://jenkins.io/) pipelines that allow a POD to be built independently to other PODs and deployed on AXA.ch's DEV or acceptance Server. Once a POD has been tested, POD owner can promote that version which creates a Pull Request to AXA.ch's Git repository with the effect of freezing that version as the one that will go live with AXA.ch's next Prod Release.
 
-## Frontend
+## Design of the Frontend Application
 
-This application represents the frontend of the new Baugarantie Portal
+This application represents the frontend of the new Baugarantie Portal.
+
+The core of the architecure is based on **React and Redux**.
+
+**React** is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies. React does not attempt to provide a complete "application framework". It is designed specifically for building user interfaces and therefore does not include many of the tools some developers might consider necessary to build an application. This allows the choice of whichever libraries the developer prefers to accomplish tasks such as performing network access or local data storage. Common patterns of usage have emerged as the library matures.
+
+To support React's concept of unidirectional data flow, the Flux architecture represents an alternative to the popular model-view-controller architecture. Flux features actions which are sent through a central dispatcher to a store, and changes to the store are propagated back to the view. When used with React, this propagation is accomplished through component properties.
+
+Flux can be considered a variant of the observer pattern.
+
+We used Redux to implement the Flux architecture.
+
+**Redux** is a small library with a simple, limited API designed to be a predictable container for application state. It operates in a similar fashion to a [reducing function](https://en.wikipedia.org/wiki/Fold_(higher-order_function)), a functional programming concept.
 
 ## Glossary
 
