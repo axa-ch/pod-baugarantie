@@ -46,7 +46,21 @@ We used Redux to implement the Flux architecture.
 
 The application is split into different, self contained components (can also be called systems or shortly [SCS](https://en.wikipedia.org/wiki/Self-contained_system_(software))). These components contain everything they need: CSS, HTML, JavaScript, [Redux actions](https://redux.js.org/basics/actions) and [Redux reducers](https://redux.js.org/basics/reducers).
 
+Every component [connects](https://react-redux.js.org/api/connect) to its dedicated store, but can access, and therefore subscribe, to other parts of the store, populated from other components.
 
+A component can only run actions defined directly by himself. In order to trigger changes in other components, it must pass those changes via the store or via react component properties.
+
+Components can include other components giving to the whole system a very high flexibility due to its self-containedness and composability.
+
+Components are divided by complexity. We have Atoms, Molecules, Organisms and Pages in our Application.
+
+Atoms are the basic building blocks of all matter. Each chemical element has distinct properties, and they can’t be broken down further without losing their meaning.
+
+Molecules are groups of two or more atoms held together by chemical bonds. These combinations of atoms take on their own unique properties, and become more tangible and operational than atoms.
+
+Organisms are assemblies of molecules functioning together as a unit. These relatively complex structures can range from single-celled organisms all the way up to incredibly sophisticated organisms like human beings.
+
+Pages are completed sections of the application containg multiple organisms, molecules and atoms. Every route in the application has its own page component.
 
 ## Glossary
 
