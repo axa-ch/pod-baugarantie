@@ -18,6 +18,8 @@ The process of "minification" also removes spaces, newlines and brackets where p
 
 Transpilation is not the same as "compilation" because it's source code, theoretically, is still readble and is still code that is interpreted from the Browser's engine.
 
+Baugarantie's JBoss Server will include as is the genered, minified and transpiled bundle and render the HTML where the JavaScript gets attached on.
+
 ### POD / Webhub Architecture
 
 A POD is nothing else than a simple Frontend Application that can be integrated into AEM (AXA's CMS). Content authors can build webpages on www.axa.ch by dragging & dropping AEM components. Because a POD contains business logic and people developing it are in different teams, the architecture allows PODs to be developed on a different Git Repository than the one where the whole website is saved. A POD exports his artefacts to [npm](https://www.npmjs.com/) as an ES Module and is versioned according to [semver](https://semver.org/).
