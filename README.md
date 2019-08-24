@@ -12,19 +12,19 @@ At the end of the Master work, this application will have created 2 artefacts: S
 
 ### Standalone application
 
-A "standalone application" is an export of self-contained JavaScript code all in one bundle, which is optimised for IE11, EDGE, Chrome, Firefox and Safari, on mobile and desktop devices. This bundle is also "minified", which means that JavaScript code that is not needed has been removed and variables and function names have been shrunk to a single letter. 
+A "standalone application" is an export of self-contained JavaScript code all in one bundle, which is optimised for IE11, EDGE, Chrome, Firefox and Safari, on mobile and desktop devices. This bundle is also "minified", which means that JavaScript code that is not needed has been removed and variables and function names have been shrunk to a single letter.
 
-The process of "minification" also removes spaces, newlines and brackets where possible. The conversion from development code, which is written according to the ECMA Specification 2019, to older JavaScript code, which is needed for some legacy browser, is called "transpilation". 
+The process of "minification" also removes spaces, newlines and brackets where possible. The conversion from development code, which is written according to the ECMA Specification 2019, to older JavaScript code, which is needed for some legacy browser, is called "transpilation".
 
-Transpilation is not the same as "compilation" because it's source code, theoretically, is still readble and is still code that is interpreted from the Browser's engine. 
+Transpilation is not the same as "compilation" because it's source code, theoretically, is still readble and is still code that is interpreted from the Browser's engine.
 
 ### POD / Webhub Architecture
 
-A POD is nothing else than a simple Frontend Application that can be integrated into AEM (AXA's CMS). Content authors can build webpages on www.axa.ch by dragging & dropping AEM components. Because a POD contains business logic and people developing it are in different teams, the architecture allows PODs to be developed on a different Git Repository than the one where the whole website is saved. A POD exports his artefacts to [npm](https://www.npmjs.com/) as an ES Module and is versioned according to [semver](https://semver.org/). 
+A POD is nothing else than a simple Frontend Application that can be integrated into AEM (AXA's CMS). Content authors can build webpages on www.axa.ch by dragging & dropping AEM components. Because a POD contains business logic and people developing it are in different teams, the architecture allows PODs to be developed on a different Git Repository than the one where the whole website is saved. A POD exports his artefacts to [npm](https://www.npmjs.com/) as an ES Module and is versioned according to [semver](https://semver.org/).
 
-During AEM's build, a special built step calls a NodeJs job which transforms the POD into a AEM compatible JavaScript. During runtime, there is a JavaScript framework that connects via interfaces to a POD's service and provide to the POD AEM enviroment data (such as language or on which stage the pod is running). 
+During AEM's build, a special built step calls a NodeJs job which transforms the POD into a AEM compatible JavaScript. During runtime, there is a JavaScript framework that connects via interfaces to a POD's service and provide to the POD AEM enviroment data (such as language or on which stage the pod is running).
 
-CSS, JSON and Images have to be bundled within one entry point in the ES Module (most of the time: `lib/index.js`) and external libraries have to be referenced, which is essential for [Webpack's Split Chunk Plugin](https://webpack.js.org/plugins/split-chunks-plugin/). 
+CSS, JSON and Images have to be bundled within one entry point in the ES Module (most of the time: `lib/index.js`) and external libraries have to be referenced, which is essential for [Webpack's Split Chunk Plugin](https://webpack.js.org/plugins/split-chunks-plugin/).
 
 There are [Jenkins](https://jenkins.io/) pipelines that allow a POD to be built independently to other PODs and deployed on AXA.ch's DEV or acceptance Server. Once a POD has been tested, POD owner can promote that version which creates a Pull Request to AXA.ch's Git repository with the effect of freezing that version as the one that will go live with AXA.ch's next Prod Release.
 
@@ -44,7 +44,7 @@ We used Redux to implement the Flux architecture.
 
 **Redux** is a small library with a simple, limited API designed to be a predictable container for application state. It operates in a similar fashion to a [reducing function](https://en.wikipedia.org/wiki/Fold_(higher-order_function)), a functional programming concept.
 
-The application is split into different, self contained components (can also be called systems or shortly [SCS](https://en.wikipedia.org/wiki/Self-contained_system_(software))). These components contain everything they need: CSS, HTML, JavaScript, [Redux actions](https://redux.js.org/basics/actions) and [Redux reducers](https://redux.js.org/basics/reducers).
+The application is split into different, self contained components (can also be called systems or shortly [SCS](https://en.wikipedia.org/wiki/Self-contained_system_(software))). These components contain everything they need: CSS, HTML, JavaScript, [Redux actions](https://redux.js.org/basics/actions) and [Redux reducers](https://redux.js.org/basics/reducers). __Per 25.08.2019 CSS is not put yet into each component. Will be fixed soon__
 
 Every component [connects](https://react-redux.js.org/api/connect) to its dedicated store, but can access, and therefore subscribe, to other parts of the store, populated from other components.
 
