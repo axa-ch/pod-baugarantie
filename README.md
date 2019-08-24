@@ -1,12 +1,20 @@
 # Pod baugarantie v2
 
+## Introduction
+
 [![Build Status](https://travis-ci.org/axa-ch/pod-baugarantie.svg?branch=develop)](https://travis-ci.org/axa-ch/pod-baugarantie)
 
-This POD will start its journey as a standalone application and later on it will be part of the axa-ch webhub architecture.
+This POD will start its journey as a **standalone application** and later on it will be part of the **axa-ch webhub** architecture.
 
 It is the result of a MAS Master work combined with the HSR School, Luca Mele, Armin Mattle and AXA Baugarantie.
 
-## Webhub Architecture
+At the end of the Master work, this application will already create 2 artefacts: Standalone and POD
+
+### Standalone application
+
+bla bla
+
+### POD / Webhub Architecture
 
 A POD is nothing else than a simple Frontend Application that can be integrated into AEM (AXA's CMS). Content authors can build webpages on www.axa.ch by dragging & dropping AEM components. Because a POD contains business logic and people developing it are in completly different teams, the architecture allows PODs to be developed on a completely different Git Repository than the one where the whole website is saved. A POD exports his artefacts to [npm](https://www.npmjs.com/) as a ES Module and is versioned according to [semver](https://semver.org/). During AEM's build, a special built step calls a NodeJs job which transforms the POD into a AEM compatible JavaScript. During runtime, there is a JavaScript framework that connects via interfaces to a POD's services and provide to the POD AEM enviroment data (such as language or on which stage the pod is running). CSS, JSON and Images have to be bundled within one entry point in the ES Module (most of the time: `lib/index.js`) and external libraries have to be referenced, which is essential for [Webpack's Split Chunk Plugin](https://webpack.js.org/plugins/split-chunks-plugin/). There are [Jenkins](https://jenkins.io/) pipelines that allow a POD to be built independently to other PODs and deployed on AXA.ch's DEV or acceptance Server. Once a POD has been tested, POD owner can promote that version which creates a Pull Request to AXA.ch's Git repository with the effect of freezing that version as the one that will go live with AXA.ch's next Prod Release.
 
