@@ -6,7 +6,7 @@ const beforeEachHook = (mobile = true) => async (t) => {
   if (mobile) {
     await t.resizeWindow(350, 700);
   } else {
-    await t.maximizeWindow();
+    await t.resizeWindow(1920, 1080);
   }
   await t.typeText( 'input[name="username"]', 'testuser' );
   await t.typeText( 'input[name="password"]', 'testpassword' );
@@ -57,7 +57,7 @@ test('Should render big table', async t => {
 
   await t.typeText('input[name="search-table"]', '999' );
 
-  await t.wait( 600 );
+  await t.wait( 1000 );
 
   const $elPaginationFilter = await Selector('.o-baug__app__content-table-pagination-text').addCustomDOMProperties({
     innerHTML: el => el.innerHTML,
@@ -104,7 +104,7 @@ test('Should render big table on mobile', async t => {
     document.querySelector('axa-dropdown')
   );
   const secondOption = await Selector(() =>
-    document.querySelector('axa-dropdown button[data-index="1"]')
+    document.querySelector('axa-dropdown option[data-index="1"]')
   );
   await t.click(dropdown);
   await t.click(secondOption);
@@ -119,7 +119,7 @@ test('Should render big table on mobile', async t => {
 
   await t.typeText('input[name="search-table"]', '999' );
 
-  await t.wait( 600 );
+  await t.wait( 1000 );
 
   const $elPaginationFilter = await Selector('.o-baug__app__content-table-pagination-text').addCustomDOMProperties({
     innerHTML: el => el.innerHTML,
