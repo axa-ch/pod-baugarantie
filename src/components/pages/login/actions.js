@@ -49,11 +49,11 @@ export const deleteLogin = () => (dispatch, getState) => {
     credentials: 'same-origin', // include, *same-origin, omit
     headers: {
       'Content-Type': 'application/json',
+      'authorization': at
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     redirect: 'follow', // manual, *follow, error
     referrer: 'no-referrer', // no-referrer, *client
-    body: JSON.stringify({ at }),
   })
     .then(response => {
       return response.json();
