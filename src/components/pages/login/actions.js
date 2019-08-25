@@ -62,5 +62,7 @@ export const deleteLogin = () => (dispatch, getState) => {
       // nothing here. Is fire and forget
     });
   sessionStorage.removeItem('bg_at');
+  dispatch(setPassword(''));
+  dispatch(setUsername(''));
   dispatch(setAccessToken(''));
 };
