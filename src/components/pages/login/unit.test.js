@@ -36,6 +36,7 @@ class Setup {
       this._store = {
         t,
         history,
+        match: { path: 'login' },
         valid: true,
         username: '',
         password: '',
@@ -49,6 +50,8 @@ class Setup {
   setPassword = () => {};
 
   submitLogin = () => {};
+
+  deleteLogin = () => {};
 
   render() {
     return this._render(mount);
@@ -64,6 +67,7 @@ class Setup {
         submitLogin={this.submitLogin}
         setUsername={this.setUsername}
         setPassword={this.setPassword}
+        deleteLogin={this.deleteLogin}
         {...this.store}
       />
     );
