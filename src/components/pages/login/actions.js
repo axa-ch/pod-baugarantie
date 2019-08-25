@@ -42,27 +42,30 @@ export const deleteLogin = () => (dispatch, getState) => {
     config: { config: { apiUrl } },
     authentication: { at }
   } = getState();
-  fetch(`${apiUrl}/api/auth/login`, {
-    method: 'DELETE',
-    mode: 'cors',
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json',
-      'authorization': at
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    redirect: 'follow', // manual, *follow, error
-    referrer: 'no-referrer', // no-referrer, *client
-  })
-    .then(response => {
-      return response.json();
+
+  if(at.length > 1) {
+    fetch(`${apiUrl}/api/auth/login`, {
+      method: 'DELETE',
+      mode: 'cors',
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': at
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrer: 'no-referrer', // no-referrer, *client
     })
-    .then(() => {
-      // nothing here. Is fire and forget
-    });
-  sessionStorage.removeItem('bg_at');
-  dispatch(setPassword(''));
-  dispatch(setUsername(''));
-  dispatch(setAccessToken(''));
+      .then(response => {
+        return response.json();
+      })
+      .then(() => {
+        // nothing here. Is fire and forget
+      });
+    sessionStorage.removeItem('bg_at');
+    dispatch(setPassword(''));
+    dispatch(setUsername(''));
+    dispatch(setAccessToken(''));
+  }
 };
