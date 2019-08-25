@@ -34,8 +34,6 @@ class Contracts extends PureComponent {
       value: nummer,
     }));
 
-    console.log(activeContract);
-
     return (
       <>
         <section className="o-baug__app__contracts">

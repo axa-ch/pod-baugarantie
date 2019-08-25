@@ -16,18 +16,6 @@ router.get('/', (req, res) => {
         name: 'bg.menu.ongoing',
         url: '/ongoing'
       },{
-        name: 'Abgelaufene, annulierte und abgelehnte Garantiescheine',
-        url: '/cancelled'
-      },{
-        name: 'Depot Erneuerung',
-        url: '/depot-renewal'
-      },{
-        name: 'Engagement per Stichtag',
-        url: '/engagement-per-deadline'
-      },{
-        name: 'Support',
-        url: '/support'
-      },{
         name: 'Logout',
         url: '/logout'
       }

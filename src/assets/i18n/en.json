@@ -66,6 +66,9 @@
       "change_password": "Change password",
       "login": "login",
       "title": "Login form"
+    },
+    "logout": {
+      "title": "Thank you and good bye"
     }
   }
 }

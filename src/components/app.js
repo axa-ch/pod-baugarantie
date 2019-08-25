@@ -26,6 +26,7 @@ const App = ({ history, at }) => {
       <Menu />
       <article className="o-baug__app__content">
         <Switch>
+          <LocaleRoute exact path="/logout" component={Login} />
           <LocaleRoute exact path="/:lang?/login" component={Login} />
           <PrivateRoute path="/:lang?/new" component={New} />
           <PrivateRoute exact path="/:lang?/ongoing" component={Ongoing} />

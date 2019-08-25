@@ -63,6 +63,9 @@
       "change_password": "Passwort ändern",
       "login": "Einloggen",
       "title": "Anmeldungsformular"
+    },
+    "logout": {
+      "title": "Danke und auf wiedersehen"
     }
   }
 }

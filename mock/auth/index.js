@@ -8,4 +8,10 @@ router.post('/login', (req, res) => {
   res.end();
 });
 
+router.delete('/login', (req, res) => {
+  res.set('content-type', 'application/json');
+  res.send({ logout: true });
+  res.end();
+});
+
 module.exports = router;
