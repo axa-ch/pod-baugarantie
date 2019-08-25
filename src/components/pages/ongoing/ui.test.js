@@ -63,6 +63,8 @@ test('Should render big table', async t => {
     innerHTML: el => el.innerHTML,
   });
 
+  await t.wait( 1000 );
+
   await t.expect($elPaginationFilter.innerHTML).eql('Seite 1 von 3');
 
   const $axaElemShadow = await Selector(

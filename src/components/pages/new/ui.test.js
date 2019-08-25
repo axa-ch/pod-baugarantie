@@ -66,6 +66,11 @@ test('Should fill form desktop', async t => {
   });
   await t.click(dayToSelect);
 
+  await ClientFunction(() => {
+    const datepicker = document.querySelector(`axa-datepicker`);
+    datepicker.setAttribute('locale', 'de-CH');
+  });
+
   const submitButton = await Selector(() =>
     document
       .querySelector(`axa-datepicker`)
