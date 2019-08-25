@@ -9,7 +9,8 @@
     "menu": {
       "overview": "Contract Overview",
       "new": "New Warranty",
-      "ongoing": "Ongoing warranties"
+      "ongoing": "Ongoing warranties",
+      "logout": "Logout"
     },
     "contract_form": {
       "company_name": "Name/Company",

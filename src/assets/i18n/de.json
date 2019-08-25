@@ -9,7 +9,8 @@
     "menu": {
       "overview": "Vertragsübersicht",
       "new": "Neuer Garantieschein",
-      "ongoing": "Laufende Garantiescheine"
+      "ongoing": "Laufende Garantiescheine",
+      "logout": "Logout"
     },
     "contract_form": {
       "company_name": "Name/Firma",
@@ -62,7 +63,7 @@
       "password": "Passwort",
       "change_password": "Passwort ändern",
       "login": "Einloggen",
-      "title": "Anmeldungsformular"
+      "title": "Anmeldeformular"
     },
     "logout": {
       "title": "Danke und auf wiedersehen"

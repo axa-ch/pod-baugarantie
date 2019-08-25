@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
         name: 'bg.menu.ongoing',
         url: '/ongoing'
       },{
-        name: 'Logout',
+        name: 'bg.menu.logout',
         url: '/logout'
       }
     ]
