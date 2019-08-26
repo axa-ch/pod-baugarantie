@@ -6,14 +6,6 @@ import Adapter from 'enzyme-adapter-react-16';
 import { Login } from './index';
 
 import { initTranslations } from '../../../i18n';
-//
-// import {
-//   setUsername as originalSetUsername,
-//   setPassword as originalSetPassword,
-//   setValidLogin as originalSetValidLogin,
-//   setAccessToken as originalSetAccessToken,
-//   submitLogin as originalSubmitLogin,
-// } from './actions';
 
 Enzyme.configure({ adapter: new Adapter() });
 

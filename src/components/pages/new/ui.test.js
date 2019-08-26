@@ -108,7 +108,6 @@ test('Should fill form desktop', async t => {
 
 // HERE ALL MOBILE TESTS. DUPLICATION OF CODE HERE IS INTENDED
 
-
 fixture('PAGE New - basic functionality mobile')
   .page(`${host}/`)
   .beforeEach(beforeEachHook(true));

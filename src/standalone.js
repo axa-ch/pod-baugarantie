@@ -34,8 +34,7 @@ export default class WithFooterBaugarantie extends PodBaugarantie {
       };
 
       const handleFooterDisclaimerChange = disclaimer => {
-        // TODO: Fix footer so that i can pass HREF or recieve a key that allows me
-        // to switch
+        // TODO:
         console.log(disclaimer);
       };
 
