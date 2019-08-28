@@ -4,9 +4,9 @@ const host = 'http://localhost:9999';
 
 const beforeEachHook = (mobile = true) => async (t) => {
   if (mobile) {
-    await t.resizeWindow(350, 700);
+    await t.resizeWindow(350, 600);
   } else {
-    await t.resizeWindow(1920, 1080);
+    await t.maximizeWindow();
   }
   await t.typeText( 'input[name="username"]', 'testuser' );
   await t.typeText( 'input[name="password"]', 'testpassword' );
@@ -38,23 +38,22 @@ test('Should fill form desktop', async t => {
       .querySelector(`axa-datepicker`)
       .querySelector('button[class*="m-datepicker__input-button"]')
   )
-  await t.click(openCalendar);
-
+  await t.click(openCalendar, { speed: 0.5 });
 
   const dropDown = await Selector(() =>
     document
-      .querySelector(`axa-datepicker`)
+      .querySelector('axa-datepicker')
       .querySelector('axa-dropdown')
   );
 
-  await t.click(dropDown);
+  await t.click(dropDown, { speed: 0.5 });
   const monthFebruary = Selector(() =>
     document
       .querySelector(`axa-datepicker`)
       .querySelector('axa-dropdown[class*="js-datepicker__dropdown-month"]')
       .querySelector('button[data-index="1"]')
   )
-  await t.click(monthFebruary);
+  await t.click(monthFebruary, { speed: 0.5 });
 
   const dayToSelect = await Selector(() => {
     const month = '';
@@ -64,7 +63,7 @@ test('Should fill form desktop', async t => {
         `button[class*="m-datepicker__calendar${month}-current-month"][data-day="15"]`
       );
   });
-  await t.click(dayToSelect);
+  await t.click(dayToSelect, { speed: 0.5 });
 
   await ClientFunction(() => {
     const datepicker = document.querySelector(`axa-datepicker`);
@@ -76,7 +75,7 @@ test('Should fill form desktop', async t => {
       .querySelector(`axa-datepicker`)
       .querySelector('axa-button[class*="js-datepicker__button-ok"]')
   );
-  await t.click(submitButton);
+  await t.click(submitButton, { speed: 0.5 });
 
   const getInputValue = ClientFunction(
     () =>
@@ -92,8 +91,8 @@ test('Should fill form desktop', async t => {
   const secondOption = await Selector(() =>
     document.querySelector('axa-dropdown[title="Schweiz"] button[data-index="1"]')
   );
-  await t.click(dropdown);
-  await t.click(secondOption);
+  await t.click(dropdown, { speed: 0.5 });
+  await t.click(secondOption, { speed: 0.5 });
 
   const formData = await ClientFunction(() => {
     const form = document.querySelector('form');
@@ -102,7 +101,7 @@ test('Should fill form desktop', async t => {
   });
 
   await t.expect(JSON.stringify(await formData())).eql(
-    '{"company_name":"test_data","company_name_1":"test_data 1","company_name_2":"test_data 2","post_code":"8406","place":"Winterthur"}'
+    '{"company_name":"test_data","company_name_1":"test_data 1","company_name_2":"test_data 2","post_code":"8406","place":"Winterthur","countries":"li"}'
   );
 });
 

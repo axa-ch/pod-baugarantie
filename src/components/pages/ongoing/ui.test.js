@@ -6,11 +6,11 @@ const beforeEachHook = (mobile = true) => async (t) => {
   if (mobile) {
     await t.resizeWindow(350, 700);
   } else {
-    await t.resizeWindow(1920, 1080);
+    await t.maximizeWindow();
   }
   await t.typeText( 'input[name="username"]', 'testuser' );
   await t.typeText( 'input[name="password"]', 'testpassword' );
-  await t.click('axa-button[type="submit"]');
+  await t.click('axa-button[type="submit"]', { speed: 0.5 });
   await t.wait( 300 );
 }
 
@@ -44,8 +44,8 @@ test('Should render big table', async t => {
   const secondOption = await Selector(() =>
     document.querySelector('axa-dropdown button[data-index="1"]')
   );
-  await t.click(dropdown);
-  await t.click(secondOption);
+  await t.click(dropdown, { speed: 0.5 });
+  await t.click(secondOption, { speed: 0.5 });
 
   await t.wait( 1400 );
 
@@ -63,7 +63,7 @@ test('Should render big table', async t => {
     innerHTML: el => el.innerHTML,
   });
 
-  await t.wait( 1000 );
+  await t.wait( 1600 );
 
   await t.expect($elPaginationFilter.innerHTML).eql('Seite 1 von 3');
 
@@ -108,8 +108,8 @@ test('Should render big table on mobile', async t => {
   const secondOption = await Selector(() =>
     document.querySelector('axa-dropdown option[data-index="1"]')
   );
-  await t.click(dropdown);
-  await t.click(secondOption);
+  await t.click(dropdown, { speed: 0.5 });
+  await t.click(secondOption, { speed: 0.5 });
 
   await t.wait( 1400 );
 
