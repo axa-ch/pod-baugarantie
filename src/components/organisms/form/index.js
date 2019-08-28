@@ -69,6 +69,13 @@ class Form extends PureComponent {
             key={`form_index${index}`}
             label={t(config.label)}
             className=''
+            locale={t('bg.contract_form.datepicker.locale')}
+            placeholder={t('bg.contract_form.datepicker.placeholder')}
+            labelbuttoncancel={t('bg.contract_form.datepicker.labelbuttoncancel')}
+            labelbuttonok={t('bg.contract_form.datepicker.labelbuttonok')}
+            monthtitle={t('bg.contract_form.datepicker.monthtitle')}
+            yeartitle={t('bg.contract_form.datepicker.yeartitle')}
+            invaliddatetext={t('bg.contract_form.datepicker.invaliddatetext')}
             invalid={config.invalid}
             checkMark={config.checkmark}
             error={t(config.error)}

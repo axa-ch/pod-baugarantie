@@ -6,6 +6,14 @@
     "contracts": {
       "number": "Vertrag Nummer"
     },
+    "police_detail": {
+      "police_nummer": "Policenummer",
+      "deposit_amount": "Depotsaldo",
+      "left_capacity": "Freie Kapazität",
+      "amount_prepaid": "Gesamtengagement",
+      "total_engagement": "Total Engamement Garantieschein",
+      "amount_engagement": "Davon max."
+    },
     "menu": {
       "overview": "Vertragsübersicht",
       "new": "Neuer Garantieschein",
@@ -16,6 +24,15 @@
       "company_name": "Name/Firma",
       "post_code": "PLZ",
       "place": "Ort",
+      "datepicker": {
+        "placeholder": "Bitte Datum eingeben",
+        "locale": "de-CH",
+        "labelbuttoncancel": "Abbrechen",
+        "labelbuttonok": "OK",
+        "monthtitle": "Monat",
+        "yeartitle": "Jahr",
+        "invaliddatetext": "Datum nicht gültig"
+      },
       "countries": "Land",
       "countries_name": {
         "ch": "Schweiz",
@@ -31,6 +48,7 @@
       "modal_desc": "Garantie {{type}} zeile {{rowIndex}} und kolonne {{cellIndex}}",
       "page_count": "Seite {{realPageNumber}} von {{realTotPages}}",
       "no_results": "Es wurden keine resultate gefunden",
+      "current_guarantees": "Aktuelle Garantiescheine",
       "table_actions": {
         "view": "Anzeigen",
         "edit": "Editieren",

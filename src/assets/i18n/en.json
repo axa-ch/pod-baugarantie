@@ -16,6 +16,15 @@
       "company_name": "Name/Company",
       "post_code": "Post Code",
       "place": "Place",
+      "datepicker": {
+        "placeholder": "Please enter date",
+        "locale": "en-UK",
+        "labelbuttoncancel": "Cancel",
+        "labelbuttonok": "OK",
+        "monthtitle": "month",
+        "yeartitle": "year",
+        "invaliddatetext": "Date is invalid"
+      },
       "countries": "Country",
       "countries_name": {
         "ch": "Switzerland",
@@ -47,6 +56,7 @@
       "modal_desc": "Guarantees {{type}} on row {{rowIndex}} and column {{cellIndex}}",
       "page_count": "Page {{realPageNumber}} of {{realTotPages}}",
       "no_results": "No result found",
+      "current_guarantees": "Current guarantees",
       "table_actions": {
         "view": "View",
         "edit": "Edit",
@@ -59,7 +69,12 @@
       "data_protection": "Data Protection"
     },
     "police_detail": {
-      "police_nummer": "Police Nummer"
+      "police_nummer": "Police Nummer",
+      "deposit_amount": "Deposit amount",
+      "left_capacity": "Left capacity",
+      "amount_prepaid": "Amount prepaid",
+      "total_engagement": "Total engamement",
+      "amount_engagement": "Amount engamement"
     },
     "login": {
       "username": "Username",
