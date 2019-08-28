@@ -80,6 +80,7 @@ Pages are completed sections of the application containg multiple organisms, mol
 
 ## Tasks
 
+- `npm i` to install all depdencies. This is mandatory to do before anything else.
 - `npm start` to start development mode with the mock api. Used for manual tests as well.
 - `npm run api` starts ONLY the mock REST api
 - `npm run test` starts all the tests, UI/integration und Unit (works best under UNIX)
