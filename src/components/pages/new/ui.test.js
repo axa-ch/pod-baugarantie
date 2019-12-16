@@ -99,7 +99,7 @@ test('Should fill form desktop', async t => {
   await t
     .expect(JSON.stringify(await formData()))
     .eql(
-      '{"company_name":"test_data","company_name_1":"test_data 1","company_name_2":"test_data 2","post_code":"8406","place":"Winterthur","countries":"li"}'
+      '{"company_name":"test_data","company_name_1":"test_data1","company_name_2":"test_data2","post_code":"8406","place":"Winterthur","countries":"ch","contract_date":"15.1.2019"}'
     );
 });
 
