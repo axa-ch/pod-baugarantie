@@ -108,9 +108,11 @@ export class Ongoing extends PureComponent {
     const realPageNumber = pageNumber + 1;
     const realTotPages = Math.floor(rowLength) + 1;
 
-    const searchingHtml = (isSearching ? (<div className="lds-dual-ring" />) : (
+    const searchingHtml = isSearching ? (
+      <div className="lds-dual-ring" />
+    ) : (
       <p>{t('bg.ongoing.no_results')}</p>
-    ))
+    );
 
     return (
       <>
@@ -161,8 +163,10 @@ export class Ongoing extends PureComponent {
               <>
                 <AXAButton
                   type="button"
+                  data-selenium="123"
                   disabled={pageNumber === 0}
                   onClick={() => {
+                    console.log('dedede');
                     handlePagination(PREV);
                   }}
                   variant="secondary"
@@ -190,18 +194,17 @@ export class Ongoing extends PureComponent {
               ''
             )}
           </div>
-          {
-            (tableItems && tableItems.tbody && tableItems.tbody[0].length) ? (
-              <article className="o-baug__app__content-table">
-                <AXATableSortableReact
-                  innerscroll="800"
-                  maxheight="600"
-                  model={tableItems}
-                />
-              </article>
-            ) : searchingHtml
-          }
-
+          {tableItems && tableItems.tbody && tableItems.tbody[0].length ? (
+            <article className="o-baug__app__content-table">
+              <AXATableSortableReact
+                innerscroll="800"
+                maxheight="600"
+                model={tableItems}
+              />
+            </article>
+          ) : (
+            searchingHtml
+          )}
         </section>
       </>
     );
@@ -228,7 +231,7 @@ Ongoing.propTypes = {
 Ongoing.defaultProps = {
   isLoading: false,
   isSearching: false,
-}
+};
 
 export default connect(
   state => state.ongoing,

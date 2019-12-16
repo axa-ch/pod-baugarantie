@@ -10,7 +10,7 @@
     "@axa-ch/icon": "latest",
     "@axa-ch/input-text": "latest",
     "@axa-ch/link": "latest",
-    "@axa-ch/materials": "^1.3.4",
+    "@axa-ch/materials": "latest",
     "@axa-ch/patterns-library-polyfill": "latest",
     "@axa-ch/table-sortable": "latest",
     "core-js": "^2.5.7",
