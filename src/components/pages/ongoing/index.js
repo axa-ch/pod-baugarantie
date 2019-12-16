@@ -166,7 +166,6 @@ export class Ongoing extends PureComponent {
                   data-selenium="123"
                   disabled={pageNumber === 0}
                   onClick={() => {
-                    console.log('dedede');
                     handlePagination(PREV);
                   }}
                   variant="secondary"
