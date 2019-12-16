@@ -28,7 +28,7 @@ class Form extends PureComponent {
     updateFormState(target);
   }
 
-  _getInputElement = (config, index) => {
+  _getInputElement = (config, index, value) => {
     const { mode, t } = this.props;
     const { type } = config;
 
@@ -57,6 +57,7 @@ class Form extends PureComponent {
             onChange={(e) => { this.onChange(e, config, index) }}
             required={config.required}
             name={config.name}
+            value={value}
             invalid={config.invalid}
             items={translatedOptions}
             disabled={mode === VIEW}
@@ -141,7 +142,7 @@ class Form extends PureComponent {
   }
 
   render() {
-    const { mode, formItems, t } = this.props;
+    const { mode, formItems, t, formState } = this.props;
     if (mode !== NEW && mode !== EDIT && mode !== VIEW) {
       throw new Error(`
         Mode not recognised.
@@ -152,7 +153,7 @@ class Form extends PureComponent {
         <div className="o-baug__app__contract-form-wrapper">
           {formItems && formItems.map((item, index) => (
             <div key={`wrapper-form${index}`} className="o-baug__app__contract-form-inputs">
-              {this._getInputElement(item, index)}
+              {this._getInputElement(item, index, formState[item.name] || '')}
             </div>
           )) }
         </div>
