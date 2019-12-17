@@ -101,6 +101,8 @@ export class Ongoing extends PureComponent {
       return <div className="lds-dual-ring" />;
     }
 
+    return <div className="brake-my-test" />;
+
     const tableItems = this.addLink(preRenderTable);
 
     const { type, rowIndex, cellIndex } = match.params;
